@@ -12,3 +12,38 @@ map{
   height: 100%;
    width: 100%;
 }
+
+.toparea{
+  height: 80rpx;
+}
+
+.topmenu{
+  width: 45%;
+  height: 100%;
+  font-size: 14pt;
+  text-align: center;
+  line-height: 70rpx;
+}
+
+.query{
+  width: 10%;
+}
+
+.movearea{
+  width: 90%;
+  height: 5rpx;
+}
+
+.moveview{
+  width: 45%;
+  background: #55AAAD;
+}
+
+.lineright{
+  background: #FF7F27;
+}
+
+.displayinline{
+  display: flex;
+  align-items: center;
+}

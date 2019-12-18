@@ -1,14 +1,20 @@
 // pages/main/main.js
+var map = require('../../utils/auth.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      centerpoint:{
-        longitude:112.5633343366814,
-        latitude:37.801786607080054
+    map:{
+      centerpoint: {
+        longitude: 116.3972282409668,
+        latitude: 39.90960456049752
       }
+    },
+    moveview: {
+      x:0 
+    } 
   },
 
   /**
@@ -22,36 +28,47 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.getSetting({
-      success(res){
-        
-      },
-      fail(res){
-
-      },
-      complete(res) {
-
-      }
-    })  
-    // wx.authorize({
-    //   scope: 'scope.userLocation',
-    //   success(){
-
-    //   },
-    //   fail(){
-
-    //   },
-    //   complete(){
-
-    //   }
-    // })
+    const temp = this;
+    map.getUserLocation(function(){
+      wx.getLocation({
+        type: 'gcj02',
+        success: function (res) {
+          const latitude = res.latitude
+          const longitude = res.longitude
+          const speed = res.speed
+          const accuracy = res.accuracy
+          temp.setData({
+            centerpoint: {
+              longitude: longitude,
+              latitude: latitude
+            }
+          }); 
+        },
+      }) 
+    });
   },
-
+  tab: function(e){
+    console.log(e.currentTarget.offsetTop);
+    if (0 == e.currentTarget.dataset.x){
+      this.setData({
+        moveview: {
+          x: 186
+        }
+      });
+    }else{
+      this.setData({
+        moveview: {
+          x: 0
+        }
+      });
+    }
+    
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

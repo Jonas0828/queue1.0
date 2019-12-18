@@ -1,4 +1,12 @@
+<cover-view class="toparea displayinline">
+  <cover-view class="topmenu menuleft" bindtap="tab" data-x="{{moveview.x}}">网点</cover-view>
+  <cover-view class="topmenu menucenter" bindtap="tab" data-x="{{moveview.x}}">自助银行</cover-view>
+  <cover-image class="query" src="../resource/picture/query.png"></cover-image>
+</cover-view>
+<movable-area class="movearea">
+  <movable-view class="moveview" damping="30" direction="horizontal" x="{{moveview.x}}" data-x="{{moveview.x}}"></movable-view>
+</movable-area>
 <view>
-  <map id="map" longitude="{{centerpoint.longitude}}" latitude="{{centerpoint.latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="" show-location
+  <map id="map" longitude="{{map.centerpoint.longitude}}" latitude="{{map.centerpoint.latitude}}" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="" show-location="true"
     ></map>
 </view>
