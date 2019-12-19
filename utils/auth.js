@@ -1,4 +1,4 @@
-function getUserLocation(hook){
+function getUserLocationAuth(hook){
   //检查是否对地理位置授权
   wx.getSetting({
     success(res) {
@@ -48,5 +48,5 @@ function getUserLocation(hook){
 
 
 module.exports = {
-  getUserLocation: getUserLocation
+  getUserLocationAuth: getUserLocationAuth
 }
