@@ -20,7 +20,7 @@ map{
 .topmenu{
   width: 45%;
   height: 100%;
-  font-size: 14pt;
+  font-size: 12pt;
   text-align: center;
   line-height: 70rpx;
 }
@@ -37,10 +37,6 @@ map{
 .moveview{
   width: 45%;
   background: #55AAAD;
-}
-
-.lineright{
-  background: #FF7F27;
 }
 
 .displayinline{

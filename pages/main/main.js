@@ -14,7 +14,9 @@ Page({
     },
     moveview: {
       x:0 
-    } 
+    },
+    menucolorleft: "#55AAAD",
+    menucolorcenter: "black"
   },
 
   /**
@@ -47,22 +49,40 @@ Page({
       }) 
     });
   },
-  tab: function(e){
-    console.log(e.currentTarget.offsetTop);
-    if (0 == e.currentTarget.dataset.x){
-      this.setData({
-        moveview: {
-          x: 186
-        }
-      });
-    }else{
-      this.setData({
-        moveview: {
-          x: 0
-        }
-      });
-    }
-    
+  tableft: function(e){
+    const temp = this;
+    let query = this.createSelectorQuery();
+    query.select(".menucenter").fields({
+      computedStyle: ["color"]
+    }, function(res){
+      if (0 != e.currentTarget.dataset.x) {
+        temp.setData({
+          moveview: {
+            x: 0
+          },
+          menucolorleft: "#55AAAD",
+          menucolorcenter: "black"
+        });
+      }
+    }).exec();
+  },
+  tabcenter: function (e) {
+    const temp = this;
+    let query = this.createSelectorQuery();
+    query.select(".menucenter").fields({
+      rect: true,
+      computedStyle: ["color"]
+    }, function (res) {
+      if (0 == e.currentTarget.dataset.x) {
+        temp.setData({
+          moveview: {
+            x: res.left
+          },
+          menucolorcenter: "#55AAAD",
+          menucolorleft: "black"
+        });
+      }
+    }).exec();
   },
   /**
    * 生命周期函数--监听页面显示

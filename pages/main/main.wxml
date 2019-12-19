@@ -1,6 +1,6 @@
 <cover-view class="toparea displayinline">
-  <cover-view class="topmenu menuleft" bindtap="tab" data-x="{{moveview.x}}">网点</cover-view>
-  <cover-view class="topmenu menucenter" bindtap="tab" data-x="{{moveview.x}}">自助银行</cover-view>
+  <cover-view class="topmenu menuleft" bindtap="tableft" data-x="{{moveview.x}}" style="color:{{menucolorleft}};">网点</cover-view>
+  <cover-view class="topmenu menucenter" bindtap="tabcenter" data-x="{{moveview.x}}" style="color:{{menucolorcenter}};">自助银行</cover-view>
   <cover-image class="query" src="../resource/picture/query.png"></cover-image>
 </cover-view>
 <movable-area class="movearea">
