@@ -127,6 +127,11 @@ Page({
       url: '../user/user',
     });
   },
+  jumptonearbank: function(){
+    wx.navigateTo({
+      url: '../user/user',
+    });
+  },
   /**
    * 生命周期函数--监听页面显示
    */
