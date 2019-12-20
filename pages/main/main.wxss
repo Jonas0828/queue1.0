@@ -31,7 +31,7 @@ map{
 }
 
 .query{
-  width: 10%;
+  width: 8%;
 }
 
 .movearea{
@@ -57,6 +57,10 @@ map{
 
 .location{
   top: 55%;
+}
+
+.userinfo{
+  top: 35%;
 }
 
 .linearea{

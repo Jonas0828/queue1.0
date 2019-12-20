@@ -114,12 +114,17 @@ Page({
         fail: function (res) {
           wx.showModal({
             title: '提示',
-            content: '获取地理位置信息失败，请打开手机GPS定位功能',
+            content: '获取地理位置信息失败，请打开手机GPS定位功能，1~2秒后点击屏幕右下角定位按钮',
             showCancel: false,
             confirmColor: '#55AAAD',
           })
         }
       })
+    });
+  },
+  jumptouser: function(){
+    wx.navigateTo({
+      url: '../user/user',
     });
   },
   jumptorecords: function(){
