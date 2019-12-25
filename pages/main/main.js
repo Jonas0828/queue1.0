@@ -1,5 +1,5 @@
 // pages/main/main.js
-var map = require('../../utils/auth.js');
+var auth = require('../../utils/auth.js');
 Page({
 
   /**
@@ -42,6 +42,9 @@ Page({
   onReady: function () {
     console.log("初始化-----------");
     this.chooselocation();
+    let nearbank = this.data.nearbank;
+    // 加载和储存最近网点信息
+    wx.setStorageSync("nearbank", nearbank);
   },
   openbank: function(){
     wx.openLocation({
@@ -96,7 +99,7 @@ Page({
   },
   chooselocation: function(e){
     const temp = this;
-    map.getUserLocationAuth(function () {
+    auth.getUserLocationAuth(function () {
       wx.getLocation({
         type: 'gcj02',
         success: function (res) {
@@ -155,7 +158,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.clearStorageSync();
   },
 
   /**

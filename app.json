@@ -2,6 +2,7 @@
   "pages": [
     "pages/main/main",
     "pages/user/user"
+       
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,2 +1,32 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="fullview">
+  <view class="userinfo displayinline">
+    <view class="headview">
+      <open-data class="headimg" type="userAvatarUrl"></open-data>
+    </view>  
+    <view class="dearname">
+     <open-data type="userNickName"></open-data>
+    </view>
+    <view class="nearbankname">当前网点：{{nearbank.name}}</view>
+  </view>
+  <view class="listview">
+    <view class="itemA">
+    
+    </view>
+    <view class="itemB">
+    
+    </view>
+  </view>
+  <view class="centerview">
+  <!-- 动画开始 -->
+    <!-- <view class="bottommenuhead" bind:touchstart="start" bind:touchend="end"animation="{{animationresult}}">
+      <view class="bottommenu"></view>
+    </view> -->
+    <!-- 动画结束 -->
+
+  </view>
+  <view class="bottomview">
+    <view class="reserve">
+      立即预约
+    </view>
+  </view>
+</view>
