@@ -49,24 +49,32 @@ map{
   top: 45%;
   left: 85%;
   right: 5%;
-  width: 10%;
+  width: 70rpx;
   height: 70rpx;
   background: #FFFFFF;
   border-radius: 10rpx;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.borderstyle{
+  border-style: solid;
+  border-color: rgba(85, 85, 85, 0.1);
+  border-width: 2rpx;
 }
 
 .location{
   top: 55%;
 }
 
-.borderstyle{
-  border-style: solid;
-  border-width: 2rpx;
-  border-color: rgba(85, 85, 85, 0.10);
-}
-
 .userinfo{
   top: 35%;
+}
+
+.rightimage{
+  width: 60rpx;
+  height: 60rpx; 
 }
 
 .linearea{

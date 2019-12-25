@@ -9,10 +9,17 @@
   </movable-area>
   <map id="map" longitude="{{map.centerpoint.longitude}}" latitude="{{map.centerpoint.latitude}}" scale="{{map.scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange=""
     show-location="true">
-      <cover-image class="rightmenu userinfo borderstyle" src="../resource/picture/main/userinfo.png" bindtap="jumptouser"></cover-image>
-      <cover-image class="rightmenu records borderstyle" src="../resource/picture/main/records.png" bindtap="jumptorecords"></cover-image>
-      <cover-image class="rightmenu location borderstyle" src="../resource/picture/main/location.png" bindtap="chooselocation"></cover-image>
+      <cover-view class="rightmenu userinfo borderstyle">
+        <cover-image class="rightimage" src="../resource/picture/main/userinfo.png" bindtap="jumptouser"></cover-image>
+      </cover-view>
+      <cover-view class="rightmenu borderstyle">
+        <cover-image class="rightimage" src="../resource/picture/main/records.png" bindtap="jumptorecords"></cover-image>
+      </cover-view>
+      <cover-view class="rightmenu location borderstyle">
+        <cover-image class="rightimage" src="../resource/picture/main/location.png" bindtap="chooselocation"></cover-image>
+      </cover-view>
     </map>
+    
   <cover-view class="bottomarea">
     <cover-view class="linearea"></cover-view>
     <cover-view class="linefirst displayinline">
