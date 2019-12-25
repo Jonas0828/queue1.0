@@ -59,6 +59,12 @@ map{
   top: 55%;
 }
 
+.borderstyle{
+  border-style: solid;
+  border-width: 2rpx;
+  border-color: rgba(85, 85, 85, 0.10);
+}
+
 .userinfo{
   top: 35%;
 }
