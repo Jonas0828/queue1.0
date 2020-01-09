@@ -16,6 +16,10 @@ Page({
     bottommenu:{
       start:'',
       end:''
+    },
+    cardinfo:{
+      cardno:"6212260504****2588",
+      openbank:"太原低科技总行营业室"
     }
   },
 

@@ -2,22 +2,26 @@
   <view class="userinfo displayinline">
     <view class="headview">
       <open-data class="headimg" type="userAvatarUrl"></open-data>
-    </view>  
+    </view>
     <view class="dearname">
-     <open-data type="userNickName"></open-data>
+      <open-data type="userNickName"></open-data>
     </view>
     <view class="nearbankname">当前网点：{{nearbank.name}}</view>
   </view>
   <view class="listview">
     <view class="itemA">
-    
+      <view class="card cardtop">
+        <view id="cardno">{{cardinfo.cardno}}</view>
+        <view id="detailinfo">余额明细</view>
+      </view>
+      <view class="card cardbottom">开户行：{{cardinfo.openbank}}</view>
     </view>
-    <view class="itemB">
-    
-    </view>
+    <scroll-view class="itemB" scroll-y="true">
+      <view class="itemA"></view>
+    </scroll-view>
   </view>
   <view class="centerview">
-  <!-- 动画开始 -->
+    <!-- 动画开始 -->
     <!-- <view class="bottommenuhead" bind:touchstart="start" bind:touchend="end"animation="{{animationresult}}">
       <view class="bottommenu"></view>
     </view> -->
