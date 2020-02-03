@@ -15,6 +15,7 @@ page {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 /* 动画 */
 /* .displayinlinebottom{ */
@@ -35,147 +36,75 @@ page {
 
 .userinfo{
   width: 100%;
-  height: 30%;
+  height: 25%;
   background-color: #55AAAD;
   border-bottom-left-radius: 50rpx 30rpx;
   border-bottom-right-radius: 50rpx 30rpx;
 }
 
 .headview{
-  margin-top: 5rpx;
-  width: 100rpx;
-  height: 100rpx;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 50%;
   overflow:hidden;
 }
 
 .dearname{
   color: #FFFFFF;
-  font-size: 12pt;
+  font-size: 12pt; 
   margin-top: 5rpx;
-}
 
-.nearbankname{
-  color: #FFFFFF;
-  font-size: 10pt;
-  margin-top: 5rpx;
 }
 
 .centerview{
   width: 100%;
-  height: 55%;
+  height: 75%;
   background-color: #FAFAFA;
 }
 
-.bottomview{
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-  width: 100%;
-  height: 15%;
-  /* background-color: #FAFAFA; */
-  background-color: pink;
-}
-
-.reserve{
-  display: flex;
-  align-items: center; 
-  justify-content: center;
-  width: 90%;
-  height: 100rpx;
-  background-color: #55AAAD;
-  border-radius: 15rpx 15rpx;  
-  font-size: 18pt;
-  color: #FFFFFF;
-}
 
 .listview{
   top: 25%;
-  left: 5%;
-  width: 90vw;
-  height: 60%;
-  /* height: 765rpx; */
+  width: 100%;
+  height: 75%;
   background-color: #FAFAFA;
-  /* background-color: yellow; */
   position: absolute;
   border-radius: 5rpx;
+  padding-left: 5%;
 }
 
-.itemA{
-  width:100%;
-  height: 25%;
+.item{
+  margin-top: 5%;
+  width:90%;
+  height: 20%;
   background-color: #FFFFFF;
   border-radius: 5rpx;
   box-shadow: 0rpx 10rpx 50rpx 10rpx rgba(85, 85, 85, 0.10);
-}
-
-.card{
-  width: 100%;
-  height: 50%;
-}
-
-.cardtop{
   display: flex;
   align-items: center;
-  flex-direction: row;
 }
 
-#cardno{
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  flex-direction: row;
+.leftcontent{
+  width: 85%;
   margin-left: 5%;
-  color: #55AAAD;
 }
 
-#detailinfo{
-  width: 30%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex-direction: row;
-  font-size: 12pt;
-  color: #55AAAD;
+.right{
+  width: 10%;
+  height: 20pt;
+  margin-top: 5%;
+  align-self: baseline;
 }
 
-.cardbottom{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  margin-left: 5%;
-  color: #55AAAD;
+.msgview{
+  margin-top: 3%;
+  color: #888888;
   font-size: 11pt;
 }
 
-.itemB{
-  width:100%;
-  height: 65%;
-  background-color: #FFFFFF;
-  margin-top: 5%;
-  border-radius: 5rpx;
-  box-shadow: 0rpx 10rpx 50rpx 10rpx rgba(85, 85, 85, 0.10);
+.typeview{
+  color: #55AAAD;
+  font-size: 17pt;
+  display: flex;
 }
 
-/* 动画开始 */
-/* .bottommenuhead{
-  height: 50%;
-  width: 95%;
-  border-top-left-radius: 30rpx;
-  border-top-right-radius: 30rpx;
-  border-width: 5rpx;
-  border-color: #55AAAD;
-  border-style: solid;
-}
-
-.bottommenu{
-  width: 100%;
-  height: 20%;
-  margin-top: 10%;
-} */
-
-/* 动画结束 */

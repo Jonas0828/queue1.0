@@ -6,31 +6,45 @@
     <view class="dearname">
       <open-data type="userNickName"></open-data>
     </view>
-    <view class="nearbankname">当前网点：{{nearbank.name}}</view>
-  </view>
-  <view class="listview">
-    <view class="itemA">
-      <view class="card cardtop">
-        <view id="cardno">{{cardinfo.cardno}}</view>
-        <view id="detailinfo">余额明细</view>
-      </view>
-      <view class="card cardbottom">开户行：{{cardinfo.openbank}}</view>
-    </view>
-    <scroll-view class="itemB" scroll-y="true">
-      <view class="itemA"></view>
-    </scroll-view>
-  </view>
-  <view class="centerview">
-    <!-- 动画开始 -->
-    <!-- <view class="bottommenuhead" bind:touchstart="start" bind:touchend="end"animation="{{animationresult}}">
-      <view class="bottommenu"></view>
-    </view> -->
-    <!-- 动画结束 -->
+    <!-- <view class="nearbankname">当前网点：{{nearbank.name}}</view> -->
 
   </view>
-  <view class="bottomview">
-    <view class="reserve">
-      立即预约
+  <view class="listview">
+    <view class="item" style="margin-top:3%;">
+      <view class="leftcontent">
+        <view class="typeview">
+          <view>账户总览</view>
+        </view> 
+        <view class="msgview">未关联银行卡，暂无资产</view>
+      </view>
+      <image class="right" src="../resource/picture/main/go.png"></image>
+    </view>
+    <view class="item">
+      <view class="leftcontent">
+        <view class="typeview">
+          <view>本月收支</view>
+        </view> 
+        <view class="msgview">本月暂无收支记录</view>
+      </view>
+      <image class="right" src="../resource/picture/main/go.png"></image>
+    </view>
+    <view class="item">
+      <view class="leftcontent">
+        <view class="typeview">
+          <view>预约记录</view>
+        </view> 
+        <view class="msgview">暂无预约记录</view>
+      </view>
+      <image class="right" src="../resource/picture/main/go.png"></image>
+    </view>
+    <view class="item">
+      <view class="leftcontent">
+        <view class="typeview">
+          <view>业务办理</view>
+        </view> 
+        <view class="msgview">太原高科技支行营业室</view>
+      </view>
+      <image class="right" src="../resource/picture/main/go.png"></image>
     </view>
   </view>
 </view>
