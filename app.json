@@ -1,7 +1,12 @@
 {
   "pages": [
     "pages/map/map",
-    "pages/user/user"
+    "pages/infotype/infotype",
+    
+    "pages/main/main",
+    "pages/user/user",
+    "pages/updateuserinfo/updateuserinfo"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,7 +22,20 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "小程序需要使用您的位置信息"
+      "desc": "小程序需要使用您的地理位置信息"
     }
+  },
+  "tabBar": {
+    "selectedColor": "#55AAAD",
+    "list": [
+      {
+        "pagePath": "pages/map/map",
+        "text": "网点"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
   }
 }

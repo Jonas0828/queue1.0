@@ -92,7 +92,7 @@ page {
 .right{
   width: 10%;
   height: 20pt;
-  margin-top: 5%;
+  margin-top: 3%;
   align-self: baseline;
 }
 

@@ -10,14 +10,23 @@
 
   </view>
   <view class="listview">
-    <view class="item" style="margin-top:3%;">
+    <view class="item" style="margin-top:3%;" bindtap="jumptoinfotype">
+      <view class="leftcontent">
+        <view class="typeview">
+          <view>用户信息</view>
+        </view> 
+        <view class="msgview">完成度：30%</view>
+      </view>
+      <image class="right" src="../resource/picture/map/go.png"></image>
+    </view>
+    <view class="item" >
       <view class="leftcontent">
         <view class="typeview">
           <view>账户总览</view>
         </view> 
         <view class="msgview">未关联银行卡，暂无资产</view>
       </view>
-      <image class="right" src="../resource/picture/main/go.png"></image>
+      <image class="right" src="../resource/picture/map/go.png"></image>
     </view>
     <view class="item">
       <view class="leftcontent">
@@ -26,25 +35,7 @@
         </view> 
         <view class="msgview">本月暂无收支记录</view>
       </view>
-      <image class="right" src="../resource/picture/main/go.png"></image>
-    </view>
-    <view class="item">
-      <view class="leftcontent">
-        <view class="typeview">
-          <view>预约记录</view>
-        </view> 
-        <view class="msgview">暂无预约记录</view>
-      </view>
-      <image class="right" src="../resource/picture/main/go.png"></image>
-    </view>
-    <view class="item">
-      <view class="leftcontent">
-        <view class="typeview">
-          <view>业务办理</view>
-        </view> 
-        <view class="msgview">太原高科技支行营业室</view>
-      </view>
-      <image class="right" src="../resource/picture/main/go.png"></image>
+      <image class="right" src="../resource/picture/map/go.png"></image>
     </view>
   </view>
 </view>

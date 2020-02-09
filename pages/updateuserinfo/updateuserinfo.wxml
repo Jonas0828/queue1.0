@@ -1,0 +1,45 @@
+<!-- 校验表单提示 -->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+    <view class="page__bd">
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+            <mp-cells title="" footer="">
+                <mp-cell prop="required" title="姓名" ext-class="">
+                    <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入姓名"/>
+                </mp-cell>
+                <mp-cell prop="required" title="身份证号" ext-class="">
+                    <input bindinput="formInputChange" data-field="cardid" class="weui-input" placeholder="请输入身份证号"/>
+                </mp-cell>
+                <mp-cells title="">
+                    <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+                        <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+                    </mp-checkbox-group>
+                </mp-cells>
+
+                <mp-cell prop="required" title="出生日期" ext-class="">
+                    <picker data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+                </mp-cell>
+                <mp-cell prop="required" title="手机号" ext-class="">
+                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号"/>
+                </mp-cell>
+                
+            </mp-cells>
+        </mp-form>
+        <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        </view>
+    </view>
+</view>

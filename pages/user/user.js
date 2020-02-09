@@ -50,40 +50,12 @@ Page({
         }
       })
     });
-    this.animate('.bottommenuhead', [{ translateY: "60%", ease: 'linear', transformOrigin: "100% 0" }], 10000, function () { }.bind(this))
+    
   },
-  start: function(e){
-    // console.log("---start----" + e.changedTouches[0].pageY);
-    this.setData({
-      bottommenu: {
-        start: e.changedTouches[0].pageY,
-      }
-    });
-  },
-  end: function (e) {
-    if (20 < Math.abs(this.data.bottommenu.start-e.changedTouches[0].pageY)){
-      this.swipermenu();
-    }
-  },
-  swipermenu:function(){
-    let animation = wx.createAnimation({
-      duration: 100,
-      timingFunction: 'linear',
-      transformOrigin: '0 0'
-    });
-    if (this.data.stretch) {
-      animation.translateY("60%").step();
-      this.setData({
-        animationresult: animation.export(),
-        stretch: false
-      });
-    } else {
-      animation.translateY("0").step();
-      this.setData({
-        animationresult: animation.export(),
-        stretch: true
-      });
-    }
+  jumptoinfotype: function () {
+    wx.navigateTo({
+      url: '../infotype/infotype',
+    })
   },
   /**
    * 生命周期函数--监听页面显示

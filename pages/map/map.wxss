@@ -68,10 +68,6 @@ map{
   top: 55%;
 }
 
-.userinfo{
-  top: 35%;
-}
-
 .rightimage{
   width: 60rpx;
   height: 60rpx; 
@@ -120,7 +116,7 @@ map{
 
 .verticalline{
   position: absolute;
-  top: 15%;
+  top: 18%;
   width: 5rpx;
   height: 18%;
   left: 58%;
@@ -130,7 +126,7 @@ map{
 .navigation{
   position: absolute;
   left: 80%;
-  top: 13%;
+  top: 15%;
   width: 10%;
   height: 25%;
 }
@@ -144,7 +140,7 @@ map{
 .go{
   position: absolute;
   left: 80%;
-  top: 63%;
+  top: 70%;
   width: 10%;
   height: 25%;
 }
