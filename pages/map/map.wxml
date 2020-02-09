@@ -1,5 +1,4 @@
 <view>
-<button id="getUserInfo" open-type="getUserInfo"></button>
   <cover-view class="toparea displayinline">
     <cover-view class="topmenu menuleft" bindtap="tableft" data-x="{{moveview.x}}" style="color:{{menu.menucolorleft}};">网点</cover-view>
     <cover-view class="topmenu menucenter" bindtap="tabcenter" data-x="{{moveview.x}}" style="color:{{menu.menucolorcenter}};">自助银行       </cover-view>

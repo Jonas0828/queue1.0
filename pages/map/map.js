@@ -40,10 +40,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    const query = wx.createSelectorQuery()
+
     
     console.log("初始化-----------");
-    console.log(query.select('#getUserInfo'));
+
     
     
     let nearbank = this.data.nearbank;
