@@ -2,7 +2,7 @@
   <cover-view class="toparea displayinline">
     <cover-view class="topmenu menuleft" bindtap="tableft" data-x="{{moveview.x}}" style="color:{{menu.menucolorleft}};">网点</cover-view>
     <cover-view class="topmenu menucenter" bindtap="tabcenter" data-x="{{moveview.x}}" style="color:{{menu.menucolorcenter}};">自助银行       </cover-view>
-    <cover-image class="query" src="../resource/picture/map/query.png"></cover-image>
+    <cover-image class="query" src="../resource/picture/map/query.png" bindtap="query"></cover-image>
   </cover-view>
   <movable-area class="movearea">
     <movable-view class="moveview" damping="30" direction="horizontal" x="{{moveview.x}}" data-x="{{moveview.x}}"></movable-view>

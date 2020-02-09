@@ -1,0 +1,48 @@
+<view class="weui-form-preview">
+  <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">{{bank.name}}</view>
+            </view>
+        </view>
+
+
+  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+      <image src="../resource/picture/main/9.jpg" style="width:670rpx; height:90px;" />
+    </view>
+  </view>
+
+
+
+
+  <view class="weui-form-preview__bd">
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">距离</view>
+      <view class="weui-form-preview__value">{{bank.distance}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">详细地址</view>
+      <view class="weui-form-preview__value">{{bank.address}}</view>
+    </view>
+    <view class="weui-form-preview__item">
+      <view class="weui-form-preview__label">电话</view>
+      <view class="weui-form-preview__value">{{bank.phone}}</view>
+    </view>
+  </view>
+ 
+<view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">全部业务</view>
+            </view>
+        </view>
+
+   <view class="weui-grids">
+            <block wx:for="{{grids}}" wx:key="*this">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="../resource/picture/bank/{{index}}.png" />
+                    <view class="weui-grid__label">{{item}}</view>
+                </navigator>
+            </block>
+        </view>
+
+</view>

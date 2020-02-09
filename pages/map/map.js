@@ -40,19 +40,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
-    
+   
     console.log("初始化-----------");
 
-    
-    
     let nearbank = this.data.nearbank;
     // 加载和储存最近网点信息
     wx.setStorageSync("nearbank", nearbank);
     // 检查个人基本信息是否完善
     const flag = wx.getStorageInfoSync("complete");
     let currentPage = this;
-    if (flag){
+    if (true){
       wx.showModal({
         title: '提示',
         content: '您的个人信息不完整，请前往补录信息',
@@ -157,11 +154,6 @@ Page({
       })
     });
   },
-  jumptouser: function () {
-    wx.navigateTo({
-      url: '../user/user',
-    });
-  },
   jumptorecords: function () {
     wx.navigateTo({
       url: '../user/user',
@@ -169,7 +161,12 @@ Page({
   },
   jumptonearbank: function () {
     wx.navigateTo({
-      url: '../user/user',
+      url: '../bank/bank',
+    });
+  },
+  query: function () {
+    wx.navigateTo({
+      url: '../banklist/banklist',
     });
   },
   /**
