@@ -13,9 +13,64 @@ Page({
       longitude: 116.3972282409668,
       latitude: 39.90960456049752
     },
-    grids: ['预约', '排队', '查询']
+    grids: [{
+      url: '',
+      name: '预约'
+    },{
+      url: '',
+      name: '排队',
+    },{
+      url: '',
+      name: '查询',
+    }]
   },
+  opentrade: function (e) {
+    // 检查个人基本信息是否完善
+    const flag = wx.getStorageInfoSync("complete");
+    let currentPage = this;
+    if (true) {
+      wx.showModal({
+        title: '提示',
+        content: '您的个人信息不完整，请前往补录信息',
+        showCancel: false,
+        confirmColor: '#55AAAD',
+        confirmText: '前往',
+        success: () => {
+          wx.navigateTo({
+            url: '../infotype/infotype',
+            events: {
+              callback: function (data) {
+                console.log(data.flag);
+                if (data.flag == true) {
+                  currentPage.phoneverify(e);
+                }
+              }
+            },
+          })
+        },
+      })
+    } else {
+      this.phoneverify(e);
+    }
+  },
+  phoneverify: function (e) {
+    //检查此次使用是否进行过手机号码验证
+    const flag = wx.getStorageInfoSync("phone");
+    if(!false){
+      wx.navigateTo({
+        url: '../phone/phone',
+        events: {
+          success: () => {
+            wx.navigateTo({
+              url: this.data.grids[e.currentTarget.dataset.index].url,
+            })
+          },
+        }
+      })
+    }else{
 
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

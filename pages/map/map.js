@@ -42,38 +42,11 @@ Page({
   onReady: function () {
    
     console.log("初始化-----------");
-
+    // 定位到当前位置
+    this.chooselocation();
     let nearbank = this.data.nearbank;
     // 加载和储存最近网点信息
     wx.setStorageSync("nearbank", nearbank);
-    // 检查个人基本信息是否完善
-    const flag = wx.getStorageInfoSync("complete");
-    let currentPage = this;
-    if (true){
-      wx.showModal({
-        title: '提示',
-        content: '您的个人信息不完整，请前往补录信息',
-        showCancel: false,
-        confirmColor: '#55AAAD',
-        confirmText: '前往',
-        success: () => {
-          wx.navigateTo({
-            url: '../infotype/infotype',
-            events: {
-              callback: function (data) {
-                console.log(data.flag);
-                if (data.flag == true){
-                  currentPage.chooselocation();
-                }
-              }
-            },
-          })
-        },
-      })
-    }else{
-      // 定位到当前位置
-      this.chooselocation();
-    }
   },
   openbank: function () {
     wx.openLocation({

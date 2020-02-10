@@ -1,9 +1,9 @@
 <view class="weui-form-preview">
   <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">{{bank.name}}</view>
-            </view>
-        </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">{{bank.name}}</view>
+    </view>
+  </view>
 
 
   <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
@@ -29,20 +29,20 @@
       <view class="weui-form-preview__value">{{bank.phone}}</view>
     </view>
   </view>
- 
-<view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">全部业务</view>
-            </view>
-        </view>
 
-   <view class="weui-grids">
-            <block wx:for="{{grids}}" wx:key="*this">
-                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
-                    <image class="weui-grid__icon" src="../resource/picture/bank/{{index}}.png" />
-                    <view class="weui-grid__label">{{item}}</view>
-                </navigator>
-            </block>
-        </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">全部业务</view>
+    </view>
+  </view>
+
+  <view class="weui-grids">
+
+    <view wx:for="{{grids}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-index="{{index}}">
+      <image class="weui-grid__icon" src="../resource/picture/bank/{{index}}.png" />
+      <view class="weui-grid__label">{{item.name}}</view>
+    </view>
+
+  </view>
 
 </view>

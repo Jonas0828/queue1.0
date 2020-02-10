@@ -2,11 +2,13 @@
   "pages": [
     "pages/map/map",
     "pages/bank/bank",
+    "pages/phone/phone",
     "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/main/main",
     "pages/user/user",
     "pages/updateuserinfo/updateuserinfo"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
