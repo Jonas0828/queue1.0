@@ -134,6 +134,7 @@ Page({
 
         }
       } else {
+        wx.setStorageSync('complete', true);
         wx.navigateBack({
           success: (res) => {
             eventChannel.emit('callback', { flag: true });

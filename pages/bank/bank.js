@@ -14,7 +14,7 @@ Page({
       latitude: 39.90960456049752
     },
     grids: [{
-      url: '',
+      url: '../service0/service0',
       name: '预约'
     },{
         url: '../reserverecords/reserverecords',
@@ -26,9 +26,9 @@ Page({
   },
   opentrade: function (e) {
     // 检查个人基本信息是否完善
-    const flag = wx.getStorageInfoSync("complete");
+    const flag = wx.getStorageSync("complete");
     let currentPage = this;
-    if (true) {
+    if (!flag) {
       wx.showModal({
         title: '提示',
         content: '您的个人信息不完整，请前往补录信息',
@@ -55,8 +55,9 @@ Page({
   },
   phoneverify: function (e) {
     //检查此次使用是否进行过手机号码验证
-    const flag = wx.getStorageInfoSync("phone");
-    if(!false){
+    const flag = wx.getStorageSync("phone");
+    console.log(flag)
+    if (!flag){
       wx.navigateTo({
         url: '../phone/phone',
         events: {
@@ -68,7 +69,9 @@ Page({
         }
       })
     }else{
-
+      wx.navigateTo({
+        url: this.data.grids[e.currentTarget.dataset.index].url,
+      })
     }
   },
   /**

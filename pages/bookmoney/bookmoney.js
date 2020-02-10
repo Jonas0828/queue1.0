@@ -92,7 +92,7 @@ Page({
   },
   submitForm(){
     wx.navigateTo({
-      url: '../fillform/fillform',
+      url: '../reservenumber/reservenumber',
     })
   }
 })

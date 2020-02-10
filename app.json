@@ -12,7 +12,6 @@
     "pages/user/user",
     "pages/updateuserinfo/updateuserinfo",
     "pages/service0/service0",
-    "pages/bookinfo/bookinfo",
     "pages/bookmoney/bookmoney",
     "pages/fillform/fillform"
 

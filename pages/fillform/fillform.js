@@ -134,13 +134,8 @@ Page({
 
         }
       } else {
-        wx.navigateBack({
-          success: (res) => {
-            wx.navigateTo({
-              url: '../bookinfo/bookinfo',
-            })
-            //eventChannel.emit('callback', { flag: true });
-          }
+        wx.navigateTo({
+          url: '../queuenumber/queuenumber',
         })
       }
     })

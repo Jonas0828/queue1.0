@@ -9,7 +9,7 @@ Page({
   },
   clickbtn: function () {
     wx.navigateBack({
-      
+      delta: 2,
     })
   },
   /**

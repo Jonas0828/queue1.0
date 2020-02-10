@@ -1,4 +1,0 @@
-/* pages/bookinfo/bookinfo.wxss */
-.weui-cell__hd1{
-  text-align: center,
-}

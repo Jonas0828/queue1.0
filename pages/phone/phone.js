@@ -19,6 +19,7 @@ Page({
     })
   },
   clickbtn: function () {
+    wx.setStorageSync('phone', true);
     wx.navigateBack({
       success: (res) => {
         eventChannel.emit('success', {});

@@ -5,11 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+    reserve: {
+      number: '0003',
+      name: '大额取现',
+      date: '2020-02-02',
+      time: '09:00',
+      bankname: '太原高科技支行营业室',
+      address: '山西省太原市学府园区V-3区',
+    },
+  flag:false
   },
   clickbtn: function () {
     wx.navigateBack({
-      
+      delta: this.data.flag ?1:3,
     })
   },
   /**
@@ -21,6 +29,7 @@ Page({
     eventChannel.on('reserveinfo', function (data) {
       currentPage.setData({
         reserve:data,
+        flag: true,
       });
     })
     wx.setNavigationBarTitle({
