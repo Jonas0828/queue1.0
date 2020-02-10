@@ -1,0 +1,5 @@
+/* pages/bookmoney/bookmoney.wxss */
+.text-style{
+  color: black;
+  text-align: center;
+}
