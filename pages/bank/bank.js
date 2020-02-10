@@ -17,7 +17,7 @@ Page({
       url: '',
       name: '预约'
     },{
-      url: '',
+        url: '../reserverecords/reserverecords',
       name: '排队',
     },{
       url: '',

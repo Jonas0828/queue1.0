@@ -23,6 +23,9 @@ Page({
         reserve:data,
       });
     })
+    wx.setNavigationBarTitle({
+      title: '预约',
+    })
   },
 
   /**

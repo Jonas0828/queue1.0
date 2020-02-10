@@ -1,9 +1,9 @@
 <view class="page">
   <view class="page__bd">
-    <view wx:for="{{list}}" class="weui-form-preview"  data-index="{{index}}"  bindtap="jumptoreservenumber">
-      
+    <view wx:for="{{list}}" class="weui-form-preview" >
+
       <view class="weui-form-preview__bd">
-       <view class="weui-form-preview__item">
+        <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">业务类型</view>
           <view class="weui-form-preview__value">{{item.name}}</view>
         </view>
@@ -23,11 +23,16 @@
           <view class="weui-form-preview__label">预约网点</view>
           <view class="weui-form-preview__value">{{item.bankname}}</view>
         </view>
-      </view>
-      <view class="weui-form-preview__ft">
-
+        <view class="weui-form-preview__ft">
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptoqueuenumber">排队</navigator>
+                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptoreservenumber" data-index="{{index}}">查看</navigator>
+         </view>
       </view>
     </view>
+    <view class="add" bindtap="jumptoinfo">
 
+      <image src="../resource/picture/reserverecords/add.png" style="width:50px;height:50px;"></image>
+
+    </view>
   </view>
 </view>

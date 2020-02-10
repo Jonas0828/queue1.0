@@ -9,6 +9,12 @@
   </movable-area>
   <map id="map" longitude="{{map.centerpoint.longitude}}" latitude="{{map.centerpoint.latitude}}" scale="{{map.scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange=""
     show-location="true">
+    
+    <cover-view class="rightmenu queuerecord borderstyle">
+        <cover-image class="rightimage" src="../resource/picture/bank/1.png" bindtap="jumptoqueue"></cover-image>
+      </cover-view>
+
+
       <cover-view class="rightmenu borderstyle">
         <cover-image class="rightimage" src="../resource/picture/map/records.png" bindtap="jumptorecords"></cover-image>
       </cover-view>

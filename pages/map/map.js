@@ -127,6 +127,11 @@ Page({
       })
     });
   },
+  jumptoqueue: function () {
+    wx.navigateTo({
+      url: '../queuenumber/queuenumber',
+    });
+  },
   jumptorecords: function () {
     wx.navigateTo({
       url: '../reserverecords/reserverecords',

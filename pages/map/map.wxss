@@ -65,6 +65,10 @@ map{
   border-width: 2rpx;
 }
 
+.queuerecord{
+  top: 35%;
+}
+
 .location{
   top: 55%;
 }

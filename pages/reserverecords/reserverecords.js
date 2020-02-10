@@ -29,6 +29,16 @@ Page({
       }
     })
   },
+  jumptoqueuenumber: function () {
+    wx.navigateTo({
+      url: '../queuenumber/queuenumber',
+    })
+  },
+  jumptoinfo: function () {
+    wx.navigateTo({
+      url: '',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
