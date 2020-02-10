@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="page__bd">
+    <view wx:for="{{list}}" class="weui-form-preview"  data-index="{{index}}"  bindtap="jumptoreservenumber">
+      
+      <view class="weui-form-preview__bd">
+       <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">业务类型</view>
+          <view class="weui-form-preview__value">{{item.name}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约编号</view>
+          <view class="weui-form-preview__value">{{item.number}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约日期</view>
+          <view class="weui-form-preview__value">{{item.date}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约时间</view>
+          <view class="weui-form-preview__value">{{item.time}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约网点</view>
+          <view class="weui-form-preview__value">{{item.bankname}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+
+      </view>
+    </view>
+
+  </view>
+</view>

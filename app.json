@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/map/map",
+    "pages/queuenumber/queuenumber",
+    "pages/reserverecords/reserverecords",
+    "pages/reservenumber/reservenumber",
     "pages/bank/bank",
     "pages/phone/phone",
     "pages/banklist/banklist",
@@ -8,7 +11,6 @@
     "pages/main/main",
     "pages/user/user",
     "pages/updateuserinfo/updateuserinfo"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

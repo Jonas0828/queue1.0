@@ -129,7 +129,7 @@ Page({
   },
   jumptorecords: function () {
     wx.navigateTo({
-      url: '../user/user',
+      url: '../reserverecords/reserverecords',
     });
   },
   jumptonearbank: function () {
