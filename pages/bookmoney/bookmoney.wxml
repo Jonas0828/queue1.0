@@ -1,0 +1,47 @@
+<!-- pages/bookmoney/bookmoney.wxml -->
+<view class="page">
+    <view class="weui-form">
+      <view class="weui-form__text-area">
+        <view class="weui-form__title">预约大额取现</view>
+      </view>
+      <view class="weui-form__control-area">
+        <view class="weui-cells__group weui-cells__group_form">
+            <view class="weui-cells__title">请输入以下信息完成预约</view>
+            <view class="weui-cells weui-cells_form">
+              <view class="weui-cell">
+                <view class="weui-cell__hd"><label class="weui-label">预约网点</label></view>
+                  <picker mode="selector"   bindchange="bindNetWorkChange" value="{{index}}" range="{{array}}">
+                    <view class="weui-input">{{array[index]}}</view>
+                 </picker>
+              </view>
+
+              <view class="weui-cell">
+                <view class="weui-cell__hd"><label class="weui-label">预约日期</label></view>
+                 <picker data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" bindchange="bindDateChange">
+                        <view class="weui-input">{{date}}</view>
+                    </picker>
+              
+              </view>
+
+               <view class="weui-cell">
+                <view class="weui-cell__hd"><label class="weui-label">预约时间</label></view>
+                  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                <view class="weui-input">{{time}}</view>
+            </picker>
+              </view>
+
+                <view class="weui-cell">
+                <view class="weui-cell__hd"><label class="weui-label">预约取现金额</label></view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" type="digit" pattern="(^[1-9](\d+)?(\.\d{1,2})?$)|(^0$)|(^\d\.\d{1,2}$)" placeholder="请输入金额"/>
+                </view>
+              </view>
+
+            </view>
+        </view>
+      </view>
+      <view class="weui-form__opr-area">
+        <button type="primary" bindtap="submitForm">确定</button>
+      </view>
+    </view>
+</view>
