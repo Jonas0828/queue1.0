@@ -1,0 +1,121 @@
+/* pages/index/index.wxss */
+.page{
+    background-color: beige;
+}
+.img{
+  width: 100%;
+}
+.view1{
+  margin-top:-25px;
+  background-color: white;
+  border-radius: 20px;
+  height: auto;
+}
+.weui-flex{
+  margin-top:19px;
+  margin-bottom: 10px;
+}
+.weui-flex1{
+  margin-top:19px;
+  margin-bottom: 10px;
+  
+}
+.weui-flex__item{
+  margin-top: 15px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+ justify-content:center;
+}
+.icons{
+  width: 30px;
+  height:30px;
+  text-align: center;
+
+}
+.textoficon{
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.fullview{
+  height: 100%;
+  width: 100%;
+  margin-top:-9px;
+}
+
+.top{
+  width: 100%;
+  background-color:pink;
+}
+
+.swiper{
+  width: 100vw;
+  height: px;
+}
+/* 广告 */
+/* .ad{
+
+}
+.adoffather{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.adofson{
+  width: 40%;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+.adofimage{
+  widows: 100px;
+  height: 100px;
+} */
+
+.schoollist-head-img{
+  width: 100%;
+  height: 180rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.schoollist{
+  margin-top: 20rpx;
+}
+
+.school-list-info{
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+ 
+
+.school-list-photo{
+  width: 350rpx;
+  height: 250rpx;
+}
+
+.school-list-desc{
+  display: block;
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  bottom: 3%;
+  left: 0;
+  width: 94%;
+  text-align: center;
+  font-size: 25rpx;
+  padding: 10rpx;
+  opacity: 0.7;
+}
+.text1{
+  font-size: 20px;
+}
+.text2{
+  font-size: 10px;
+}
+

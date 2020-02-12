@@ -1,6 +1,9 @@
 {
   "pages": [
+   
+    "pages/index/index",
     "pages/map/map",
+  
     "pages/queuenumber/queuenumber",
     "pages/reserverecords/reserverecords",
     "pages/reservenumber/reservenumber",
@@ -14,7 +17,6 @@
     "pages/service0/service0",
     "pages/bookmoney/bookmoney",
     "pages/fillform/fillform"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

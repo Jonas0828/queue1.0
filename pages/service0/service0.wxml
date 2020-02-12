@@ -2,13 +2,13 @@
 
 <view class="weui-cells__title">请您选择需要的预约服务</view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <navigator url="../openaccount/openaccount" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">个人开户预约</view>
             </navigator>
             <navigator url="../bookmoney/bookmoney" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">个人大额取款预约</view>
             </navigator>
-            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <navigator url="../fillform/fillform" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">对公业务预约</view>
             </navigator>
              <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

@@ -1,0 +1,63 @@
+<view class="page">
+  <!-- head部 -->
+  <view>
+    <image class="img" src="../resource/picture/index/1.jpg" mode="widthFix"></image>
+  
+  </view>
+  <!-- 业务 -->
+  <view class="view1">
+      <view class="weui-flex">
+            <view class="weui-flex__item" wx:for="{{iconlist1}}" >
+              <cover-image class="icons" src="{{item.icons.url}}" mode="widthFix">
+              </cover-image>
+             <view class="textoficon">{{item.icons.name}}</view>
+             </view>
+      </view>
+      <view class="weui-flex">
+            <view class="weui-flex__item" wx:for="{{iconlist2}}" >
+              <cover-image class="icons" src="{{item.icons.url}}" mode="widthFix">
+              </cover-image>
+             <view class="textoficon">{{item.icons.name}}</view>
+             </view>
+      </view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="fullview">
+    <view class="top">
+      <swiper indicator-dots="false" autoplay="true" interval="3000" easing-function="easeInOutCubic" style="height: {{swiper.height}}" >  
+      <swiper-item wx:for="{{imagelist}}" wx:for-item="url">
+       <image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}" ></image>
+      </swiper-item>
+      </swiper>
+    </view>
+  </view>
+<!-- 
+  <view class='ad'>
+   
+    <view class="adoffather">
+      <view class="adofson">
+       <image  class="adofimage" src="../resource/picture/index/2.jpg"  mode="widthFix"></image>
+       <view>dd1</view>
+       </view>
+      <view class="adofson">
+        <image class="adofimage" src="../resource/picture/index/3.jpg"  mode="widthFix"></image></view>
+         <view>dd2</view>
+    </view>
+  </view> -->
+<!-- 5 -->
+  
+<view class="schoollist">
+  <text class="text1">贷款达人</text>
+  <text class="text2">贷款我最牛，利息低</text>
+  <block wx:for="{{items}}" wx:key="item">
+    <view class="school-list">
+      <navigator url="/pages/photo/photo?id={{item.id}}">
+        <view class="school-list-info" index="{{index}}">
+          <image class="school-list-photo" src="{{item.imageUrl}}"/>
+          <text class="school-list-desc">{{item.content}}</text>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</view>
+</view>
