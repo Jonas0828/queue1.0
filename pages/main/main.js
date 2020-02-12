@@ -6,6 +6,7 @@ Page({
    */
   data: {
     imagelist: ['../resource/picture/main/1.jpg', '../resource/picture/main/2.jpg','../resource/picture/main/3.jpg','../resource/picture/main/5.jpg', '../resource/picture/main/6.jpg', '../resource/picture/main/7.jpg','../resource/picture/main/9.jpg'],
+    showDialog:  false,
   },
 
   /**
@@ -35,8 +36,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.openDialog();
   },
+  openDialog: function () {
+    this.setData({
+      istrue: true
+    })
+  },
+  closeDialog: function () {
+    this.setData({
+      istrue: false
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面显示

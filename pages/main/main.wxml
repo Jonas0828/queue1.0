@@ -4,7 +4,34 @@
     <swiper-item wx:for="{{imagelist}}" wx:for-item="url"><image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}" ></image></swiper-item>
   </swiper>
  </view>
- <view class="bottom">
- 
+ <view class="bottom">   
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="openDialog">Half Screen Dialog</button>
+        </view>
+        <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+          <view class="weui-mask"></view>
+          <view class="weui-half-screen-dialog" catchtap="stopEvent">
+            <view class="weui-half-screen-dialog__hd">
+              <view class="weui-half-screen-dialog__hd__main">
+                <text class="weui-half-screen-dialog__title">兴融银行</text>
+              </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd">
+              <view class="weui-half-screen-dialog__desc">
+                为了给您更好的服务，我们希望获取您的头像昵称信息
+              </view>
+            </view>
+            <view class="halfbutton">
+                <button type="default" class="" bindtap="closeDialog">考虑一下</button>
+                <button type="primary" class="" open-type="getUserInfo" bindtap="closeDialog">同意</button>
+            </view>
+          </view>
+        </view>
+    </view>
+
+
+
+
  </view>
 </view>
