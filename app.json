@@ -1,9 +1,8 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/map/map",
-  
+   
     "pages/queuenumber/queuenumber",
     "pages/reserverecords/reserverecords",
     "pages/reservenumber/reservenumber",
@@ -37,11 +36,16 @@
   },
   "tabBar": {
     "selectedColor": "#55AAAD",
+    
     "list": [
       {
-        "pagePath": "pages/map/map",
-        "text": "网点"
+        "pagePath": "pages/index/index",
+        "text": "首页"
       },
+     {
+      "pagePath": "pages/map/map",
+      "text": "网点"
+    },
       {
         "pagePath": "pages/user/user",
         "text": "我的"

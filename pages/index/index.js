@@ -12,13 +12,13 @@ Page({
     ],
     iconlist1:[{
       icons:{
-      url: '../resource/picture/index/可用额度.png',
-      name: '额度'
+      url: '../resource/picture/index/额度.png',
+      name: '额度信息'
       }
     },{
         icons: {
           url: '../resource/picture/index/查询.png',
-          name: '查询'
+          name: '查询账务'
         }
     },{
         icons: {
@@ -28,7 +28,7 @@ Page({
     },{
         icons: {
           url: '../resource/picture/index/积分.png',
-          name: '积分'
+          name: '积分商城'
         }
     } ],
     iconlist2: [{
@@ -52,27 +52,48 @@ Page({
         name: '保险'
       }
     }],
+    services: [{
+      icons: {
+        url: '../resource/picture/index/排队.png',
+        name: '排队'
+      }
+    }, {
+      icons: {
+        url: '../resource/picture/index/预约.png',
+        name: '预约'
+      }
+    }],
     "items": [
       {
         "id": "1",
         "imageUrl": "../resource/picture/index/2.jpg",
-        "content": "来个贷款吧，大兄弟"
+        "content": "金瑞香",
+        "comment":"挣他一个亿"
       },
       {
         "id": "2",
         "imageUrl": "../resource/picture/index/3.jpg",
-        "content": "快易贷"
-      },
-      {
-        "id": "3",
-        "imageUrl": "../resource/picture/index/2.jpg",
-        "content": "来个贷款吧，大兄弟"
-      },
-      {
-        "id": "4",
-        "imageUrl": "../resource/picture/index/3.jpg",
-        "content": "快易贷"
-      }]
+        "content": "快易贷",
+        "comment":"预借现金，提前消费"
+       },
+      // {
+      //   "id": "3",
+      //   "imageUrl": "../resource/picture/index/2.jpg",
+      //   "content": "金瑞香"
+      // },
+      // {
+      //   "id": "4",
+      //   "imageUrl": "../resource/picture/index/3.jpg",
+      //   "content": "快易贷"
+      // }
+      ],
+    nearbank: {
+      name: "太原高科技支行营业室",
+      address: "山西省太原市学府园区V-3区",
+      distance: "500m",
+      longitude: 116.3972282409668,
+      latitude: 39.90960456049752
+    }
 
   },
 
