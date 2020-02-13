@@ -62,16 +62,96 @@ Page({
         url: '../phone/phone',
         events: {
           success: () => {
-            wx.navigateTo({
-              url: this.data.grids[e.currentTarget.dataset.index].url,
-            })
+            if (1 == e.currentTarget.dataset.index){
+              wx.showModal({
+                title: '提示',
+                content: '是否预约过',
+                showCancel: true,
+                confirmColor: '#55AAAD',
+                cancelText: '否',
+                confirmText: '是',
+                success: (res) => {
+                  if(res.confirm){
+                    wx.navigateTo({
+                      url: '../queuenumber/queuenumber',
+                    })
+                  }else{
+                    wx.showModal({
+                      title: '提示',
+                      content: '是否进行填单',
+                      showCancel: true,
+                      confirmColor: '#55AAAD',
+                      cancelText: '否',
+                      confirmText: '是',
+                      success: (res) => {
+                        if (res.confirm) {
+                          wx.navigateTo({
+                            url: '../fillform/fillform',
+                          })
+                        } else if (res.cancel) {
+                          wx.navigateTo({
+                            url: '../queuenumber/queuenumber',
+                          })
+                        }
+
+                      },
+                    })
+                  }
+                
+                },
+              })
+            }else{
+              wx.navigateTo({
+                url: this.data.grids[e.currentTarget.dataset.index].url,
+              })
+            }
+            
           },
         }
       })
     }else{
-      wx.navigateTo({
-        url: this.data.grids[e.currentTarget.dataset.index].url,
-      })
+      if (1 == e.currentTarget.dataset.index) {
+        wx.showModal({
+          title: '提示',
+          content: '是否预约过',
+          showCancel: true,
+          confirmColor: '#55AAAD',
+          cancelText:'否',
+          confirmText: '是',
+          success: (res) => {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../queuenumber/queuenumber',
+              })
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: '是否进行填单',
+                showCancel: true,
+                confirmColor: '#55AAAD',
+                confirmText: '前往',
+                success: (res) => {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../fillform/fillform',
+                    })
+                  } else if (res.cancel) {
+                    wx.navigateTo({
+                      url: '../queuenumber/queuenumber',
+                    })
+                  }
+
+                },
+              })
+            }
+
+          },
+        })
+      } else {
+        wx.navigateTo({
+          url: this.data.grids[e.currentTarget.dataset.index].url,
+        })
+      }
     }
   },
   /**

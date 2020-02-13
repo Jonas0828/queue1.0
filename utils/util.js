@@ -54,8 +54,8 @@ const doServerAction = dataObject => {
       }
     },
     header: {
-      'content-type': 'application/json',
-      'charset': 'utf-8'
+      'content-type': 'application/json;charset=UTF-8',
+      // 'charset': 'utf-8'
     },
     method: 'POST',
     dataType: 'json',
