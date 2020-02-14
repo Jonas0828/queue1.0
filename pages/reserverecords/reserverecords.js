@@ -35,24 +35,8 @@ Page({
     })
   },
   jumptoinfo: function () {
-    wx.showModal({
-      title: '提示',
-      content: '是否进行填单',
-      showCancel: true,
-      confirmColor: '#55AAAD',
-      confirmText: '前往',
-      success: (res) => {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../fillform/fillform',
-          })
-        } else if (res.cancel) {
-          wx.navigateTo({
-            url: '../queuenumber/queuenumber',
-          })
-        }
-       
-      },
+    wx.navigateTo({
+      url: '../service0/service0',
     })
  },
   /**

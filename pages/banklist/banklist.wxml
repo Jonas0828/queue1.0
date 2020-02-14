@@ -1,68 +1,52 @@
 <view class="page">
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
-            </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  <view class="page__bd">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__cancel-btn">
+        <picker mode="multiSelector" range="{{selectList}}" range-key="name" value="{{codeIndex}}" bindchange="savecode">
+          <button class="weui-btn mini-btn" type="" size="mini" style="margin-top: 12px;margin-right: 2px;color:#55AAAD">{{btnaddress}}</button>
+        </picker>
+      </view>
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
         </view>
-        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-            <navigator url="" class="weui-cell" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                    <view>实时搜索文本</view>
-                </view>
-            </navigator>
-        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+    </view>
 
-<!-- ---------------------------------------------------- -->
+
+    <!-- ---------------------------------------------------- -->
 
     <view wx:for="{{list}}" class="weui-form-preview" bindtap="jumptobank">
-            <view class="weui-form-preview__hd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">{{item.bank.name}}</view>
-                    <view class="weui-form-preview__value"><image src="../resource/picture/map/go.png" style="width: 17pt;height:17pt;"></image></view>
-                </view>
-            </view>
-            <view class="weui-form-preview__bd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">距离</view>
-                    <view class="weui-form-preview__value">{{item.bank.distance}}</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">详细地址</view>
-                    <view class="weui-form-preview__value">{{item.bank.address}}</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__ft">
-              
-            </view>
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">{{item.DotName}}</view>
+          <view class="weui-form-preview__value">
+            <image src="../resource/picture/map/go.png" style="width: 17pt;height:17pt;"></image>
+          </view>
         </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">区域代码</view>
+          <view class="weui-form-preview__value">{{item.RegionCode}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">区域名称</view>
+          <view class="weui-form-preview__value">{{item.RegionName}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
 
+      </view>
     </view>
-</view>
 
+  </view>
+</view>

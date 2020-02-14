@@ -26,3 +26,37 @@ page {
   background-color: gold;
 }
 
+/* 登录弹窗 start */
+
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}
+
+.halfbutton {
+  padding: 40px 24px 32px;
+  text-align: center;
+  display: inline-flex;
+
+  vertical-align: top;
+ 
+  width: 250px;
+}
+
+.agree{
+  margin-left: 20px
+}
+
+/* 登录弹窗 end */

@@ -33,39 +33,47 @@ function connectionComplete(res) {
   console.log('通信执行完成公共处理');
 }
 
-/* data和success必须传
-  dataObject={
-      data:{},双括号的js对象
-      success:function(e){
-        通信成功处理函数
-      },
-      fail:function（e）{
-        通行失败处理函数
-      },
-      complete:function(e){
-        通信执行完成处理函数
-      }
-}
-*/
+// dataObject示例
+// const dataObject = {
+//   trade: '1001',
+//   data: {
+//     userid: '1234',
+//     name: 'tony',
+//   }
+// }
+
 const doServerAction = dataObject => {
   wx.request({
-    url: 'https://www.liulinbo.com',
+    url: 'https://www.liulinbo.com/a',
     data: {
-      recv: dataObject.data
+      "Service": {
+        "request": {
+          "ServiceCode": "queue." + dataObject.trade,
+          "body": dataObject.data,
+        }
+      }
     },
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/json;charset=UTF-8',
+      // 'charset': 'utf-8'
     },
     method: 'POST',
     dataType: 'json',
     responseType: 'text',
     success: dataObject.success,
-    fail: dataObject.fail === undefined ? function (res) {
-      connectionFail(res)
-    } : dataObject.fail,
-    complete: function (res) {
+    fail: res => {
+      connectionFail(res);
+      if (dataObject.fail !== undefined) {
+        console.log('通信失败自定义处理');
+        dataObject.fail(res);
+      }
+    },
+    complete: res => {
       connectionComplete(res);
-      dataObject.complete === undefined ? console.log('我也不知道写啥') : dataObject.complete(res);
+      if (dataObject.complete !== undefined){
+        console.log('通信执行完成自定义处理');
+        dataObject.complete(res);
+      } 
     }
   })
 }
