@@ -1,24 +1,179 @@
 /* pages/index/index.wxss */
 .page{
-    background-color: beige;
+    background-color: white;
 }
-.img{
+/* 头部 */
+.head{
+  display: flex;
+  height: 50rpx;
+  width: 100%;
+  position: relative;/*父元素位置要设置为相对*/
+  background-color: rgb(238, 232, 232);
+}
+.head1{
+  display: flex;
+  height: 50rpx;
+  width: 100%;
+  position: relative;/*父元素位置要设置为相对*/
+  background-color: rgb(238, 232, 232);
+  margin-top: 5rpx;
+ 
+}
+.head1 .hello{
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  width: 65%
+}
+.head1 .register{
+  /* margin-left: 60rpx; */
+  /*  */
+  font-size: 30rpx; 
+}
+.head1 .login{
+  /* width: 20%; */
+   font-size: 30rpx; 
+}
+.head1 .null{
+   width: 50% 
+}
+.head1 .hellouser{
+  font-size: 30rpx; 
+  width: 26%
+}
+.head1 .logout{
+  margin-left: 30rpx;
+  width: 15%;
+  font-size: 30rpx; 
+}
+
+.head image{
+  position: absolute;/*要约束所在位置的子元素的位置要设置成绝对*/
+  right: 35rpx;/* 调节靠左 */
+  display: flex;
+  margin-top: -1px;
+  justify-content: right;
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 5rpx;
+}
+
+/* 第二部分 */
+
+.fullview{
+  height: 100%;
   width: 100%;
 }
+.top{
+  width: 100%;
+  background-color:pink;
+}
+.swiper{
+  width: 100vw;
+  height: px;
+}
+
+.img{
+  width: 100%;
+  height: 50px;
+}
+/* 第三部分 */
+.three{
+  width: 100%;
+  height: 100rpx;
+  /* background-color: rgb(78, 44, 44); */
+}
+.three .welcome{
+  font-size: 35rpx;
+}
+.three .welcome text{
+  font-size: 35rpx;
+  margin-left: 20rpx;
+}
+.three .welcome .name{
+  margin-left: 20rpx;
+}
+.addr{
+  /* border-radius: 25rpx; */
+  /* background-color: blue; */
+  flex-wrap:wrap;
+  float: left;
+  position: relative; 
+  display: flex;
+  flex-direction: row;
+  /* align-items: center;
+  justify-content: center;  */
+  width: 100%;
+  height: 50rpx;
+}
+.icon1{
+  width: 50rpx;
+  height:50rpx;
+  text-align: center;
+}
+.network{
+  margin-top: 0rpx;
+  font-size: 30rpx;
+}
+/* 第四部分 */
+.four{
+  /* background-color: red; */
+  /* border-radius: 35rpx; */
+  height: 60px;
+  margin-top: -16px;
+}
+.weui-flex{
+  margin-top:29px;
+  margin-bottom: 10px; 
+  align-items: center;
+}
+.weui-flex__item1{
+  /* margin-left: 70rpx; */
+  display: line;
+  flex-direction:column;
+  flex-wrap:wrap;
+  justify-content:center; 
+  float: left;
+  position: relative; 
+}
+
+.service{
+  border-radius: 90rpx;
+  background-color: rgb(136, 191, 236);
+  flex-wrap:wrap;
+  float: left;
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  width: 120px;
+  height: 45px;
+  /* margin-top: -10px; */
+}
+.icons{
+  width: 60rpx;
+  height:60rpx;
+  /* margin-left: -100px; */
+}
+.textoficon{
+  font-size: 17rpx;  
+  /* margin-top: -10rpx;
+  margin-bottom: 5rpx;
+  margin-left: 3rpx; */
+  color: #000;
+  left: 0;
+  opacity: 0.8;
+  font-weight: bolder;
+}
+
+/* 第五部分 */
 .view1{
   margin-top:-28px;
   background-color: white;
   border-radius: 50rpx;
-  height: auto;
+  height: 100px;
 }
-.weui-flex{
-  margin-top:19px;
-  margin-bottom: 10px;
-  /* align-items: center; */
-}
-#update{
-  margin-top: -10rpx;
-}
+
 .weui-flex__item{
   margin-top: 15px;
   margin-left: 70rpx;
@@ -29,50 +184,7 @@
   float: left;
   position: relative; 
 }
-.weui-flex__item1{
-  margin-top: 15px;
-  margin-left: 70rpx;
-  display: line;
-  flex-direction:row;
-  flex-wrap:wrap;
-  /* justify-content:center; */
-  /* float: left;
-  position: relative;  */
-}
-.addr{
-  border-radius: 25rpx;
-  background-color: red;
-  flex-wrap:wrap;
-  float: left;
-  position: relative; 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; 
-  width: 100%;
-  height: 45px;
-  margin-top: 20px;
-}
-.service{
-  border-radius: 25rpx;
-  background-color: red;
-  flex-wrap:wrap;
-  float: left;
-  position: relative; 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; 
-  width: 80px;
-  height: 45px;
-  margin-top: 20px;
-}
-.icons{
-  width: 60rpx;
-  height:60rpx;
-  text-align: center;
-}
-.textoficon{
+/* .textoficon{
   font-size: 17px;  
   margin-top: 10rpx;
   margin-bottom: 5rpx;
@@ -83,32 +195,8 @@
   text-align: center;
   opacity: 0.8;
   font-weight: bolder;
-}
-.textoficon1{
-  font-size: 17px;  
-  margin-top: -10rpx;
-  margin-bottom: 5rpx;
-  margin-left: 3rpx;
-  color: #000;
-  left: 0;
-  opacity: 0.8;
-  font-weight: bolder;
-}
-.fullview{
-  height: 100%;
-  width: 100%;
-  margin-top:-10px;
-}
+} */
 
-.top{
-  width: 100%;
-  background-color:pink;
-}
-
-.swiper{
-  width: 100vw;
-  height: px;
-}
 
 .text1{
   font-size: 20px;

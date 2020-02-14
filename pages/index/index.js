@@ -1,4 +1,5 @@
 // pages/main/main.js
+var util=require('../../utils/util.js')
 Page({
 
   /**
@@ -53,15 +54,11 @@ Page({
       }
     }],
     services: [{
-      icons: {
         url: '../resource/picture/index/排队.png',
         name: '排队'
-      }
     }, {
-      icons: {
         url: '../resource/picture/index/预约.png',
         name: '预约'
-      }
     }],
     "items": [
       {
@@ -75,17 +72,7 @@ Page({
         "imageUrl": "../resource/picture/index/3.jpg",
         "content": "快易贷",
         "comment":"预借现金，提前消费"
-       },
-      // {
-      //   "id": "3",
-      //   "imageUrl": "../resource/picture/index/2.jpg",
-      //   "content": "金瑞香"
-      // },
-      // {
-      //   "id": "4",
-      //   "imageUrl": "../resource/picture/index/3.jpg",
-      //   "content": "快易贷"
-      // }
+       }
       ],
     nearbank: {
       name: "太原高科技支行营业室",
@@ -93,7 +80,16 @@ Page({
       distance: "500m",
       longitude: 116.3972282409668,
       latitude: 39.90960456049752
-    }
+    },
+    userInfo: {
+      name:"丁振云"
+    },
+    hasUserInfo:true,
+    morning:6,
+    noon:12,
+    afternoon:18,
+    newday:24,
+    time:7
 
   },
 
@@ -101,6 +97,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     let width = '120' + 'px';
     let height = '50' + 'px';
     wx.getSystemInfo({
@@ -111,6 +108,12 @@ Page({
     })
     console.log("图片宽度：" + width + "；图片高度：" + height);
     this.setSwiper(width, height);
+    // 调用函数时，传入new Date()参数，返回值是日期和时间
+    var time = util.formatHour(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      time: 24
+    });
   },
   setSwiper: function (width, height) {
     this.setData({
@@ -166,6 +169,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  logout:function(e){
+
+  },
+  opentrade:function(e){
+    wx.navigateTo({
+      url: this.data.services[e.currentTarget.dataset.index].url,
+    })
 
   }
 })

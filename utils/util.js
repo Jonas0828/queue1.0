@@ -8,7 +8,11 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+// 获取小时
+const formatHour = date => {
+  const hour = date.getHours()
+  return [hour].map(formatNumber)
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -80,6 +84,7 @@ const doServerAction = dataObject => {
 
 module.exports = {
   formatTime: formatTime,
+  formatHour: formatHour,
   formatDate: formatDate,
   doServerAction: doServerAction
 }

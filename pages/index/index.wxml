@@ -1,47 +1,24 @@
 <view class="page">
   <!-- head部 -->
-  <view>
-    <image class="img" src="../resource/picture/index/1.jpg" mode="widthFix"></image>
-  </view>
-  <!-- 业务 -->
-  <view class="view1">
+  <view class="head">
+      <view wx:if="{{!hasUserInfo}}" class="head1">
+         <text class="hello" >登录后，享受服务</text>
+         <text class="register" >注册|</text>
+         <text class="login">登录</text>
+      </view>
+      <view wx:if="{{hasUserInfo}}" class="head1">
+        <text class="null"></text>
+         <text class="hellouser">欢迎您 {{userInfo.name}}</text>
+         <text class="logout" bindinput="logout">退出</text>
+      </view>
+      <image src="../resource/picture/index/问号.png"></image>
       
-      <!-- 最近网点 -->
-        <!-- <view class="addr">
-            <image class="icons" src="../resource/picture/index/地点.png" mode="widthFix" />
-            <view>附近网点：{{nearbank.name}}，距离您{{nearbank.distance}}</view>
-        </view> -->
-     <!-- <view class="weui-flex" id="update">
-            
-              <view class="weui-flex__item1" wx:for="{{services}}" >
-                  <view class="service">
-                    <image class="icons" src="{{item.icons.url}}" mode="widthFix" />
-                    <view class="textoficon1">{{item.icons.name}}</view>
-                  </view>
-              
-             </view>
-      </view> -->
-      <view class="weui-flex">
-            <view class="weui-flex__item" wx:for="{{iconlist1}}" >
-              <cover-image class="icons" src="{{item.icons.url}}" mode="widthFix">
-              </cover-image>
-               <view class="textoficon">{{item.icons.name}}</view>
-             </view>
-      </view>
-      <view class="weui-flex">
-            <view class="weui-flex__item" wx:for="{{iconlist2}}" >
-              <cover-image class="icons" src="{{item.icons.url}}" mode="widthFix">
-              </cover-image>
-               <view class="textoficon">{{item.icons.name}}</view>
-             </view>
-      </view>
-     
-     
   </view>
-  <!-- 轮播图 -->
+
+   <!-- 轮播图 -->
   <view class="fullview">
     <view class="top">
-      <swiper indicator-dots="false" autoplay="true" interval="3000" easing-function="easeInOutCubic" style="height: {{swiper.height}}" >  
+      <swiper indicator-dots="false" autoplay="true" interval="2000" easing-function="easeInOutCubic" style="height: {{swiper.height}}" >  
       <swiper-item wx:for="{{imagelist}}" wx:for-item="url">
        <image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}" ></image>
       </swiper-item>
@@ -49,8 +26,51 @@
     </view>
   </view>
 
+<!-- 第三部分 -->
+<view class="three">
+  <view class="welcome">
+     <text wx:if="{{morning<=time&&time<noon}}">早上好</text>
+     <text wx:if="{{noon<=time&&time<afternoon}}">中午好</text>
+     <text wx:if="{{afternoon<=time&&time<=newday}}">晚上好</text>
+      <text class="name" wx:if="{{hasUserInfo}}" >{{userInfo.name}}</text>
+  </view>
+  <view class="addr">
+            <image class="icon1" src="../resource/picture/index/地点.png" mode="widthFix" />
+            <view class="network">附近网点：{{nearbank.name}}，距离您{{nearbank.distance}}   </view>
+  </view>
+</view>
+<!-- 第四部分 -->
+  <view class="four">
+    <view class="weui-flex">
+                  <view class="weui-flex__item" wx:for="{{services}}" wx:key="*this" data-index="{{index}}">
+                  <view class="service" bindtap="opentrade">
+                    <image class="icons" src="{{item.url}}" mode="widthFix" />
+                    <view class="textoficon">{{item.name}}</view>
+                  </view>
+              
+             </view>
+      </view>
+</view>
+<!-- <view class="four">
+    <view class="weui-flex" id="update">
+                  <view class="weui-flex__item1" wx:for="{{services}}" >
+                  <view class="service">
+                    <image class="icons" src="{{item.icons.url}}" mode="widthFix" />
+                    <view class="textoficon1">{{item.icons.name}}</view>
+                  </view>
+              
+             </view>
+      </view>
+</view> -->
+  <!-- <view>
+    <image class="img" src="../resource/picture/index/1.jpg" mode="widthFix"></image>
+  </view> -->
+  <!-- 业务 -->
+
+ 
+
 <!-- 5 -->
-<view class="schoollist">
+ <view class="schoollist">
   <text class="text1">金融理财</text>
   <text class="text2">理财很简单</text>
   <block wx:for="{{items}}" wx:key="item">
@@ -80,5 +100,5 @@
       </navigator>
     </view>
   </block>
-</view>
+</view> 
 </view>
