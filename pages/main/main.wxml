@@ -4,6 +4,9 @@
     <swiper-item wx:for="{{imagelist}}" wx:for-item="url"><image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}" ></image></swiper-item>
   </swiper>
  </view>
+
+<!-- 登录弹窗 -->
+
  <view class="bottom">   
     <view class="page__bd">
         <view class="weui-btn-area">
@@ -30,7 +33,7 @@
         </view>
     </view>
 
-
+<!-- 登录弹窗 -->
 
 
  </view>

@@ -6,6 +6,7 @@ Page({
    */
   data: {
     imagelist: ['../resource/picture/main/1.jpg', '../resource/picture/main/2.jpg','../resource/picture/main/3.jpg','../resource/picture/main/5.jpg', '../resource/picture/main/6.jpg', '../resource/picture/main/7.jpg','../resource/picture/main/9.jpg'],
+    // 登录弹窗
     showDialog:  false,
   },
 
@@ -36,8 +37,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    // 登录弹窗
     this.openDialog();
   },
+  // 登录弹窗 start
   openDialog: function () {
     this.setData({
       istrue: true
@@ -48,7 +51,7 @@ Page({
       istrue: false
     })
   },
-
+  // 登录弹窗 end
 
   /**
    * 生命周期函数--监听页面显示
