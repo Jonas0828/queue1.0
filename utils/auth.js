@@ -46,22 +46,13 @@ function getUserLocationAuth(hook){
   })
 }
 
-function getUserInfoAuth(hook){
+function getUserInfoAuth(hook, hookfalse){
   wx.getSetting({
     success(res){
       if (res.authSetting['scope.userInfo']){
         hook();
       }else{
-        wx.authorize({
-          scope: 'scope.userInfo',
-          success(){
-            console.log('个人信息授权成功');
-            hook();
-          },
-          fail(){
-            console.log('个人信息授权失败');
-          }
-        })
+        hookfalse();
       }
     }
   });
