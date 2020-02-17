@@ -1,57 +1,57 @@
 <view class="page">
   <!-- head部 -->
   <view class="head">
-      <view wx:if="{{!hasUserInfo}}" class="head1">
-         <text class="hello" >登录后，享受服务</text>
-         <text class="register" >注册|</text>
-         <text class="login">登录</text>
-      </view>
-      <view wx:if="{{hasUserInfo}}" class="head1">
-        <text class="null"></text>
-         <text class="hellouser">欢迎您 {{userInfo.name}}</text>
-         <text class="logout" bindinput="logout">退出</text>
-      </view>
-      <image src="../resource/picture/index/问号.png"></image>
-      
+    <view wx:if="{{!hasUserInfo}}" class="head1" bindtap="getuserinfo">
+      <text class="hello">登录后，享受服务</text>
+      <text class="register">注册|</text>
+      <text class="login">登录</text>
+    </view>
+    <view wx:if="{{hasUserInfo}}" class="head1">
+      <text class="null"></text>
+      <text class="hellouser">欢迎您 {{userInfo.name}}</text>
+      <!-- <text class="logout" bindinput="logout">退出</text> -->
+    </view>
+    <!-- <image src="../resource/picture/index/问号.png"></image> -->
+
   </view>
 
-   <!-- 轮播图 -->
+  <!-- 轮播图 -->
   <view class="fullview">
     <view class="top">
-      <swiper indicator-dots="false" autoplay="true" interval="2000" easing-function="easeInOutCubic" style="height: {{swiper.height}}" >  
-      <swiper-item wx:for="{{imagelist}}" wx:for-item="url">
-       <image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}" ></image>
-      </swiper-item>
+      <swiper indicator-dots="false" autoplay="true" interval="2000" easing-function="easeInOutCubic" style="height: {{swiper.height}}">
+        <swiper-item wx:for="{{imagelist}}" wx:for-item="url">
+          <image style="width: {{swiper.width}}; height: {{swiper.height}}" src="{{url}}"></image>
+        </swiper-item>
       </swiper>
     </view>
   </view>
 
-<!-- 第三部分 -->
-<view class="three">
-  <view class="welcome">
-     <text wx:if="{{morning<=time&&time<noon}}">早上好</text>
+  <!-- 第三部分 -->
+  <view class="three">
+    <view class="welcome">
+      <!-- <!-- <text wx:if="{{morning<=time&&time<noon}}">早上好</text>
      <text wx:if="{{noon<=time&&time<afternoon}}">中午好</text>
-     <text wx:if="{{afternoon<=time&&time<=newday}}">晚上好</text>
-      <text class="name" wx:if="{{hasUserInfo}}" >{{userInfo.name}}</text>
+     <text wx:if="{{afternoon<=time&&time<=newday}}">晚上好</text> -->
+      <text class="name" wx:if="{{hasUserInfo}}"></text>
+    </view>
+    <view class="addr">
+      <image class="icon1" src="../resource/picture/index/location.png" mode="widthFix" bindtap="chooselocation" />
+      <view class="network" bindtap="jumptobanklist">附近网点：{{nearbank.name}}</view>
+    </view>
   </view>
-  <view class="addr">
-            <image class="icon1" src="../resource/picture/index/地点.png" mode="widthFix" />
-            <view class="network">附近网点：{{nearbank.name}}，距离您{{nearbank.distance}}   </view>
-  </view>
-</view>
-<!-- 第四部分 -->
+  <!-- 第四部分 -->
   <view class="four">
     <view class="weui-flex">
-                  <view class="weui-flex__item" wx:for="{{services}}" wx:key="*this" data-index="{{index}}">
-                  <view class="service" bindtap="opentrade">
-                    <image class="icons" src="{{item.url}}" mode="widthFix" />
-                    <view class="textoficon">{{item.name}}</view>
-                  </view>
-              
-             </view>
+      <view class="weui-flex__item" wx:for="{{services}}" wx:key="*this" data-index="{{index}}">
+        <view class="service" bindtap="opentrade">
+          <image class="icons" src="{{item.url}}" mode="widthFix" />
+          <view class="textoficon">{{item.name}}</view>
+        </view>
+
       </view>
-</view>
-<!-- <view class="four">
+    </view>
+  </view>
+  <!-- <view class="four">
     <view class="weui-flex" id="update">
                   <view class="weui-flex__item1" wx:for="{{services}}" >
                   <view class="service">
@@ -67,38 +67,57 @@
   </view> -->
   <!-- 业务 -->
 
- 
 
-<!-- 5 -->
- <view class="schoollist">
-  <text class="text1">金融理财</text>
-  <text class="text2">理财很简单</text>
-  <block wx:for="{{items}}" wx:key="item">
-    <view class="school-list">
-      <navigator url="/pages/photo/photo?id={{item.id}}">
-        <view class="school-list-info" index="{{index}}">
-          <image class="school-list-photo" src="{{item.imageUrl}}"/>
-          <text class="school-list-desc">{{item.content}}</text>
-          <text class="school-list-desc1">{{item.comment}}</text>
-        </view>
-      </navigator>
-    </view>
-  </block>
-</view>
 
-<view class="schoollist">
-  <text class="text1">生活保障</text>
-  <text class="text2">为你的生活保驾护航</text>
-   <block wx:for="{{items}}" wx:key="item">
-    <view class="school-list">
-      <navigator url="/pages/photo/photo?id={{item.id}}">
-        <view class="school-list-info" index="{{index}}">
-          <image class="school-list-photo" src="{{item.imageUrl}}"/>
-          <text class="school-list-desc">{{item.content}}</text>
-          <text class="school-list-desc1">{{item.comment}}</text>
+  <!-- 5 -->
+  <view class="schoollist">
+    <text class="text1">金融理财</text>
+    <text class="text2">理财很简单</text>
+    <block wx:for="{{items}}" wx:key="item">
+      <view class="school-list">
+        <navigator url="/pages/photo/photo?id={{item.id}}">
+          <view class="school-list-info" index="{{index}}">
+            <image class="school-list-photo" src="{{item.imageUrl}}" />
+            <text class="school-list-desc">{{item.content}}</text>
+            <text class="school-list-desc1">{{item.comment}}</text>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+
+  <view class="schoollist">
+    <text class="text1">生活保障</text>
+    <text class="text2">为你的生活保驾护航</text>
+    <block wx:for="{{items}}" wx:key="item">
+      <view class="school-list">
+        <navigator url="/pages/photo/photo?id={{item.id}}">
+          <view class="school-list-info" index="{{index}}">
+            <image class="school-list-photo" src="{{item.imageUrl}}" />
+            <text class="school-list-desc">{{item.content}}</text>
+            <text class="school-list-desc1">{{item.comment}}</text>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask"></view>
+    <view class="weui-half-screen-dialog" catchtap="stopEvent">
+      <view class="weui-half-screen-dialog__hd">
+        <view class="weui-half-screen-dialog__hd__main">
+          <text class="weui-half-screen-dialog__title">兴融银行</text>
         </view>
-      </navigator>
+      </view>
+      <view class="weui-half-screen-dialog__bd">
+        <view class="weui-half-screen-dialog__desc">
+          为了给您更好的服务，我们希望获取您的头像昵称信息
+        </view>
+      </view>
+      <view class="halfbutton">
+        <button type="default" class="" bindtap="closeDialogDisagree">考虑一下</button>
+        <button type="primary" class="" open-type="getUserInfo" bindgetuserinfo="closeDialogAgree">同意</button>
+      </view>
     </view>
-  </block>
-</view> 
+  </view>
 </view>

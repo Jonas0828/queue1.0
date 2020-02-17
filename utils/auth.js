@@ -46,11 +46,11 @@ function getUserLocationAuth(hook){
   })
 }
 
-function getUserInfoAuth(hook, hookfalse){
+function getUserInfoAuth(hooktrue, hookfalse){
   wx.getSetting({
     success(res){
       if (res.authSetting['scope.userInfo']){
-        hook();
+        hooktrue();
       }else{
         hookfalse();
       }

@@ -81,7 +81,7 @@ Page({
           if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
             console.log('用户信息注册');
             this.setData({
-              registr: true
+              register: true
             });
           } else {
             console.log('用户信息更新');

@@ -4,6 +4,7 @@ const qqutil = new QQMapWX({
 });
 const auth = require('../../utils/auth.js');
 const util = require('../../utils/util.js');
+let eventChannel = undefined;
 
 Page({
 
@@ -134,7 +135,7 @@ Page({
     console.log(this.data.list[e.currentTarget.dataset.index]);
     let bankinfo = this.data.list[e.currentTarget.dataset.index];
     const notice = res => {
-      res.eventChannel.emit('bankinfo', {
+      eventChannel.emit('bankinfo', {
         data: bankinfo
       })
     }
@@ -213,10 +214,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.query);
+    console.log(options);
+    eventChannel = this.getOpenerEventChannel();
     // 页面打开方式 1 需要返回打开页面；2 直接进行业务选择 
     this.setData({
-      openType: options.query.openType
+      openType: options.openType
     });
     wx.setNavigationBarTitle({
       title: '选择网点'
