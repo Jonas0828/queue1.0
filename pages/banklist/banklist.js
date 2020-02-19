@@ -21,7 +21,6 @@ Page({
     },
     codeIndex: [],
     openType: '', 
-    tradeType: '',
     selectList: [[],[],[]],
     list: []
   },
@@ -147,7 +146,7 @@ Page({
       })
     } else if ('2' == this.data.openType) {
       wx.navigateTo({
-        url: '../bank/bank?tradeType=' + this.data.tradeType,
+        url: '../bank/bank',
         success: res => {
           notice(res);
         }
@@ -217,11 +216,9 @@ Page({
     console.log('网点列表');
     console.log(options);
     // 页面打开方式 1 需要返回打开页面；2 直接进行业务选择 
-    // 交易类型 1-排队 2-预约
     this.setData({
       openType: options.openType,
-      tradeType: options.tradeType
-    });
+    }); 
     wx.setNavigationBarTitle({
       title: '选择网点'
     });

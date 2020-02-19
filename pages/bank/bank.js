@@ -6,18 +6,18 @@ Page({
    */
   data: {
     istrue: false,
-    toggle:false,
+    toggle: false,
     bankInfo: {
       DotName: "",
       RegionName: "",
     },
-    ticketInfo:{
+    ticketInfo: {
       number: '0005',
-      wait:'4',
-      date:'2020-02-14',
+      wait: '4',
+      date: '2020-02-14',
     },
     gridsPerson: [{
-      url: '../service0/service0',
+      url: '../personreserve/personreserve',
       name: '个人开户'
     }, {
       url: '../reserverecords/reserverecords',
@@ -28,29 +28,30 @@ Page({
       name: '对公开户'
     }, {
       url: '../service0/service0',
-        name: '转账业务'
+      name: '转账业务'
     }]
   },
-  getnumber: function () {
+  getnumber: function() {
     this.setData({
       istrue: true,
       ticketInfo: {
         number: '0005',
         wait: '4',
         date: '2020-02-14',
-        bankInfo : this.data.bankInfo
+        bankInfo: this.data.bankInfo
       }
     })
   },
-  closeDialog: function () {
+  closeDialog: function() {
     this.setData({
       istrue: false,
       toggle: true
     })
   },
   opentrade: function(e) {
+    console.log(e.currentTarget.dataset.index);
     // 检查个人基本信息是否完善
-    const flag = wx.getStorageSync("complete");
+    const flag = wx.getStorageSync("UserinfoComplete");
     let currentPage = this;
     if (!flag) {
       wx.showModal({
@@ -66,7 +67,7 @@ Page({
               callback: function(data) {
                 console.log(data.flag);
                 if (data.flag == true) {
-                  currentPage.phoneverify(e);
+                  currentPage.phoneVerify(e);
                 }
               }
             },
@@ -74,10 +75,10 @@ Page({
         },
       })
     } else {
-      this.phoneverify(e);
+      this.phoneVerify(e);
     }
   },
-  phoneverify: function(e) {
+  phoneVerify: function(e) {
     //检查此次使用是否进行过手机号码验证
     const flag = wx.getStorageSync("phone");
     console.log(flag)
@@ -85,97 +86,27 @@ Page({
       wx.navigateTo({
         url: '../phone/phone',
         events: {
-          success: () => {
-            if (1 == e.currentTarget.dataset.index) {
-              wx.showModal({
-                title: '提示',
-                content: '是否预约过',
-                showCancel: true,
-                confirmColor: '#55AAAD',
-                cancelText: '否',
-                confirmText: '是',
-                success: (res) => {
-                  if (res.confirm) {
-                    wx.navigateTo({
-                      url: '../queuenumber/queuenumber',
-                    })
-                  } else {
-                    wx.showModal({
-                      title: '提示',
-                      content: '是否进行填单',
-                      showCancel: true,
-                      confirmColor: '#55AAAD',
-                      cancelText: '否',
-                      confirmText: '是',
-                      success: (res) => {
-                        if (res.confirm) {
-                          wx.navigateTo({
-                            url: '../fillform/fillform',
-                          })
-                        } else if (res.cancel) {
-                          wx.navigateTo({
-                            url: '../queuenumber/queuenumber',
-                          })
-                        }
-
-                      },
-                    })
-                  }
-
-                },
-              })
-            } else {
+          success: () => {         
               wx.navigateTo({
-                url: this.data.grids[e.currentTarget.dataset.index].url,
+                url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
+                success: res => {
+                  res.eventChannel.emit('bankinfo', {
+                    data: this.data.bankInfo
+                  })
+                }
               })
-            }
-
           },
         }
       })
     } else {
-      if (1 == e.currentTarget.dataset.index) {
-        wx.showModal({
-          title: '提示',
-          content: '是否预约过',
-          showCancel: true,
-          confirmColor: '#55AAAD',
-          cancelText: '否',
-          confirmText: '是',
-          success: (res) => {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '../queuenumber/queuenumber',
-              })
-            } else {
-              wx.showModal({
-                title: '提示',
-                content: '是否进行填单',
-                showCancel: true,
-                confirmColor: '#55AAAD',
-                confirmText: '前往',
-                success: (res) => {
-                  if (res.confirm) {
-                    wx.navigateTo({
-                      url: '../fillform/fillform',
-                    })
-                  } else if (res.cancel) {
-                    wx.navigateTo({
-                      url: '../queuenumber/queuenumber',
-                    })
-                  }
-
-                },
-              })
-            }
-
-          },
-        })
-      } else {
-        wx.navigateTo({
-          url: this.data.grids[e.currentTarget.dataset.index].url,
-        })
-      }
+      wx.navigateTo({
+        url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
+        success: res => {
+          res.eventChannel.emit('bankinfo', {
+            data: this.data.bankInfo
+          })
+        }
+      })
     }
   },
   /**
@@ -192,10 +123,6 @@ Page({
         bankInfo: data.data
       });
     })
-    // 交易类型 1-排队 2-预约
-    this.setData({
-      tradeType: options.tradeType
-    });
     wx.setNavigationBarTitle({
       title: '网点信息'
     });

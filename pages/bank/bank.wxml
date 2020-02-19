@@ -20,7 +20,7 @@
     </view>
   </view>
 
-  <view class="service" bindtap="getnumber">
+  <view class="service" bindtap="getnumber" hidden="{{toggle}}">
     <view class="textoficon">排队</view>
   </view>
   <view class="ticketinfo" hidden="{{!toggle}}" style="margin-top: 50rpx">
@@ -37,7 +37,7 @@
         <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">{{ticketInfo.number}}</view>
       </view>
       <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label">预约日期</view>
+        <view class="weui-form-preview__label">日期</view>
         <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
       </view>
       <view class="weui-form-preview__item">
@@ -101,7 +101,7 @@
                   <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">0005</view>
                 </view>
                 <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__label">预约日期</view>
+                  <view class="weui-form-preview__label">日期</view>
                   <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
                 </view>
                 <view class="weui-form-preview__item">

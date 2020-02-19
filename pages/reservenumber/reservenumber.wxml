@@ -6,10 +6,8 @@
         <view class="weui-msg__text-area">
             <view class="weui-msg__title">预约编号：{{reserve.number}}</view>
             <view class="weui-msg__desc">业务类型：{{reserve.name}}</view>
-            <view class="weui-msg__desc">预约时间：{{reserve.date }}-{{reserve.time}}</view>
+            <view class="weui-msg__desc">预约时间：{{reserve.time}}</view>
             <view class="weui-msg__desc">预约网点：{{reserve.bankname}}</view>
-            <view class="weui-msg__desc">业务网点：{{reserve.address}}</view>
-            
         </view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">

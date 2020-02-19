@@ -189,6 +189,7 @@ Page({
       isAgree: !!e.detail.value.length
     });
   },
+  // 提交信息
   submitForm(e) {
     this.selectComponent('#form').validate((valid, errors) => {
       console.log('valid', valid, errors)
@@ -214,6 +215,13 @@ Page({
             success: res => {
                wx.navigateBack({
                 success: (res) => {
+                  if (userInfo.Name == '' || userInfo.IdNo == '' || userInfo.PhoneNo == '') {
+                    wx.setStorageSync('UserinfoComplete', false);
+                    console.log('用户信息不完整');
+                  } else {
+                    console.log('用户信息完整');
+                    wx.setStorageSync('UserinfoComplete', true);
+                  }
                   eventChannel.emit('callback', { flag: true });
                 }
               })

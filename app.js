@@ -3,6 +3,7 @@ const util = require('./utils/util.js');
 
 App({
   onLaunch: function () {
+    wx.setStorageSync('phone', false);
     wx.login({
       success(res) {
         if (res.code) {
@@ -29,7 +30,7 @@ App({
     })
   },
   onHide: function () {
-    wx.setStorageSync('phone', false);
+    
   },
   globalData: {
     userInfo: null

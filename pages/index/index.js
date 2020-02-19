@@ -175,12 +175,12 @@ Page({
   reserve: function () {
     // 交易类型 1-排队  2-预约
     wx.navigateTo({
-      url: '../banklist/banklist?tradeType=2&openType=2',
+      url: '../banklist/banklist?openType=2',
     })
   },
   queue: function () {
     wx.navigateTo({
-      url: '../banklist/banklist?tradeType=1&openType=2',
+      url: '../banklist/banklist?openType=2',
     })
   },
   /**
@@ -242,6 +242,7 @@ Page({
       success: res => {
         console.log(res.data.Service.response.body);
         if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
+          wx.setStorageSync('UserinfoComplete', false);
           wx.getUserInfo({
             withCredentials: false,
             lang: "zh_CN",
@@ -256,6 +257,16 @@ Page({
             }
           })
         } else {
+          // 检测用户信息完整性
+          let userInfo = res.data.Service.response.body;
+          console.log(userInfo);
+          if (userInfo.Name == '' || userInfo.IdNo == '' || userInfo.PhoneNo ==''){
+            wx.setStorageSync('UserinfoComplete', false);
+            console.log('用户信息不完整');
+          }else{
+            console.log('用户信息完整');
+            wx.setStorageSync('UserinfoComplete', true);
+          }
           temp.setData({
             hasUserInfo: true,
             userInfo: {

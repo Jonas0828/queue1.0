@@ -1,4 +1,6 @@
 // pages/reservenumber/reservenumber.js
+const util = require('../../utils/util.js');
+
 Page({
 
   /**
@@ -8,10 +10,8 @@ Page({
     reserve: {
       number: '0003',
       name: '大额取现',
-      date: '2020-02-02',
       time: '09:00',
       bankname: '太原高科技支行营业室',
-      address: '山西省太原市学府园区V-3区',
     },
   flag:false
   },
@@ -32,8 +32,19 @@ Page({
         flag: true,
       });
     })
+    eventChannel.on('totalInfo', function (data) {
+      let totalInfo = data.totalInfo;
+      currentPage.setData({
+        reserve: {
+          number: '888888',
+          name: totalInfo.selectType.name,
+          time: util.formatTime(new Date()),
+          bankname: totalInfo.bankInfo.DotName
+        }
+      });
+    })
     wx.setNavigationBarTitle({
-      title: '预约',
+      title: '预约成功',
     })
   },
 
