@@ -27,25 +27,24 @@
   </view>
 
   <!-- 第三部分 -->
-  <view class="three">
-    <view class="welcome">
+  <!-- <view class="three">
+    <view class="welcome"> -->
       <!-- <!-- <text wx:if="{{morning<=time&&time<noon}}">早上好</text>
      <text wx:if="{{noon<=time&&time<afternoon}}">中午好</text>
      <text wx:if="{{afternoon<=time&&time<=newday}}">晚上好</text> -->
-      <text class="name" wx:if="{{hasUserInfo}}"></text>
-    </view>
+      <!-- <text class="name" wx:if="{{hasUserInfo}}"></text> -->
+    <!-- </view>
     <view class="addr">
-      <image class="icon1" src="../resource/picture/index/location.png" mode="widthFix" bindtap="chooselocation" />
-      <view class="network" bindtap="jumptobanklist">附近网点：{{nearbank.name}}</view>
+      <image class="icon1" src="../resource/picture/index/location.png" mode="widthFix"/>
+      <view class="network">附近网点：{{nearbank.name}}</view>
     </view>
-  </view>
+  </view> -->
   <!-- 第四部分 -->
   <view class="four">
     <view class="weui-flex">
-      <view class="weui-flex__item" wx:for="{{services}}" wx:key="*this" data-index="{{index}}">
-        <view class="service" bindtap="opentrade">
-          <image class="icons" src="{{item.url}}" mode="widthFix" />
-          <view class="textoficon">{{item.name}}</view>
+      <view class="weui-flex__item" style="margin-left: 0px" wx:for="{{services}}" wx:key="*this" data-index="{{index}}">
+        <view class="service" bindtap="{{item.event}}">
+          <view class="textoficon">办理业务</view>
         </view>
 
       </view>

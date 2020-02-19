@@ -59,10 +59,8 @@ Page({
     }],
     services: [{
       url: '../resource/picture/index/queue.png',
-      name: '排队'
-    }, {
-      url: '../resource/picture/index/yuyue.png',
-      name: '预约'
+      name: '排队',
+      event: 'queue'
     }],
     "items": [{
         "id": "1",
@@ -78,7 +76,7 @@ Page({
       }
     ],
     nearbank: {
-      name: '当前区域无银行网点，请点击选择'
+      name: '当前区域未查询到银行网点'
     },
     userInfo: {
       name: ""
@@ -122,7 +120,7 @@ Page({
                     if ('0' == res.data.Service.response.body.TotalNum) {
                       temp.setData({
                         nearbank: {
-                          name: '当前区域无银行网点，请点击选择'
+                          name: '当前区域未查询到银行网点'
                         }
                       });
                     } else {
@@ -172,6 +170,17 @@ Page({
           });
         }
       }
+    })
+  },
+  reserve: function () {
+    // 交易类型 1-排队  2-预约
+    wx.navigateTo({
+      url: '../banklist/banklist?tradeType=2&openType=2',
+    })
+  },
+  queue: function () {
+    wx.navigateTo({
+      url: '../banklist/banklist?tradeType=1&openType=2',
     })
   },
   /**
@@ -276,7 +285,6 @@ Page({
     console.log(e.detail);
     this.setData({
       istrue: false,
-      hasUserInfo: true
     })
     this.hooktrue();
   },
@@ -307,9 +315,9 @@ Page({
             withCredentials: false,
             lang: "zh_CN",
             success(res) {
-              console.log(res.userInfo.nickName);
+              console.log(111111111);
               temp.setData({
-                hasUserInfo: true,
+  
                 userInfo: {
                   name: res.userInfo.nickName
                 }
@@ -317,8 +325,9 @@ Page({
             }
           })
         } else {
+          console.log(2222222222222);
+          console.log(res.data.Service.response.body.Name);
           temp.setData({
-            hasUserInfo: true,
             userInfo: {
               name: res.data.Service.response.body.Name
             }

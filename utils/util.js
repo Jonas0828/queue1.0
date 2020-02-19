@@ -48,6 +48,7 @@ function connectionComplete(res) {
 
 const doServerAction = dataObject => {
   wx.request({
+    // url: 'https://git.siro-info.com:9777',
     url: 'https://www.liulinbo.com/a',
     data: {
       "Service": {

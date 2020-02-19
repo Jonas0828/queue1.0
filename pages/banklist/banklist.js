@@ -4,7 +4,6 @@ const qqutil = new QQMapWX({
 });
 const auth = require('../../utils/auth.js');
 const util = require('../../utils/util.js');
-let eventChannel = undefined;
 
 Page({
 
@@ -14,7 +13,7 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    btnaddress: '定位',
+    btnaddress: '选择',
     location: {
       longitude: '',
       latitude: '',
@@ -22,6 +21,7 @@ Page({
     },
     codeIndex: [],
     openType: '', 
+    tradeType: '',
     selectList: [[],[],[]],
     list: []
   },
@@ -135,7 +135,7 @@ Page({
     console.log(this.data.list[e.currentTarget.dataset.index]);
     let bankinfo = this.data.list[e.currentTarget.dataset.index];
     const notice = res => {
-      eventChannel.emit('bankinfo', {
+      res.eventChannel.emit('bankinfo', {
         data: bankinfo
       })
     }
@@ -147,7 +147,7 @@ Page({
       })
     } else if ('2' == this.data.openType) {
       wx.navigateTo({
-        url: '../bank/bank',
+        url: '../bank/bank?tradeType=' + this.data.tradeType,
         success: res => {
           notice(res);
         }
@@ -214,11 +214,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('网点列表');
     console.log(options);
-    eventChannel = this.getOpenerEventChannel();
     // 页面打开方式 1 需要返回打开页面；2 直接进行业务选择 
+    // 交易类型 1-排队 2-预约
     this.setData({
-      openType: options.openType
+      openType: options.openType,
+      tradeType: options.tradeType
     });
     wx.setNavigationBarTitle({
       title: '选择网点'

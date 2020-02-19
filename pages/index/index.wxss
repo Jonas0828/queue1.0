@@ -8,6 +8,7 @@
   width: 100%;
   position: relative;/*父元素位置要设置为相对*/
   background-color: rgb(238, 232, 232);
+  color: #55AAAD;
 }
 .head1{
   display: flex;
@@ -37,7 +38,6 @@
 }
 .head1 .hellouser{
   font-size: 30rpx; 
-  width: 26%
 }
 .head1 .logout{
   margin-left: 30rpx;
@@ -137,17 +137,16 @@
 
 .service{
   border-radius: 90rpx;
-  background-color: rgb(136, 191, 236);
-  flex-wrap:wrap;
+  background-color: #55AAAD;
+  /* flex-wrap:wrap;
   float: left;
-  position: relative; 
+  position: relative;  */
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center; 
-  width: 120px;
+  width:80%;
   height: 45px;
-  /* margin-top: -10px; */
+  margin-left: 10%;
 }
 .icons{
   width: 60rpx;
@@ -155,14 +154,14 @@
   /* margin-left: -100px; */
 }
 .textoficon{
-  font-size: 17rpx;  
+  font-size: 20px;  
   /* margin-top: -10rpx;
   margin-bottom: 5rpx;
   margin-left: 3rpx; */
-  color: #000;
+  color: #FFFFFF;
   left: 0;
   opacity: 0.8;
-  font-weight: bolder;
+  /* font-weight: bolder; */
 }
 
 /* 第五部分 */
@@ -209,7 +208,7 @@
 }
 
 .schoollist{
-  margin-top: 10rpx;
+  margin-top: 40rpx;
 }
 
 .school-list-info{

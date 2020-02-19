@@ -1,1 +1,24 @@
-/* pages/bank/bank.wxss */
+.bankimage{
+  margin-top: 16px;
+  text-align: center;
+}
+
+.service{
+  border-radius: 90rpx;
+  background-color: #55AAAD;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width:80%;
+  height: 45px;
+  margin-left: 10%;
+  opacity: 0.8;
+}
+
+.textoficon{
+  font-size: 20px;  
+  color: #FFFFFF;
+  left: 0;
+  
+}
