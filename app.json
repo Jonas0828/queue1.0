@@ -1,22 +1,20 @@
 {
   "pages": [
-   
     "pages/index/index",
+    "pages/updateuserinfo/updateuserinfo",
+    "pages/phone/phone",
+    "pages/personreserve/personreserve",
     "pages/map/map",
-   
     "pages/queuenumber/queuenumber",
     "pages/reserverecords/reserverecords",
     "pages/reservenumber/reservenumber",
     "pages/bank/bank",
-    "pages/phone/phone",
     "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/main/main",
     "pages/user/user",
-    "pages/updateuserinfo/updateuserinfo",
-    "pages/service0/service0",
-    "pages/bookmoney/bookmoney",
-    "pages/fillform/fillform"
+    "pages/fillform/fillform",
+    "pages/bookmoney/bookmoney"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,7 +35,6 @@
   },
   "tabBar": {
     "selectedColor": "#55AAAD",
-    
     "list": [
       {
         "pagePath": "pages/index/index",

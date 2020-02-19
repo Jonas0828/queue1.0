@@ -10,6 +10,9 @@ Page({
   data: {
     showTopTips: false,
     register: false,
+    code: '',
+    PhoneNo: '',
+    isVerify: false,
     radioItems: [{
         name: '男',
         value: '0'
@@ -20,7 +23,7 @@ Page({
       }
     ],
     date: "",
-    userinfo:{},
+    userinfo: {},
     cardflag: false,
 
     isAgree: false,
@@ -32,7 +35,7 @@ Page({
         message: '姓名必填'
       },
     }, {
-        name: 'cardid',
+      name: 'cardid',
       rules: {
         required: true,
         message: '身份证号必填'
@@ -50,7 +53,7 @@ Page({
         message: '手机号码必填'
       }, {
         mobile: true,
-          message: '手机号码格式不对'
+        message: '手机号码格式不对'
       }],
     }, {
       name: 'address',
@@ -68,44 +71,44 @@ Page({
     eventChannel = this.getOpenerEventChannel();
     wx.setNavigationBarTitle({
         title: '基础信息补录'
-    }),
+      }),
       // 查询有无该用户信息
       console.log(wx.getStorageSync('userid'));
-      util.doServerAction({
-        trade: '1003',
-        data: {
-          UserID: wx.getStorageSync('userid'),
-        },
-        success: res => {
-          console.log(res.data.Service.response);
-          if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
-            console.log('用户信息注册');
-            this.setData({
-              register: true
-            });
-          } else {
-            console.log('用户信息更新');
-            const userinfo = res.data.Service.response.body;
-            let arr = userinfo.BirthDay.split('');
-            let result = '';
-            for (var i = 0; i < arr.length; i ++){
-                result = result + (i == 4 || i == 6 ? '-' : '') + arr[i];
-            };
-            var radioItems = this.data.radioItems;
-            for (var i = 0, len = radioItems.length; i < len; ++i) {
-              radioItems[i].checked = radioItems[i].value == userinfo.Sex;
-            }
-            this.setData({
-              userinfo: userinfo,
-              cardflag: true,
-              date: result,
-              radioItems: radioItems,
-              [`formData.radio`]: userinfo.Sex,
-              Sex: userinfo.Sex
-            });
+    util.doServerAction({
+      trade: '1003',
+      data: {
+        UserID: wx.getStorageSync('userid'),
+      },
+      success: res => {
+        console.log(res.data.Service.response);
+        if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
+          console.log('用户信息注册');
+          this.setData({
+            register: true
+          });
+        } else {
+          console.log('用户信息更新');
+          const userinfo = res.data.Service.response.body;
+          let arr = userinfo.BirthDay.split('');
+          let result = '';
+          for (var i = 0; i < arr.length; i++) {
+            result = result + (i == 4 || i == 6 ? '-' : '') + arr[i];
+          };
+          var radioItems = this.data.radioItems;
+          for (var i = 0, len = radioItems.length; i < len; ++i) {
+            radioItems[i].checked = radioItems[i].value == userinfo.Sex;
           }
+          this.setData({
+            userinfo: userinfo,
+            cardflag: true,
+            date: result,
+            radioItems: radioItems,
+            [`formData.radio`]: userinfo.Sex,
+            Sex: userinfo.Sex
+          });
         }
-      });
+      }
+    });
   },
 
   /**
@@ -156,6 +159,12 @@ Page({
   onShareAppMessage: function() {
 
   },
+  getnumber: function() {
+    this.setData({
+      code: '888888',
+      isVerify: true
+    });
+  },
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
@@ -202,18 +211,19 @@ Page({
 
         }
       } else {
+        if (this.data.isVerify) {
           let userinfo = e.detail.value;
           userinfo.UserID = wx.getStorageSync('userid');
           userinfo.Sex = this.data.Sex;
           userinfo.Realauth = '0',
-          userinfo.FcrcgtFlag = '0',
-          userinfo.BirthDay = userinfo.BirthDay.replace('-','').replace('-',''),
-          console.log(userinfo);
+            userinfo.FcrcgtFlag = '0',
+            userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),
+            console.log(userinfo);
           util.doServerAction({
             trade: this.data.register ? '1001' : '1002',
             data: userinfo,
             success: res => {
-               wx.navigateBack({
+              wx.navigateBack({
                 success: (res) => {
                   if (userInfo.Name == '' || userInfo.IdNo == '' || userInfo.PhoneNo == '') {
                     wx.setStorageSync('UserinfoComplete', false);
@@ -222,12 +232,20 @@ Page({
                     console.log('用户信息完整');
                     wx.setStorageSync('UserinfoComplete', true);
                   }
-                  eventChannel.emit('callback', { flag: true });
+                  eventChannel.emit('callback', {
+                    flag: true
+                  });
                 }
               })
             }
           });
-       
+        } else {
+          this.setData({
+            error: '请获取验证码'
+          })
+        }
+
+
       }
     })
   },

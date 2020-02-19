@@ -27,6 +27,19 @@
                 <mp-cell prop="required" title="手机号" ext-class="">
                     <input bindinput="formInputChange" data-field="mobile" class="weui-input" name='PhoneNo' placeholder="请输入手机号" value='{{userinfo.PhoneNo}}'/>
                 </mp-cell>
+                <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell ">
+        <view class="weui-cell__hd">
+          <view class="weui-label">验证码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入验证码" value='{{code}}'/>
+        </view>
+        <view class="weui-cell__ft">
+        <view class="weui-vcode-btn" bindtap="getnumber" style="width: 80px;">获取验证码</view>
+      </view>
+      </view>
+    </view>
                 <mp-cell prop="required" title="居住地址" ext-class="">
                     <input bindinput="formInputChange" data-field="address" class="weui-input" name='Address' placeholder="请输入居住地址" value='{{userinfo.Address}}'/>
                 </mp-cell>

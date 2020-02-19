@@ -1,5 +1,6 @@
 // pages/phone/phone.js
 let eventChannel = undefined;
+const util = require('../../utils/util.js');
 
 Page({
 
@@ -9,22 +10,35 @@ Page({
   data: {
     countryCodes: ["+86", "+80", "+84", "+87"],
     countryCodeIndex: 0,
+    code: '',
+    PhoneNo: '',
+    isVerify: false
   },
-
+  getnumber: function () {
+    this.setData({
+      code: '888888',
+      isVerify: true
+    });
+  },
   bindCountryCodeChange: function (e) {
     console.log('picker country code 发生选择改变，携带值为', e.detail.value);
-
     this.setData({
       countryCodeIndex: e.detail.value
     })
   },
   clickbtn: function () {
-    wx.setStorageSync('phone', true);
-    wx.navigateBack({
-      success: (res) => {
-        eventChannel.emit('success', {});
-      }
-    })
+    if(this.data.isVerify){
+      wx.setStorageSync('phone', true);
+      wx.navigateBack({
+        success: (res) => {
+          eventChannel.emit('success', {});
+        }
+      })
+    }else{
+      this.setData({
+        error: '请获取验证码'
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -34,6 +48,19 @@ Page({
     wx.setNavigationBarTitle({
       title: '身份验证',
     })
+    util.doServerAction({
+      trade: '1003',
+      data: {
+        UserID: wx.getStorageSync('userid'),
+      },
+      success: res => {
+        const userinfo = res.data.Service.response.body;
+        console.log(userinfo);
+        this.setData({
+          PhoneNo: userinfo.PhoneNo
+        });
+      }
+    });
   },
 
   /**
