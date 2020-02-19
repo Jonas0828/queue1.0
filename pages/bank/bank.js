@@ -5,10 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    toggle: false,
+    istrue: false,
+    toggle:false,
     bankInfo: {
       DotName: "",
       RegionName: "",
+    },
+    ticketInfo:{
+      number: '0005',
+      wait:'4',
+      date:'2020-02-14',
     },
     gridsPerson: [{
       url: '../service0/service0',
@@ -22,22 +28,25 @@ Page({
       name: '对公开户'
     }, {
       url: '../service0/service0',
-      name: '对公开户'
-    }, {
-      url: '../service0/service0',
-      name: '对公开户'
-    }, {
-      url: '../service0/service0',
-      name: '对公开户'
-    }, {
-      url: '../service0/service0',
-      name: '对公开户'
+        name: '转账业务'
     }]
   },
   getnumber: function () {
     this.setData({
+      istrue: true,
+      ticketInfo: {
+        number: '0005',
+        wait: '4',
+        date: '2020-02-14',
+        bankInfo : this.data.bankInfo
+      }
+    })
+  },
+  closeDialog: function () {
+    this.setData({
+      istrue: false,
       toggle: true
-    });
+    })
   },
   opentrade: function(e) {
     // 检查个人基本信息是否完善
