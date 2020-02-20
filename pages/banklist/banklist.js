@@ -41,7 +41,11 @@ Page({
         console.log(res);
         if (0 == res.data.Service.response.body.TotalNum) {
           this.setData({
-            list: [],
+            list: [{
+              DotName: '该区域无网点',
+              RegionCode: '',
+              RegionName: ''
+            }],
           });
         } else {
           // console.log(this.data.location)
@@ -102,9 +106,19 @@ Page({
                     wx.showToast({
                       title: areacode,
                     })
-                    temp.setData({
-                      list: res.data.Service.response.body.Details,
-                    });
+                    if (0 == res.data.Service.response.body.TotalNum) {
+                      temp.setData({
+                        list: [{
+                          DotName: '该区域无网点',
+                          RegionCode: '',
+                          RegionName: ''
+                        }],
+                      });
+                    }else{
+                      temp.setData({
+                        list: res.data.Service.response.body.Details,
+                      });
+                    }                    
                   }
                 }); 
               } else {
@@ -135,6 +149,9 @@ Page({
   jumptobank: function (e) {
     console.log(this.data.list[e.currentTarget.dataset.index]);
     let bankinfo = this.data.list[e.currentTarget.dataset.index];
+    if('' == bankinfo.RegionCode){
+      return;
+    }
     const notice = res => {
       res.eventChannel.emit('bankinfo', {
         data: bankinfo
