@@ -27,14 +27,14 @@ Page({
       url: '../fillform/fillform',
       name: '个人开户'
     }, {
-      url: '../reserverecords/reserverecords',
+      // url: '../reserverecords/reserverecords',
       name: '大额取款',
     }],
     gridsCompany: [{
-      url: '../service0/service0',
+      // url: '../service0/service0',
       name: '对公开户'
     }, {
-      url: '../service0/service0',
+      // url: '../service0/service0',
       name: '转账业务'
     }]
   },
@@ -97,7 +97,7 @@ Page({
               wx.navigateTo({
                 url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
                 success: res => {
-                  res.eventChannel.emit('bankinfo', {
+                  res.eventChannel.emit('bankInfo', {
                     data: this.data.bankInfo
                   })
                 }
@@ -109,7 +109,7 @@ Page({
       wx.navigateTo({
         url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
         success: res => {
-          res.eventChannel.emit('bankinfo', {
+          res.eventChannel.emit('bankInfo', {
             data: this.data.bankInfo
           })
         }

@@ -32,14 +32,14 @@ Page({
         flag: true,
       });
     })
-    eventChannel.on('totalInfo', function (data) {
-      let totalInfo = data.totalInfo;
+    eventChannel.on('bankInfo', function (data) {
+      console.log(data);
       currentPage.setData({
         reserve: {
           number: '888888',
           time: util.formatTime(new Date()),
           name: data.userInfo.cardType.name,
-          bankname: totalInfo.bankInfo.DotName
+          bankname: data.bankInfo.DotName
         }
       });
     })

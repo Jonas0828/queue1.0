@@ -218,7 +218,7 @@ Page({
    */
   onReady: function() {
     const temp = this;
-    this.chooselocation();
+    // this.chooselocation();
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {

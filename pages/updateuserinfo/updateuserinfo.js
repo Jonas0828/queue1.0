@@ -15,6 +15,7 @@ Page({
     PhoneNo: '',
     isVerify: false,
     date: "",
+    Sex: '1',
     userinfo: {},
     cardflag: false,
 
@@ -90,7 +91,8 @@ Page({
             userinfo: userinfo,
             cardflag: true,
             date: result,
-            sexFlag: userinfo.Sex == '0' ? true : false
+            // sexFlag: userinfo.Sex == '0' ? true : false,
+            Sex: userinfo.Sex
           });
         }
       }
@@ -152,6 +154,7 @@ Page({
     });
   },
   radioChange: function(e) {
+    console.log('--------------', e.detail.value);
     this.setData({
       Sex: e.detail.value
     });

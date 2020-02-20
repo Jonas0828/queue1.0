@@ -92,12 +92,12 @@ Page({
     });
     let temp = this;
     let eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('totalInfo', function (data) {
+    eventChannel.on('bankInfo', function (data) {
       console.log('填单界面获取到的全部信息');
       console.log(data);
       // 获取传递过来的数据
       temp.setData({
-        totalInfo: data.data,
+        bankInfo: data.data,
       });
     })
   },
@@ -212,8 +212,8 @@ Page({
         wx.navigateTo({
           url: '../reservenumber/reservenumber',
           success: res => {
-            res.eventChannel.emit('totalInfo', {
-              totalInfo: this.data.totalInfo,
+            res.eventChannel.emit('bankInfo', {
+              bankInfo: this.data.bankInfo,
               userInfo: userinfo
             })
           }
