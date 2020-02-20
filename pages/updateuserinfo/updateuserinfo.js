@@ -9,19 +9,11 @@ Page({
    */
   data: {
     showTopTips: false,
+    sexFlag: '',
     register: false,
     code: '',
     PhoneNo: '',
     isVerify: false,
-    radioItems: [{
-        name: '男',
-        value: '0'
-      },
-      {
-        name: '女',
-        value: '1'
-      }
-    ],
     date: "",
     userinfo: {},
     cardflag: false,
@@ -94,17 +86,11 @@ Page({
           for (var i = 0; i < arr.length; i++) {
             result = result + (i == 4 || i == 6 ? '-' : '') + arr[i];
           };
-          var radioItems = this.data.radioItems;
-          for (var i = 0, len = radioItems.length; i < len; ++i) {
-            radioItems[i].checked = radioItems[i].value == userinfo.Sex;
-          }
           this.setData({
             userinfo: userinfo,
             cardflag: true,
             date: result,
-            radioItems: radioItems,
-            [`formData.radio`]: userinfo.Sex,
-            Sex: userinfo.Sex
+            sexFlag: userinfo.Sex == '0' ? true : false
           });
         }
       }
@@ -166,16 +152,7 @@ Page({
     });
   },
   radioChange: function(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-
-    var radioItems = this.data.radioItems;
-    for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].value == e.detail.value;
-    }
-
     this.setData({
-      radioItems: radioItems,
-      [`formData.radio`]: e.detail.value,
       Sex: e.detail.value
     });
   },
@@ -211,7 +188,14 @@ Page({
 
         }
       } else {
+        if ('' == this.data.Sex) {
+          this.setData({
+            error: '请选择性别'
+          });
+          return;
+        }
         if (this.data.isVerify) {
+          wx.setStorageSync('phone', true);
           let userinfo = e.detail.value;
           userinfo.UserID = wx.getStorageSync('userid');
           userinfo.Sex = this.data.Sex;
@@ -225,7 +209,7 @@ Page({
             success: res => {
               wx.navigateBack({
                 success: (res) => {
-                  if (userInfo.Name == '' || userInfo.IdNo == '' || userInfo.PhoneNo == '') {
+                  if (userinfo.Name == '' || userinfo.IdNo == '' || userinfo.PhoneNo == '') {
                     wx.setStorageSync('UserinfoComplete', false);
                     console.log('用户信息不完整');
                   } else {

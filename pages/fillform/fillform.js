@@ -9,16 +9,19 @@ Page({
    */
   data: {
     showTopTips: false,
-    radioItems: [{
-        name: '男',
-        value: '0'
+    detailType:[
+      {
+        name: '开卡预约'
       },
       {
-        name: '女',
-        value: '1'
-      }
+        name: '开存单预约'
+      },
+      {
+        name: '开存折预约'
+      },
     ],
-    time:'',
+    sexFlag: '',
+    cardType: '',
     date: "",
     userinfo: {},
     cardflag: true,
@@ -79,17 +82,11 @@ Page({
         for (var i = 0; i < arr.length; i++) {
           result = result + (i == 4 || i == 6 ? '-' : '') + arr[i];
         };
-        var radioItems = this.data.radioItems;
-        for (var i = 0, len = radioItems.length; i < len; ++i) {
-          radioItems[i].checked = radioItems[i].value == userinfo.Sex;
-        }
         this.setData({
           userinfo: userinfo,
           cardflag: true,
           date: result,
-          radioItems: radioItems,
-          [`formData.radio`]: userinfo.Sex,
-          Sex: userinfo.Sex
+          sexFlag: userinfo.Sex == '0' ? true:false
         });
       }
     });
@@ -154,16 +151,7 @@ Page({
 
   },
   radioChange: function(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-
-    var radioItems = this.data.radioItems;
-    for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].value == e.detail.value;
-    }
-
     this.setData({
-      radioItems: radioItems,
-      [`formData.radio`]: e.detail.value,
       Sex: e.detail.value
     });
   },
@@ -181,6 +169,12 @@ Page({
       [`formData.${field}`]: e.detail.value
     })
   },
+  selectCardType: function (e) {
+    console.log('类型：',e.detail);
+    this.setData({
+      cardType: this.data.detailType[e.detail.value]
+    });
+  },
   // 提交信息
   submitForm(e) {
     this.selectComponent('#form').validate((valid, errors) => {
@@ -194,9 +188,22 @@ Page({
 
         }
       } else {
+        if ('' == this.data.cardType){
+          this.setData({
+            error:'请选择开户类型'
+          });
+          return;
+        }
+        if ('' == this.data.Sex) {
+          this.setData({
+            error: '请选择性别'
+          });
+          return;
+        }
         let userinfo = e.detail.value;
         userinfo.UserID = wx.getStorageSync('userid');
         userinfo.Sex = this.data.Sex;
+        userinfo.cardType = this.data.cardType;
         userinfo.Realauth = '0',
           userinfo.FcrcgtFlag = '0',
           userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),

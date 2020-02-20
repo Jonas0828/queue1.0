@@ -9,24 +9,24 @@ Page({
       {
         id: 'form',
         name: '基础信息',
-        open: false,
         complete: {
+          flag: false,
           msg: '不完整'
         }
       },
       {
         id: 'widget',
         name: '人脸识别',
-        open: false,
         complete: {
+          flag: false,
           msg: '不完整'
         }
       },
       {
         id: 'feedback',
         name: '实名认证',
-        open: false,
         complete: {
+          flag: false,
           msg: '不完整'
         }
       },
@@ -37,35 +37,20 @@ Page({
       url: '../updateuserinfo/updateuserinfo',
       events: {
        callback: (data) => {
-         if (data.flag == true) {
+         console.log(wx.getStorageSync('UserinfoComplete'))
+         if (wx.getStorageSync('UserinfoComplete')) {
            this.setData({
-             flag: data.flag,
-             list: [
-               {
-                 id: 'form',
-                 name: '基础信息',
-                 open: false,
-                 complete: {
-                   msg: '完整'
-                 }
-               },
-               {
-                 id: 'widget',
-                 name: '人脸识别',
-                 open: false,
-                 complete: {
-                   msg: '不完整'
-                 }
-               },
-               {
-                 id: 'feedback',
-                 name: '实名认证',
-                 open: false,
-                 complete: {
-                   msg: '不完整'
-                 }
-               },
-             ]
+             'list[0].complete': {
+               flag: true,
+               msg: '完整'
+             }
+           });
+         }else{
+           this.setData({
+             'list[0].complete': {
+               flag: false,
+               msg: '不完整'
+             }
            });
          }
        }
@@ -79,6 +64,14 @@ Page({
     wx.setNavigationBarTitle({
       title: '个人信息'
     })
+    if (wx.getStorageInfoSync('UserinfoComplete')){
+      this.setData({
+        'list[0].complete':{
+          flag: true,
+          msg:'完整'
+        }
+      });
+    }
   },
 
   /**

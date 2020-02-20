@@ -11,12 +11,13 @@ Page({
       number: '',
       name: '',
       bankname: '',
+      time: '',
     },
   flag:false
   },
   clickbtn: function () {
     wx.navigateBack({
-      delta: this.data.flag ?1:3,
+      delta: this.data.flag ?1:2,
     })
   },
   /**
@@ -36,7 +37,8 @@ Page({
       currentPage.setData({
         reserve: {
           number: '888888',
-          name: totalInfo.selectType.name,
+          time: util.formatTime(new Date()),
+          name: data.userInfo.cardType.name,
           bankname: totalInfo.bankInfo.DotName
         }
       });

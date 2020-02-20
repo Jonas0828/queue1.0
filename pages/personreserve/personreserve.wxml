@@ -1,5 +1,0 @@
-<view class="page">
-  <view class="service" wx:for="{{btnInfo}}" bindtap="jumptofillform" data-index="{{index}}">
-    <view class="textoficon">{{item.name}}</view>
-  </view>
-</view>

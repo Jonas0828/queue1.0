@@ -13,11 +13,12 @@
           <mp-cell prop="required" title="身份证号" ext-class="">
             <input bindinput="formInputChange" data-field="cardid" class="weui-input" name='IdNo' placeholder="请输入身份证号" value='{{userinfo.IdNo}}' disabled="{{cardflag}}" />
           </mp-cell>
-          <mp-cells title="">
-            <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
-              <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
-            </mp-checkbox-group>
-          </mp-cells>
+          <mp-cell prop="required" title="性别" ext-class="">
+            <radio-group bindchange="radioChange">
+              <radio value="0" checked="{{sexFlag}}">男</radio>
+              <radio style="margin-left:5px;" checked="{{!sexFlag}}" value="1">女</radio>
+            </radio-group>
+          </mp-cell>
 
           <mp-cell prop="required" title="出生日期" ext-class="">
             <picker data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" name='BirthDay' bindchange="bindDateChange">
@@ -29,6 +30,15 @@
           </mp-cell>
           <mp-cell prop="required" title="居住地址" ext-class="">
             <input bindinput="formInputChange" data-field="address" class="weui-input" name='Address' placeholder="请输入居住地址" value='{{userinfo.Address}}' />
+          </mp-cell>
+
+
+          <mp-cell prop="required" title="开户类型" ext-class="">
+            <radio-group bindchange="selectCardType">
+              <radio value="0">卡</radio>
+              <radio style="margin-left:5px;" value="1">存折</radio>
+              <radio style="margin-left:5px;" value="2">存单</radio>
+            </radio-group>
           </mp-cell>
         </mp-cells>
       </mp-form>

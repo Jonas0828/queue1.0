@@ -24,7 +24,7 @@ Page({
       date: '2020-02-14',
     },
     gridsPerson: [{
-      url: '../personreserve/personreserve',
+      url: '../fillform/fillform',
       name: '个人开户'
     }, {
       url: '../reserverecords/reserverecords',

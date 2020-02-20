@@ -1,12 +1,11 @@
 {
-  "pages": [
+  "pages": [  
     "pages/index/index",
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
     "pages/bank/bank",
     "pages/updateuserinfo/updateuserinfo",
     "pages/phone/phone",
-    "pages/personreserve/personreserve",
     "pages/map/map",
     "pages/reserverecords/reserverecords",
     "pages/reservenumber/reservenumber",
