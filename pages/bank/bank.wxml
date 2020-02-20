@@ -19,10 +19,18 @@
       <view class="weui-form-preview__value">0356-88888888</view>
     </view>
   </view>
-
-  <view class="service" bindtap="getnumber" hidden="{{toggle}}">
-    <view class="textoficon">排队</view>
+<view class="btn" hidden="{{toggle}}">
+  <view class="service" style="margin-left: 0%;" bindtap="getnumber">
+    <view class="textoficon">对私</view>
   </view>
+  <view class="service" bindtap="getnumber">
+    <view class="textoficon">对公</view>
+  </view>
+  <view class="service" bindtap="getnumber">
+    <view class="textoficon">VIP</view>
+  </view>
+</view>
+
   <view class="ticketinfo" hidden="{{!toggle}}" style="margin-top: 50rpx">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">

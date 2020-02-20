@@ -1,40 +1,40 @@
 <!-- 校验表单提示 -->
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="page">
-    <view class="page__bd">
+  <view class="page__bd">
     <form bindsubmit="submitForm">
-    
 
-        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
-            <mp-cells title="" footer="">
-                <mp-cell prop="required" title="姓名" ext-class="">
-                    <input bindinput="formInputChange" data-field="name" class="weui-input" name='Name' placeholder="请输入姓名" value='{{userinfo.Name}}'/>
-                </mp-cell>
-                <mp-cell prop="required" title="身份证号" ext-class="">
-                    <input bindinput="formInputChange" data-field="cardid" class="weui-input" name='IdNo' placeholder="请输入身份证号" value='{{userinfo.IdNo}}' disabled="{{cardflag}}"/>
-                </mp-cell>
-                <mp-cells title="">
-                    <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange" >
-                        <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
-                    </mp-checkbox-group>
-                </mp-cells>
 
-                <mp-cell prop="required" title="出生日期" ext-class="">
-                    <picker data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" name='BirthDay' bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
-                    </picker>
-                </mp-cell>
-                <mp-cell prop="required" title="手机号" ext-class="">
-                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" name='PhoneNo' placeholder="请输入手机号" value='{{userinfo.PhoneNo}}'/>
-                </mp-cell>
-                <mp-cell prop="required" title="居住地址" ext-class="">
-                    <input bindinput="formInputChange" data-field="address" class="weui-input" name='Address' placeholder="请输入居住地址" value='{{userinfo.Address}}'/>
-                </mp-cell>
-            </mp-cells>
-        </mp-form>
-        <view class="weui-btn-area" style="margin-top: 50rpx;">
-            <button class="weui-btn" type="primary" form-type='submit'>确定</button>
-        </view>
-            </form>
-    </view>
+      <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cells title="" footer="">
+          <mp-cell prop="required" title="姓名" ext-class="">
+            <input bindinput="formInputChange" data-field="name" class="weui-input" name='Name' placeholder="请输入姓名" value='{{userinfo.Name}}' />
+          </mp-cell>
+          <mp-cell prop="required" title="身份证号" ext-class="">
+            <input bindinput="formInputChange" data-field="cardid" class="weui-input" name='IdNo' placeholder="请输入身份证号" value='{{userinfo.IdNo}}' disabled="{{cardflag}}" />
+          </mp-cell>
+          <mp-cells title="">
+            <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+              <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+            </mp-checkbox-group>
+          </mp-cells>
+
+          <mp-cell prop="required" title="出生日期" ext-class="">
+            <picker data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" name='BirthDay' bindchange="bindDateChange">
+              <view class="weui-input">{{date}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell prop="required" title="手机号" ext-class="">
+            <input bindinput="formInputChange" data-field="mobile" class="weui-input" name='PhoneNo' placeholder="请输入手机号" value='{{userinfo.PhoneNo}}' />
+          </mp-cell>
+          <mp-cell prop="required" title="居住地址" ext-class="">
+            <input bindinput="formInputChange" data-field="address" class="weui-input" name='Address' placeholder="请输入居住地址" value='{{userinfo.Address}}' />
+          </mp-cell>
+        </mp-cells>
+      </mp-form>
+      <view class="weui-btn-area" style="margin-top: 50rpx;">
+        <button class="weui-btn" type="primary" form-type='submit'>确定</button>
+      </view>
+    </form>
+  </view>
 </view>

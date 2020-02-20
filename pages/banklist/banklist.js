@@ -99,7 +99,9 @@ Page({
                     RegionCode: areacode,
                   },
                   success: res => {
-                    console.log(res);
+                    wx.showToast({
+                      title: areacode,
+                    })
                     temp.setData({
                       list: res.data.Service.response.body.Details,
                     });

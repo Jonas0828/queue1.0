@@ -18,6 +18,7 @@ Page({
         value: '1'
       }
     ],
+    time:'',
     date: "",
     userinfo: {},
     cardflag: true,
@@ -99,7 +100,7 @@ Page({
       console.log(data);
       // 获取传递过来的数据
       temp.setData({
-        totalInfo: data.data
+        totalInfo: data.data,
       });
     })
   },
@@ -205,7 +206,8 @@ Page({
           url: '../reservenumber/reservenumber',
           success: res => {
             res.eventChannel.emit('totalInfo', {
-              totalInfo: this.data.totalInfo
+              totalInfo: this.data.totalInfo,
+              userInfo: userinfo
             })
           }
         })

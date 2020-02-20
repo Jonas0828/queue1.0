@@ -3,16 +3,21 @@
   text-align: center;
 }
 
-.service{
-  border-radius: 90rpx;
-  background-color: #55AAAD;
-
+.btn{
   display: flex;
   align-items: center;
   justify-content: center; 
-  width:80%;
-  height: 45px;
+}
+
+.service{
+  border-radius: 90rpx;
+  background-color: #55AAAD;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width:20%;
   margin-left: 10%;
+  height: 45px;
   opacity: 0.8;
 }
 
@@ -20,7 +25,6 @@
   font-size: 20px;  
   color: #FFFFFF;
   left: 0;
-  
 }
 
 .weui-demo-dialog{

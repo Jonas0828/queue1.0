@@ -1,20 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/fillform/fillform",
+    "pages/bookmoney/bookmoney",
+    "pages/bank/bank",
     "pages/updateuserinfo/updateuserinfo",
     "pages/phone/phone",
     "pages/personreserve/personreserve",
     "pages/map/map",
-    "pages/queuenumber/queuenumber",
     "pages/reserverecords/reserverecords",
     "pages/reservenumber/reservenumber",
-    "pages/bank/bank",
     "pages/banklist/banklist",
     "pages/infotype/infotype",
-    "pages/main/main",
-    "pages/user/user",
-    "pages/fillform/fillform",
-    "pages/bookmoney/bookmoney"
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",

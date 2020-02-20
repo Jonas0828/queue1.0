@@ -8,10 +8,9 @@ Page({
    */
   data: {
     reserve: {
-      number: '0003',
-      name: '大额取现',
-      time: '09:00',
-      bankname: '太原高科技支行营业室',
+      number: '',
+      name: '',
+      bankname: '',
     },
   flag:false
   },
@@ -38,7 +37,6 @@ Page({
         reserve: {
           number: '888888',
           name: totalInfo.selectType.name,
-          time: util.formatTime(new Date()),
           bankname: totalInfo.bankInfo.DotName
         }
       });

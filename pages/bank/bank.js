@@ -11,6 +11,13 @@ Page({
       DotName: "",
       RegionName: "",
     },
+    btnInfo: [{
+      name: '对私',
+    }, {
+      name: '对公',
+    }, {
+      name: 'VIP',
+    }],
     ticketInfo: {
       number: '0005',
       wait: '4',
