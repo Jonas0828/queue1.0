@@ -64,7 +64,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '个人信息'
     })
-    if (wx.getStorageInfoSync('UserinfoComplete')){
+    if (wx.getStorageSync('UserinfoComplete')){
       this.setData({
         'list[0].complete':{
           flag: true,

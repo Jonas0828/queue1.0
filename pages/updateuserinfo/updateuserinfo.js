@@ -34,12 +34,6 @@ Page({
         message: '身份证号必填'
       },
     }, {
-      name: 'radio',
-      rules: {
-        required: true,
-        message: '性别是必选项'
-      },
-    }, {
       name: 'mobile',
       rules: [{
         required: true,

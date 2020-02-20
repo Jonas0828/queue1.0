@@ -242,6 +242,7 @@ Page({
       success: res => {
         console.log(res.data.Service.response.body);
         if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
+          console.log('用户信息不完整');
           wx.setStorageSync('UserinfoComplete', false);
           wx.getUserInfo({
             withCredentials: false,
