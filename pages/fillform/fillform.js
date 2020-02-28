@@ -252,17 +252,25 @@ Page({
           },
           success: res => {
             console.log('--------------预约序号');
-            console.log(res.data.Service.response.RsvSeq);
-            wx.navigateTo({
-              url: '../reservenumber/reservenumber',
-              success: resinner => {
-                resinner.eventChannel.emit('bankInfo', {
-                  bankInfo: this.data.bankInfo,
-                  userInfo: userinfo,
-                  rsvSeq: res.data.Service.response.RsvSeq
-                })
-              }
-            }) 
+            console.log(res.data.Service.response);
+            if ('00000000' == res.data.Service.response.ErrCode){
+              wx.navigateTo({
+                url: '../reservenumber/reservenumber',
+                success: resinner => {
+                  resinner.eventChannel.emit('bankInfo', {
+                    bankInfo: this.data.bankInfo,
+                    userInfo: userinfo,
+                    rsvSeq: res.data.Service.response.RsvSeq
+                  })
+                }
+              })
+            } else if ('999999' == res.data.Service.response.ErrCode) {
+              wx.showModal({
+                title: '提示',
+                content: res.data.Service.response.ErrMsg,
+                showCancel: false
+              })
+            } 
           }
         });
       }
