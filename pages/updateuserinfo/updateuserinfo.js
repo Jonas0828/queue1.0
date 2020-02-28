@@ -85,7 +85,7 @@ Page({
             userinfo: userinfo,
             cardflag: true,
             date: result,
-            // sexFlag: userinfo.Sex == '0' ? true : false,
+            sexFlag: userinfo.Sex == '0' ? true : false,
             Sex: userinfo.Sex
           });
         }
@@ -148,7 +148,6 @@ Page({
     });
   },
   radioChange: function(e) {
-    console.log('--------------', e.detail.value);
     this.setData({
       Sex: e.detail.value
     });
@@ -199,6 +198,7 @@ Page({
           userinfo.Realauth = '0',
             userinfo.FcrcgtFlag = '0',
             userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),
+            console.log('d个人信息');
             console.log(userinfo);
           util.doServerAction({
             trade: this.data.register ? '1001' : '1002',

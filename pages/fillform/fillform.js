@@ -11,13 +11,16 @@ Page({
     showTopTips: false,
     detailType:[
       {
-        name: '开卡预约'
+        name: '开卡预约',
+        id: '0'
       },
       {
-        name: '开存折预约'
+        name: '开存折预约',
+        id: '1'
       },
       {
-        name: '开存单预约'
+        name: '开存单预约',
+        id: '2'
       },
     ],
     sexFlag: '',
@@ -27,25 +30,19 @@ Page({
     cardflag: true,
     formData: {},
     rules: [{
-      name: 'name',
+      name: 'Name',
       rules: {
         required: true,
         message: '姓名必填'
       },
     }, {
-      name: 'cardid',
+        name: 'IdNo',
       rules: {
         required: true,
         message: '身份证号必填'
       },
     }, {
-      name: 'radio',
-      rules: {
-        required: true,
-        message: '性别是必选项'
-      },
-    }, {
-      name: 'mobile',
+        name: 'PhoneNo',
       rules: [{
         required: true,
         message: '手机号码必填'
@@ -54,12 +51,18 @@ Page({
         message: '手机号码格式不对'
       }],
     }, {
-      name: 'address',
+      name: 'Address',
       rules: {
         required: true,
         message: '居住地址必填'
       },
-    }, ]
+    }, {
+      name: 'reserveDate',
+      rules: {
+        required: true,
+        message: '预约日期必填'
+      },
+    },]
   },
 
   /**
@@ -86,7 +89,12 @@ Page({
           userinfo: userinfo,
           cardflag: true,
           date: result,
-          sexFlag: userinfo.Sex == '0' ? true:false
+          sexFlag: userinfo.Sex == '0' ? true:false,
+          Sex: userinfo.Sex,
+          [`formData.Name`]: userinfo.Name,
+          [`formData.IdNo`]: userinfo.IdNo,
+          [`formData.PhoneNo`]: userinfo.PhoneNo,
+          [`formData.Address`]: userinfo.Address,
         });
       }
     });
@@ -99,7 +107,16 @@ Page({
       temp.setData({
         bankInfo: data.data,
       });
-    })
+    });
+    let date = new Date();
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    let nowDate = year + '-' + month + '-' + day;
+    console.log(nowDate);
+    this.setData({
+      nowDate: nowDate
+    });
   },
 
   /**
@@ -161,6 +178,12 @@ Page({
       [`formData.date`]: e.detail.value
     })
   },
+  bindResDateChange: function (e) {
+    this.setData({
+      reserveDate: e.detail.value,
+      [`formData.reserveDate`]: e.detail.value
+    })
+  },
   formInputChange(e) {
     const {
       field
@@ -179,8 +202,9 @@ Page({
   submitForm(e) {
     this.selectComponent('#form').validate((valid, errors) => {
       console.log('valid', valid, errors)
-      if (this.data.register && !valid) {
+      if (!valid) {
         const firstError = Object.keys(errors)
+        console.log(firstError);
         if (firstError.length) {
           this.setData({
             error: errors[firstError[0]].message
@@ -205,19 +229,42 @@ Page({
         userinfo.Sex = this.data.Sex;
         userinfo.cardType = this.data.cardType;
         userinfo.Realauth = '0',
-          userinfo.FcrcgtFlag = '0',
-          userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),
-          console.log(userinfo);
-        // 提交预约信息
-        wx.navigateTo({
-          url: '../reservenumber/reservenumber',
-          success: res => {
-            res.eventChannel.emit('bankInfo', {
+        userinfo.FcrcgtFlag = '0',
+        userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),
+        userinfo.reserveDate = userinfo.reserveDate.replace('-', '').replace('-', ''),
+        console.log('提交预约信息');
+        console.log(userinfo);
+        util.doServerAction({
+          trade: '3001',
+          data: {
+            Dotid: this.data.bankInfo.DotID,
+            RsvDate: userinfo.reserveDate,
+            IDType: '01',
+            IDCode: userinfo.IdNo,
+            BrType: '0',
+            TrxType: '0',
+            TrxStatus: '0',
+            TrxData: JSON.stringify({
+              userInfo: userinfo,
               bankInfo: this.data.bankInfo,
-              userInfo: userinfo
-            })
+              cardType: this.data.cardType
+            }),
+          },
+          success: res => {
+            console.log('--------------预约序号');
+            console.log(res.data.Service.response.RsvSeq);
+            wx.navigateTo({
+              url: '../reservenumber/reservenumber',
+              success: resinner => {
+                resinner.eventChannel.emit('bankInfo', {
+                  bankInfo: this.data.bankInfo,
+                  userInfo: userinfo,
+                  rsvSeq: res.data.Service.response.RsvSeq
+                })
+              }
+            }) 
           }
-        })
+        });
       }
     })
   },

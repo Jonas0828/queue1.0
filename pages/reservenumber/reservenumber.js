@@ -36,8 +36,8 @@ Page({
       console.log(data);
       currentPage.setData({
         reserve: {
-          number: '888888',
-          time: util.formatTime(new Date()),
+          number: data.rsvSeq,
+          time: data.userInfo.reserveDate,
           name: data.userInfo.cardType.name,
           bankname: data.bankInfo.DotName
         }
