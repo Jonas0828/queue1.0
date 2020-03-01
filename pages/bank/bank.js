@@ -1,4 +1,6 @@
-// pages/bank/bank.js
+const util = require('../../utils/util.js');
+
+
 Page({
 
   /**
@@ -19,9 +21,9 @@ Page({
       name: 'VIP',
     }],
     ticketInfo: {
-      number: '0005',
+      number: '',
       wait: '4',
-      date: '2020-02-14',
+      date: '',
     },
     gridsPerson: [{
       url: '../fillform/fillform',
@@ -39,15 +41,41 @@ Page({
     }]
   },
   getnumber: function() {
-    this.setData({
-      istrue: true,
-      ticketInfo: {
-        number: '0005',
-        wait: '4',
-        date: '2020-02-14',
-        bankInfo: this.data.bankInfo
+    const date = new Date();
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    let day = date.getDate()
+    console.log(typeof day);
+    if(day < 10){
+      day = '0' + day;
+    }
+    console.log('日',day);
+    util.doServerAction({
+      trade: '4001',
+      data: {
+        Dotid: this.data.bankInfo.DotID,
+        WorkDate: '' + year + month + day,
+        IDType: '01',
+        IDCode: wx.getStorageSync('userInfo').IdNo,
+        BrType: '02',
+        CustLvl: '01',
+        TrxStatus: wx.getStorageSync('userid'),
+      },
+      success: res => {
+        console.log('--------------排队结果');
+        console.log(res.data);
+        console.log(res.data.Service.response);
+        this.setData({
+          istrue: true,
+          ticketInfo: {
+            number: res.data.Service.response.QueSeq,
+            wait: '4',
+            date: year + '-' + month + '-' + day,
+            bankInfo: this.data.bankInfo
+          }
+        })
       }
-    })
+    });
   },
   closeDialog: function() {
     this.setData({

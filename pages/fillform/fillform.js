@@ -237,6 +237,7 @@ Page({
         util.doServerAction({
           trade: '3001',
           data: {
+            UserID: wx.getStorageSync('userid'),
             Dotid: this.data.bankInfo.DotID,
             RsvDate: userinfo.reserveDate,
             IDType: '01',

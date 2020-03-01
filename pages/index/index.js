@@ -260,13 +260,14 @@ Page({
         } else {
           // 检测用户信息完整性
           let userInfo = res.data.Service.response.body;
-          console.log(userInfo);
+          console.log('缓存用户信息',userInfo);
           if (userInfo.Name == '' || userInfo.IdNo == '' || userInfo.PhoneNo ==''){
             wx.setStorageSync('UserinfoComplete', false);
             console.log('用户信息不完整');
           }else{
             console.log('用户信息完整');
             wx.setStorageSync('UserinfoComplete', true);
+            wx.setStorageSync('userInfo', userInfo);
           }
           temp.setData({
             hasUserInfo: true,

@@ -106,7 +106,7 @@
                   <view class="weui-form-preview__label">号码</view>
                 </view>
                 <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">0005</view>
+                  <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">{{ticketInfo.number}}</view>
                 </view>
                 <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">日期</view>
