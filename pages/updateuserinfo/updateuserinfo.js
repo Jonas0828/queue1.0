@@ -190,9 +190,16 @@ Page({
           });
           return;
         }
+        let userinfo = e.detail.value;
+        if (undefined == util.validateIdCard(userinfo.IdNo)) {
+          this.setData({
+            error: '请输入正确的身份证号码'
+          });
+          return;
+        }
         if (this.data.isVerify) {
           wx.setStorageSync('phone', true);
-          let userinfo = e.detail.value;
+          
           userinfo.UserID = wx.getStorageSync('userid');
           userinfo.Sex = this.data.Sex;
           userinfo.Realauth = '0',
