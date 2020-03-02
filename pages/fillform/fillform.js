@@ -230,7 +230,8 @@ Page({
         userinfo.cardType = this.data.cardType;
         userinfo.Realauth = '0',
         userinfo.FcrcgtFlag = '0',
-        userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', ''),
+        userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', '');
+        let tempDate = userinfo.reserveDate;
         userinfo.reserveDate = userinfo.reserveDate.replace('-', '').replace('-', ''),
         console.log('提交预约信息');
         console.log(userinfo);
@@ -255,6 +256,7 @@ Page({
             console.log('--------------预约序号');
             console.log(res.data.Service.response);
             if ('00000000' == res.data.Service.response.ErrCode){
+              userinfo.reserveDate = tempDate;
               wx.navigateTo({
                 url: '../reservenumber/reservenumber',
                 success: resinner => {

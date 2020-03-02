@@ -46,7 +46,7 @@
           </mp-cell>
         </mp-cells>
       </mp-form>
-      <checkbox-group bindchange="bindAgreeChange">
+      <!-- <checkbox-group bindchange="bindAgreeChange">
         <label class="weui-agree" for="weuiAgree">
           <view class="weui-agree__text">
             <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
@@ -57,7 +57,7 @@
             <navigator url="" class="weui-agree__link">《相关条款》</navigator>
           </view>
         </label>
-      </checkbox-group>
+      </checkbox-group> -->
       <view class="weui-btn-area" style="margin-top: 50rpx;">
         <button class="weui-btn" type="primary" form-type='submit'>确定</button>
       </view>
