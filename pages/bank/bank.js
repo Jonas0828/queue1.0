@@ -113,6 +113,10 @@ Page({
             rsvInfo: arr,
             reserveInfoFlag: false
           });
+          wx.setStorageSync('rsvInfo', {
+            rsvInfo: arr,
+            reserveInfoFlag: false
+          });
           // 有预约信息
           temp.viewRecords(true);
         }
@@ -168,6 +172,16 @@ Page({
             bankInfo: this.data.bankInfo
           }
         })
+        wx.setStorageSync('queue', true);
+        wx.setStorageSync('queueinfo', {
+          istrue: false,
+          ticketInfo: {
+            number: res.data.Service.response.QueSeq,
+            wait: '4',
+            date: year + '-' + month + '-' + day,
+            bankInfo: this.data.bankInfo
+          }
+        });
       }
     });
   },
@@ -254,6 +268,10 @@ Page({
     wx.setNavigationBarTitle({
       title: '网点信息'
     });
+    if (wx.getStorageSync('queue')){
+      this.setData(wx.getStorageSync('queueinfo'));
+      this.setData(wx.getStorageSync('rsvInfo'));
+    }
   },
 
   /**
