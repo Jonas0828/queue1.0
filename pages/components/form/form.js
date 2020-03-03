@@ -522,7 +522,7 @@ exports.default = {
     mobile: function mobile(r, val) {
         if (r.mobile === false) return;
         val = val || '';
-        if (val.length !== 11) return string_1.sprintf(r.message || defaultMessage.mobile);
+      if (!(val.length === 11 && /^1[3456789]\d{9}$/.test(val))) return string_1.sprintf(r.message || defaultMessage.mobile);
     },
     email: function email(r, value) {
         if (r.email === false) return;

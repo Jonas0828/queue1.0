@@ -76,6 +76,7 @@ Page({
         } else {
           console.log('用户信息更新');
           const userinfo = res.data.Service.response.body;
+          console.log(userinfo);
           let arr = userinfo.BirthDay.split('');
           let result = '';
           for (var i = 0; i < arr.length; i++) {
@@ -86,7 +87,13 @@ Page({
             cardflag: true,
             date: result,
             sexFlag: userinfo.Sex == '0' ? true : false,
-            Sex: userinfo.Sex
+            Sex: userinfo.Sex,
+            formData:{
+              name: userinfo.Name,
+              cardid: userinfo.IdNo,
+              mobile: userinfo.PhoneNo,
+              address: userinfo.Address
+            }
           });
         }
       }
@@ -175,7 +182,7 @@ Page({
   submitForm(e) {
     this.selectComponent('#form').validate((valid, errors) => {
       console.log('valid', valid, errors)
-      if (this.data.register && !valid) {
+      if (!valid) {
         const firstError = Object.keys(errors)
         if (firstError.length) {
           this.setData({
