@@ -80,9 +80,9 @@ Page({
       success: res => {
         console.log('--------------查询预约信息结果');
         console.log(res);
-        // console.log(res.data.Service.response);
-        // if (res.data.Service.response.RsvNum == '0'){
-          if(true){
+        console.log(res.data.Service.response);
+        if (res.data.Service.response.RsvNum == '0'){
+          // if(true){
           // 无预约信息
           wx.showModal({
             title: '提示',
@@ -103,9 +103,14 @@ Page({
             },
           })
         }else{
+          let arr=[];
+          const result = res.data.Service.response.RSPINOFS;
+          for(var i=0;i<result.length; i++){
+            arr[i] = JSON.parse(result[i].rsvinfo);
+          }
+          console.log('转换结果', arr);
           this.setData({
-            // rsvInfo: res.data.Service.response.RSPINOFS,
-            rsvInfo: [{ "userInfo": { "Name": "柳林波", "IdNo": "14052219941214771X", "BirthDay": "19941214", "PhoneNo": "18404912893", "Address": "山西省", "reserveDate": "20200301", "UserID": "o6BQa4-dJE8jou-V0ruauZV3dwQc", "Sex": "0", "cardType": { "name": "开卡预约", "id": "0" }, "Realauth": "0", "FcrcgtFlag": "0" }, "bankInfo": { "RegionCode": "110101", "RegionName": "东城区", "DotID": "015", "Dimension": "39.893674", "DotName": "兴融银行北京天坛支行", "Longitude": "116.408371", "DotType": "3" }, "cardType": { "name": "开卡预约", "id": "0" } }],
+            rsvInfo: arr,
             reserveInfoFlag: false
           });
           // 有预约信息
