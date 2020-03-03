@@ -174,7 +174,7 @@ Page({
         })
         wx.setStorageSync('queue', true);
         wx.setStorageSync('queueinfo', {
-          istrue: false,
+          toggle: true,
           ticketInfo: {
             number: res.data.Service.response.QueSeq,
             wait: '4',
@@ -273,6 +273,8 @@ Page({
       let queueinfo = wx.getStorageSync('queueinfo');
       let nowDate = year + '-' + month + '-' + day;
       let dotID = queueinfo.ticketInfo.bankInfo.DotID;
+      console.log('网点load', nowDate + dotID );
+      console.log(queueinfo.ticketInfo.date + temp.data.bankInfo.DotID);
       if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID){
         this.setData(queueinfo);
         this.setData(wx.getStorageSync('rsvInfo'));
