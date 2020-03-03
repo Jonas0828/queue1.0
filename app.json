@@ -1,5 +1,5 @@
 {
-  "pages": [  
+  "pages": [
     "pages/index/index",
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
@@ -11,7 +11,8 @@
     "pages/reservenumber/reservenumber",
     "pages/banklist/banklist",
     "pages/infotype/infotype",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/displayfillform/displayfillform"
   ],
   "window": {
     "backgroundTextStyle": "light",

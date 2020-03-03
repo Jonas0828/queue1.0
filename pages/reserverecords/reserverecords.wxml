@@ -5,34 +5,12 @@
       <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item">
           <view class="weui-form-preview__label">业务类型</view>
-          <view class="weui-form-preview__value">{{item.name}}</view>
-        </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">预约编号</view>
-          <view class="weui-form-preview__value">{{item.number}}</view>
-        </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">预约日期</view>
-          <view class="weui-form-preview__value">{{item.date}}</view>
-        </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">预约时间</view>
-          <view class="weui-form-preview__value">{{item.time}}</view>
-        </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">预约网点</view>
-          <view class="weui-form-preview__value">{{item.bankname}}</view>
+          <view class="weui-form-preview__value">{{item.cardType.name}}</view>
         </view>
         <view class="weui-form-preview__ft">
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptoqueuenumber">排队</navigator>
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptoreservenumber" data-index="{{index}}">查看</navigator>
-         </view>
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptodisplay" data-index="{{index}}">查看详情</view>
+            </view>
       </view>
-    </view>
-    <view class="add" bindtap="jumptoinfo">
-
-      <image src="../resource/picture/reserverecords/add.png" style="width:50px;height:50px;"></image>
-
     </view>
   </view>
 </view>

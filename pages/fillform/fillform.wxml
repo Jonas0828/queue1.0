@@ -43,7 +43,7 @@
 
 
           <mp-cell prop="required" title="预约日期" ext-class="">
-            <picker data-field="date" mode="date" value="{{reserveDate}}" start="{{nowDate}}" end="2999-10-01" name='reserveDate' data-field="reserveDate"bindchange="bindResDateChange">
+            <picker data-field="date" disabled="{{currentRes}}" mode="date" value="{{reserveDate}}" start="{{nowDate}}" end="2999-10-01" name='reserveDate' data-field="reserveDate"bindchange="bindResDateChange">
               <view class="weui-input">{{reserveDate}}</view>
             </picker>
           </mp-cell>

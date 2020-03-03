@@ -1,44 +1,25 @@
 // pages/reserverecords/reserverecords.js
+let eventChannel = undefined;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-      number: '0001',
-      name: '个人开卡',
-      date: '2020-02-02',
-      time: '09:00',
-      bankname: '太原高科技支行营业室',
-      address: '山西省太原市学府园区V-3区',
-    }, {
-        number: '0002',
-        name: '存款',
-        date: '2020-02-02',
-        time: '15:00',
-        bankname: '太原高科技总行营业室',
-        address: '山西省太原市学府园区A-3区',
-      }]
+    list:[]
   },
-  jumptoreservenumber: function (e) {
+  jumptodisplay: function(e){
     wx.navigateTo({
-      url: '../reservenumber/reservenumber',
-      success: (res) => {
-        res.eventChannel.emit('reserveinfo', this.data.list[e.currentTarget.dataset.index])
+      url: '../displayfillform/displayfillform',
+      success: res => {
+        console.log('第几条记录', e.currentTarget.dataset.index);
+        res.eventChannel.emit('recordsInfo', {
+          data: this.data.list[e.currentTarget.dataset.index]
+        });
       }
     })
-  },
-  jumptoqueuenumber: function () {
-    wx.navigateTo({
-      url: '../queuenumber/queuenumber',
-    })
-  },
-  jumptoinfo: function () {
-    wx.navigateTo({
-      url: '../service0/service0',
-    })
- },
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,6 +27,14 @@ Page({
     wx.setNavigationBarTitle({
       title: '预约记录'
     });
+    let temp = this;
+    eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('reserveInfo', function (data) {
+      console.log('获取到的预约记录', data);
+      temp.setData({
+        list: data.data
+      });
+    })
   },
 
   /**
@@ -73,7 +62,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    eventChannel.emit('makeNumber', {});
   },
 
   /**

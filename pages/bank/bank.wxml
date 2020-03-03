@@ -20,13 +20,13 @@
     </view>
   </view>
 <view class="btn" hidden="{{toggle}}">
-  <view class="service" style="margin-left: 0%;" bindtap="getnumber">
+  <view class="service" style="margin-left: 0%;" bindtap="getnumber" data-type="01">
     <view class="textoficon">对私</view>
   </view>
-  <view class="service" bindtap="getnumber">
+  <view class="service" bindtap="getnumber" data-type="02">
     <view class="textoficon">对公</view>
   </view>
-  <view class="service" bindtap="getnumber">
+  <view class="service" bindtap="getnumber" data-type="03">
     <view class="textoficon">VIP</view>
   </view>
 </view>
@@ -48,10 +48,14 @@
         <view class="weui-form-preview__label">日期</view>
         <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
       </view>
-      <view class="weui-form-preview__item">
+      <view class="weui-form-preview__item" hidden="{{reserveInfoFlag}}">
+        <view class="weui-form-preview__label">预约信息</view>
+        <view class="weui-form-preview__value" bindtap="viewRecords" style="color: #55AAAD">点击查看</view>
+      </view>
+      <!-- <view class="weui-form-preview__item">
         <view class="weui-form-preview__label">提示</view>
         <view class="weui-form-preview__value">前面还有{{ticketInfo.wait}}人，请耐心等待</view>
-      </view>
+      </view> -->
       <view class="weui-form-preview__item">
         <view class="weui-form-preview__label">提示</view>
         <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>
@@ -112,10 +116,10 @@
                   <view class="weui-form-preview__label">日期</view>
                   <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
                 </view>
-                <view class="weui-form-preview__item">
+                <!-- <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">提示</view>
                   <view class="weui-form-preview__value">前面还有4人，请耐心等待</view>
-                </view>
+                </view> -->
                 <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">提示</view>
                   <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>

@@ -23,6 +23,7 @@ Page({
         id: '2'
       },
     ],
+    currentRes: false,
     sexFlag: '',
     cardType: '',
     date: "",
@@ -98,6 +99,17 @@ Page({
         });
       }
     });
+    let date = new Date();
+    const year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    if (month < 10) {
+      month = '0' + day;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    };
+    let nowDate = year + '-' + month + '-' + day;
     let temp = this;
     let eventChannel = this.getOpenerEventChannel();
     eventChannel.on('bankInfo', function (data) {
@@ -106,16 +118,13 @@ Page({
       // 获取传递过来的数据
       temp.setData({
         bankInfo: data.data,
+        currentRes: data.currentRes,
+        reserveDate: data.currentRes ? nowDate : ''
       });
     });
-    let date = new Date();
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    let nowDate = year + '-' + month + '-' + day;
     console.log(nowDate);
     this.setData({
-      nowDate: nowDate
+      nowDate: nowDate,
     });
   },
 
@@ -243,7 +252,7 @@ Page({
             RsvDate: userinfo.reserveDate,
             IDType: '01',
             IDCode: userinfo.IdNo,
-            BrType: '0',
+            BrType: '01',
             TrxType: '0',
             TrxStatus: '0',
             TrxData: JSON.stringify({
