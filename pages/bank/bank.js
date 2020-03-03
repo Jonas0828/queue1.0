@@ -269,8 +269,14 @@ Page({
       title: '网点信息'
     });
     if (wx.getStorageSync('queue')){
-      this.setData(wx.getStorageSync('queueinfo'));
-      this.setData(wx.getStorageSync('rsvInfo'));
+      // 检测网点和日期和今天是否一致
+      let queueinfo = wx.getStorageSync('queueinfo');
+      let nowDate = year + '-' + month + '-' + day;
+      let dotID = queueinfo.ticketInfo.bankInfo.DotID;
+      if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID){
+        this.setData(queueinfo);
+        this.setData(wx.getStorageSync('rsvInfo'));
+      }
     }
   },
 
