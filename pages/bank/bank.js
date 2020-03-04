@@ -58,13 +58,13 @@ Page({
       // url: '../service0/service0',
       name: '转账业务'
     }],
-    rsvInfo:{}
+    rsvInfo: {}
   },
   getnumber: function(e) {
     // 手机号验证
-    this.phoneVerify(e, true)     
+    this.phoneVerify(e, true)
   },
-  getResvInfo: function(e){
+  getResvInfo: function(e) {
     let temp = this;
     console.log('查询预约信息');
     console.log(e.currentTarget.dataset.type);
@@ -81,7 +81,7 @@ Page({
         console.log('--------------查询预约信息结果');
         console.log(res);
         console.log(res.data.Service.response);
-        if (res.data.Service.response.RsvNum == '0'){
+        if (res.data.Service.response.RsvNum == '0') {
           // if(true){
           // 无预约信息
           wx.showModal({
@@ -102,10 +102,10 @@ Page({
               }
             },
           })
-        }else{
-          let arr=[];
+        } else {
+          let arr = [];
           const result = res.data.Service.response.RSPINOFS;
-          for(var i=0;i<result.length; i++){
+          for (var i = 0; i < result.length; i++) {
             arr[i] = JSON.parse(result[i].rsvinfo);
           }
           console.log('转换结果', arr);
@@ -128,7 +128,7 @@ Page({
       url: '../reserverecords/reserverecords',
       events: {
         makeNumber: () => {
-          if('true' == new String(type)){
+          if ('true' == new String(type)) {
             currentPage.makeNumberFinal();
           }
         }
@@ -146,8 +146,7 @@ Page({
       toggle: true
     })
   },
-  makeNumberFinal: function () {
-    console.log('日', day);
+  makeNumberFinal: function() {
     util.doServerAction({
       trade: '4001',
       data: {
@@ -224,16 +223,16 @@ Page({
         url: '../phone/phone',
         events: {
           success: () => {
-            if (type){
+            if (type) {
               this.getResvInfo(e);
-            }else{
+            } else {
               wx.navigateTo({
                 url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
                 success: res => {
                   this.data.gridsPerson[e.currentTarget.dataset.index].oper(res, temp);
                 }
               })
-            }           
+            }
           },
         }
       })
@@ -268,19 +267,18 @@ Page({
     wx.setNavigationBarTitle({
       title: '网点信息'
     });
-    if (wx.getStorageSync('queue')){
+    if (wx.getStorageSync('queue')) {
       // 检测网点和日期和今天是否一致
       let queueinfo = wx.getStorageSync('queueinfo');
       let nowDate = year + '-' + month + '-' + day;
       let dotID = queueinfo.ticketInfo.bankInfo.DotID;
-      console.log('网点load', nowDate + dotID );
+      console.log('网点load', nowDate + dotID);
       console.log(queueinfo.ticketInfo.date + temp.data.bankInfo.DotID);
-      if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID){
+      if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID) {
         this.setData(queueinfo);
-        if ('' != wx.getStorageSync('rsvInfo')){
-          let arr = wx.getStorageSync('rsvInfo');
-          
-        }
+
+        this.setData(wx.getStorageSync('rsvInfo'));
+
       }
     }
   },
