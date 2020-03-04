@@ -72,7 +72,30 @@ Page({
   onLoad: function(options) {
     wx.setNavigationBarTitle({
         title: '个人开户预约'
-    }),
+    });
+    let date = new Date();
+    const year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    };
+    let nowDate = year + '-' + month + '-' + day;
+    let temp = this;
+    let eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('bankInfo', function (data) {
+      console.log('填单界面获取到的全部信息');
+      console.log(data);
+      // 获取传递过来的数据
+      temp.setData({
+        bankInfo: data.data,
+        currentRes: data.currentRes,
+        reserveDate: data.currentRes ? nowDate : ''
+      });
+    });
     util.doServerAction({
       trade: '1003',
       data: {
@@ -96,33 +119,10 @@ Page({
           [`formData.IdNo`]: userinfo.IdNo,
           [`formData.PhoneNo`]: userinfo.PhoneNo,
           [`formData.Address`]: userinfo.Address,
+          [`formData.reserveDate`]: this.data.currentRes ?  nowDate: ''
         });
       }
     });
-    let date = new Date();
-    const year = date.getFullYear()
-    let month = date.getMonth() + 1
-    let day = date.getDate()
-    if (month < 10) {
-      month = '0' + day;
-    }
-    if (day < 10) {
-      day = '0' + day;
-    };
-    let nowDate = year + '-' + month + '-' + day;
-    let temp = this;
-    let eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('bankInfo', function (data) {
-      console.log('填单界面获取到的全部信息');
-      console.log(data);
-      // 获取传递过来的数据
-      temp.setData({
-        bankInfo: data.data,
-        currentRes: data.currentRes,
-        reserveDate: data.currentRes ? nowDate : ''
-      });
-    });
-    console.log(nowDate);
     this.setData({
       nowDate: nowDate,
     });

@@ -7,6 +7,14 @@
           <view class="weui-form-preview__label">业务类型</view>
           <view class="weui-form-preview__value">{{item.cardType.name}}</view>
         </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约网点</view>
+          <view class="weui-form-preview__value">{{item.bankInfo.DotName}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约日期</view>
+          <view class="weui-form-preview__value">{{item.userInfo.reserveDate}}</view>
+        </view>
         <view class="weui-form-preview__ft">
                 <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptodisplay" data-index="{{index}}">查看详情</view>
             </view>

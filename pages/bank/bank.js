@@ -5,7 +5,7 @@ let month = date.getMonth() + 1
 let day = date.getDate()
 let currentPage = undefined
 if (month < 10) {
-  month = '0' + day;
+  month = '0' + month;
 }
 
 if (day < 10) {
@@ -277,7 +277,10 @@ Page({
       console.log(queueinfo.ticketInfo.date + temp.data.bankInfo.DotID);
       if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID){
         this.setData(queueinfo);
-        this.setData(wx.getStorageSync('rsvInfo'));
+        if ('' != wx.getStorageSync('rsvInfo')){
+          let arr = wx.getStorageSync('rsvInfo');
+          
+        }
       }
     }
   },
