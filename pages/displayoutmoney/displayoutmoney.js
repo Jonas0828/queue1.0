@@ -1,5 +1,6 @@
-// pages/reserverecords/reserverecords.js
+// pages/bigdeposit/bigdeposit.js
 let eventChannel = undefined;
+const util = require('../../utils/util.js');
 
 Page({
 
@@ -7,41 +8,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[],
-    mapping:{
-      '0100': '../displayfillform/displayfillform',
-      '0101': '../displaydeposit/displaydeposit',
-      '0201': '../displayoutmoney/displayoutmoney',
-    }
+    reserveDate: '',
+    formData: {},
   },
-  jumptodisplay: function(e){
-    let trxType = this.data.list[e.currentTarget.dataset.index].TrxType;
-    wx.navigateTo({
-      url: this.data.mapping[trxType],
-      success: res => {
-        res.eventChannel.emit('recordsInfo', {
-          data: this.data.list[e.currentTarget.dataset.index]
-        });
-      }
-    })
-  }, 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '预约记录'
+      title: '对公转账预约'
     });
     let temp = this;
     eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('reserveInfo', function (data) {
-      console.log('获取到的预约记录', data);
+    eventChannel.on('recordsInfo', function (data) {
+      console.log(data);
+      // 获取传递过来的数据
       temp.setData({
-        list: data.data
+        revInfo: data.data.revInfo
       });
+    });
+  },
+  submitForm(e) {
+    wx.navigateBack({
+
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,7 +59,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    eventChannel.emit('makeNumber', {});
+
   },
 
   /**

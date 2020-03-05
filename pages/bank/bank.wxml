@@ -26,7 +26,7 @@
   <view class="service" bindtap="getnumber" data-type="02">
     <view class="textoficon">对公</view>
   </view>
-  <view class="service" bindtap="getnumber" data-type="03">
+  <view class="service" bindtap="getnumber" data-type="00">
     <view class="textoficon">VIP</view>
   </view>
 </view>
@@ -69,7 +69,7 @@
   </view>
 
   <view class="weui-grids">
-    <view wx:for="{{gridsPerson}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-index="{{index}}">
+    <view wx:for="{{gridsPerson}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-flag="true" data-index="{{index}}">
       <image class="weui-grid__icon" src="../resource/picture/bank/2.png" />
       <view class="weui-grid__label" style="color: rgba(0,0,0,0.5);">{{item.name}}</view>
     </view>
@@ -82,7 +82,7 @@
   </view>
 
   <view class="weui-grids">
-    <view wx:for="{{gridsCompany}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="" data-index="{{index}}">
+    <view wx:for="{{gridsCompany}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-flag="false" data-index="{{index}}">
       <image class="weui-grid__icon" src="../resource/picture/bank/2.png" />
       <view class="weui-grid__label" style="color: rgba(0,0,0,0.5);">{{item.name}}</view>
     </view>

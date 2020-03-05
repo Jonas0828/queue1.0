@@ -14,7 +14,9 @@
     "pages/infotype/infotype",
     "pages/user/user",
     "pages/displayfillform/displayfillform",
-    "pages/displaydeposit/displaydeposit"
+    "pages/displaydeposit/displaydeposit",
+    "pages/outmoney/outmoney",
+    "pages/displayoutmoney/displayoutmoney"
   ],
   "window": {
     "backgroundTextStyle": "light",

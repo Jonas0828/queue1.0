@@ -11,28 +11,28 @@ Page({
     reserveDate: '',
     formData: {},
     rules: [{
-        name: 'reserveDate',
-        rules: {
-          required: true,
-          message: '预约日期必填'
-        },
+      name: 'reserveDate',
+      rules: {
+        required: true,
+        message: '预约日期必填'
       },
-      {
-        name: 'Money',
-        rules: {
-          required: true,
-          message: '取现金额必填'
-        },
+    },
+    {
+      name: 'Money',
+      rules: {
+        required: true,
+        message: '转账金额必填'
       },
+    },
     ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: '个人大额取现预约'
+      title: '对公转账预约'
     });
     let date = new Date();
     date.setDate(date.getDate() + 1);
@@ -57,7 +57,7 @@ Page({
       // 获取传递过来的数据
       temp.setData({
         bankInfo: data.data,
-        tradeName : data.name
+        tradeName: data.name
       });
     });
   },
@@ -69,7 +69,7 @@ Page({
       [`formData.${field}`]: e.detail.value
     })
   },
-  bindResDateChange: function(e) {
+  bindResDateChange: function (e) {
     console.log(e);
     const {
       field
@@ -106,15 +106,15 @@ Page({
             RsvDate: revInfo.reserveDate,
             IDType: '01',
             IDCode: userinfo.IdNo,
-            BrType: '01', // 对私 01 对公02
-            TrxType: '0101', // 对公对私+两位顺序
+            BrType: '02', // 对私 01 对公02
+            TrxType: '0201', // 对公对私+两位顺序
             TrxStatus: '0',
             TrxData: JSON.stringify({
               revInfo: revInfo,
               bankInfo: this.data.bankInfo,
               reserveDate: tempDate,
               tradeName: this.data.tradeName,
-              TrxType: '0101',
+              TrxType: '0201',
             }),
           },
           success: res => {
@@ -128,7 +128,7 @@ Page({
                 success: resinner => {
                   resinner.eventChannel.emit('depositInfo', {
                     bankInfo: this.data.bankInfo,
-                    revInfo:revInfo,
+                    revInfo: revInfo,
                   })
                 }
               })
@@ -147,49 +147,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

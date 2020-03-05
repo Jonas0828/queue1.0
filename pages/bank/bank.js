@@ -62,8 +62,14 @@ Page({
       // url: '../service0/service0',
       name: '对公开户'
     }, {
-      // url: '../service0/service0',
-      name: '转账业务'
+      url: '../outmoney/outmoney',
+      name: '转账业务',
+      oper: (res, temp) => {
+        res.eventChannel.emit('bankInfo', {
+          data: temp.data.bankInfo,
+          name: '转账业务'
+        })
+      }
     }],
     rsvInfo: {}
   },
@@ -105,7 +111,7 @@ Page({
                 });
               } else if (res.cancel) {
                 console.log('用户点击取消进行排队')
-                currentPage.makeNumberFinal();
+                currentPage.makeNumberFinal(e);
               }
             },
           })
@@ -125,18 +131,18 @@ Page({
             reserveInfoFlag: false
           });
           // 有预约信息
-          temp.viewRecords(true);
+          temp.viewRecords(true, e);
         }
       }
     });
   },
-  viewRecords: (type) => {
+  viewRecords: (type, e) => {
     wx.navigateTo({
       url: '../reserverecords/reserverecords',
       events: {
         makeNumber: () => {
           if ('true' == new String(type)) {
-            currentPage.makeNumberFinal();
+            currentPage.makeNumberFinal(e);
           }
         }
       },
@@ -153,7 +159,7 @@ Page({
       toggle: true
     })
   },
-  makeNumberFinal: function() {
+  makeNumberFinal: function(e) {
     util.doServerAction({
       trade: '4001',
       data: {
@@ -161,12 +167,12 @@ Page({
         WorkDate: '' + year + month + day,
         IDType: '01',
         IDCode: wx.getStorageSync('userInfo').IdNo,
-        BrType: '01',
+        BrType: e.currentTarget.dataset.type,
         CustLvl: '01',
         TrxStatus: wx.getStorageSync('userid'),
       },
       success: res => {
-        console.log('--------------排队结果');
+        console.log('--------------对私排队结果');
         console.log(res.data);
         console.log(res.data.Service.response);
         this.setData({
@@ -192,7 +198,6 @@ Page({
     });
   },
   opentrade: function(e) {
-    console.log(e.currentTarget.dataset.index);
     // 检查个人基本信息是否完善
     const flag = wx.getStorageSync("UserinfoComplete");
     if (!flag) {
@@ -207,7 +212,6 @@ Page({
             url: '../infotype/infotype',
             events: {
               callback: function(data) {
-                console.log(data.flag);
                 if (data.flag == true) {
                   currentPage.phoneVerify(e);
                 }
@@ -220,11 +224,19 @@ Page({
       this.phoneVerify(e, false);
     }
   },
+
   phoneVerify: function(e, type) {
     //检查此次使用是否进行过手机号码验证
     const flag = wx.getStorageSync("phone");
     let temp = this;
-    console.log(flag)
+    let grids = undefined;
+    if (e.currentTarget.dataset.flag == 'true') {
+      grids = this.data.gridsPerson;
+    } else {
+      grids = this.data.gridsCompany;
+    }
+
+    console.log(grids);
     if (!flag) {
       wx.navigateTo({
         url: '../phone/phone',
@@ -234,9 +246,9 @@ Page({
               this.getResvInfo(e);
             } else {
               wx.navigateTo({
-                url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
+                url: grids[e.currentTarget.dataset.index].url,
                 success: res => {
-                  this.data.gridsPerson[e.currentTarget.dataset.index].oper(res, temp);
+                  grids[e.currentTarget.dataset.index].oper(res, temp);
                 }
               })
             }
@@ -248,9 +260,9 @@ Page({
         this.getResvInfo(e);
       } else {
         wx.navigateTo({
-          url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
+          url: grids[e.currentTarget.dataset.index].url,
           success: res => {
-            this.data.gridsPerson[e.currentTarget.dataset.index].oper(res, temp);
+            grids[e.currentTarget.dataset.index].oper(res, temp);
           }
         })
       }
