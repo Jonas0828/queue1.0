@@ -261,7 +261,8 @@ Page({
               bankInfo: this.data.bankInfo,
               cardType: this.data.cardType,
               tradeName: this.data.tradeName,
-              reserveDate: tempDate
+              reserveDate: tempDate,
+              TrxType: '0100',
             }),
           },
           success: res => {

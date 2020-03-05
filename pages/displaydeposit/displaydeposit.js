@@ -1,20 +1,39 @@
-// pages/displaydeposit/displaydeposit.js
+// pages/bigdeposit/bigdeposit.js
+let eventChannel = undefined;
+const util = require('../../utils/util.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    reserveDate: '',
+    formData: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '个人大额取现预约'
+    });
+    let temp = this;
+    eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('recordsInfo', function (data) {
+      console.log(data);
+      // 获取传递过来的数据
+      temp.setData({
+       revInfo: data.data.revInfo
+      });
+    });
+  }, 
+  submitForm(e) {
+    wx.navigateBack({
+      
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

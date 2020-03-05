@@ -7,13 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
+    list:[],
+    mapping:{
+      '0100': '../displayfillform/displayfillform',
+      '0101': '../displaydeposit/displaydeposit'
+    }
   },
   jumptodisplay: function(e){
+    let trxType = this.data.list[e.currentTarget.dataset.index].TrxType;
     wx.navigateTo({
-      url: '../displayfillform/displayfillform',
+      url: this.data.mapping[trxType],
       success: res => {
-        console.log('第几条记录', e.currentTarget.dataset.index);
         res.eventChannel.emit('recordsInfo', {
           data: this.data.list[e.currentTarget.dataset.index]
         });

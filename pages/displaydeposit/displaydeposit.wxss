@@ -1,1 +1,10 @@
-/* pages/displaydeposit/displaydeposit.wxss */
+/* pages/fillform/fillform.wxss */
+page{
+  width: 100%;
+  height: vh;
+  background-color: #FFFFFF;
+}
+
+.rsvdate{
+  margin-top: 30%;
+}/* pages/displaydeposit/displaydeposit.wxss */

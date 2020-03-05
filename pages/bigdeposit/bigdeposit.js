@@ -113,7 +113,8 @@ Page({
               revInfo: revInfo,
               bankInfo: this.data.bankInfo,
               reserveDate: tempDate,
-              tradeName: this.data.tradeName
+              tradeName: this.data.tradeName,
+              TrxType: '0101',
             }),
           },
           success: res => {
