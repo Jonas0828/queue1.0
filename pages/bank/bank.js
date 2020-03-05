@@ -44,12 +44,19 @@ Page({
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
           data: temp.data.bankInfo,
+          name: '个人开户',
           currentRes: temp.data.currentRes
         })
       }
     }, {
-      // url: '../reserverecords/reserverecords',
+      url: '../bigdeposit/bigdeposit',
       name: '大额取款',
+      oper: (res, temp) => {
+        res.eventChannel.emit('bankInfo', {
+          data: temp.data.bankInfo,
+          name: '大额取款'
+        })
+      }
     }],
     gridsCompany: [{
       // url: '../service0/service0',

@@ -1,6 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/bigdeposit/bigdeposit",
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
     "pages/bank/bank",
@@ -13,6 +15,7 @@
     "pages/infotype/infotype",
     "pages/user/user",
     "pages/displayfillform/displayfillform"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

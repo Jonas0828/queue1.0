@@ -36,9 +36,18 @@ Page({
       console.log(data);
       currentPage.setData({
         reserve: {
-          number: data.rsvSeq,
           time: data.userInfo.reserveDate,
           name: data.userInfo.cardType.name,
+          bankname: data.bankInfo.DotName
+        }
+      });
+    })
+    eventChannel.on('depositInfo', function (data) {
+      console.log(data);
+      currentPage.setData({
+        reserve: {
+          time: data.revInfo.reserveDate,
+          name: data.revInfo.tradeName,
           bankname: data.bankInfo.DotName
         }
       });

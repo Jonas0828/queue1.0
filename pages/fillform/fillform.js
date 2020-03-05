@@ -253,7 +253,7 @@ Page({
             IDType: '01',
             IDCode: userinfo.IdNo,
             BrType: '01',
-            TrxType: '0',
+            TrxType: '0100',
             TrxStatus: '0',
             TrxData: JSON.stringify({
               userInfo: userinfo,
@@ -272,7 +272,6 @@ Page({
                   resinner.eventChannel.emit('bankInfo', {
                     bankInfo: this.data.bankInfo,
                     userInfo: userinfo,
-                    rsvSeq: res.data.Service.response.RsvSeq
                   })
                 }
               })
