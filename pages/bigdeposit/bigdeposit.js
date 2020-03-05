@@ -92,7 +92,6 @@ Page({
       } else {
         let revInfo = e.detail.value;
         console.log('预约信息', revInfo);
-        revInfo.tradeName = this.data.tradeName;
         revInfo.UserID = wx.getStorageSync('userid');
         let tempDate = revInfo.reserveDate;
         revInfo.reserveDate = revInfo.reserveDate.replace('-', '').replace('-', '');
@@ -111,7 +110,10 @@ Page({
             TrxType: '0101', // 对公对私+两位顺序
             TrxStatus: '0',
             TrxData: JSON.stringify({
-              revInfo: revInfo
+              revInfo: revInfo,
+              bankInfo: this.data.bankInfo,
+              reserveDate: tempDate,
+              tradeName: this.data.tradeName
             }),
           },
           success: res => {

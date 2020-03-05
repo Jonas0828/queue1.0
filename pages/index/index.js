@@ -322,6 +322,7 @@ Page({
         // UserID: 'aaaaaaa',
       },
       success: res => {
+        console.log('首页1003', res);
         console.log(res.data.Service.response.body);
         if (res.data.Service.response.ErrCode == '00000000' && res.data.Service.response.body.IdNo == '') {
           wx.getUserInfo({

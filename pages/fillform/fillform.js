@@ -93,7 +93,8 @@ Page({
       temp.setData({
         bankInfo: data.data,
         currentRes: data.currentRes,
-        reserveDate: data.currentRes ? nowDate : ''
+        reserveDate: data.currentRes ? nowDate : '',
+        tradeName: data.name
       });
     });
     util.doServerAction({
@@ -258,7 +259,9 @@ Page({
             TrxData: JSON.stringify({
               userInfo: userinfo,
               bankInfo: this.data.bankInfo,
-              cardType: this.data.cardType
+              cardType: this.data.cardType,
+              tradeName: this.data.tradeName,
+              reserveDate: tempDate
             }),
           },
           success: res => {
