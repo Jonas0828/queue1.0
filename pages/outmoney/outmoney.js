@@ -35,8 +35,6 @@ Page({
       title: '对公转账预约'
     });
     let date = new Date();
-    date.setDate(date.getDate() + 1);
-    date = new Date(date);
     const year = date.getFullYear()
     let month = date.getMonth() + 1
     let day = date.getDate()
