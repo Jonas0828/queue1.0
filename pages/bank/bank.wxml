@@ -19,17 +19,17 @@
       <view class="weui-form-preview__value">0356-88888888</view>
     </view>
   </view>
-<view class="btn" hidden="{{toggle}}">
-  <view class="service" style="margin-left: 0%;" bindtap="getnumber" data-type="01">
-    <view class="textoficon">对私</view>
+  <view class="btn" hidden="{{toggle}}">
+    <view class="service" style="margin-left: 0%;" bindtap="getnumber" data-type="01">
+      <view class="textoficon">对私</view>
+    </view>
+    <view class="service" bindtap="getnumber" data-type="02">
+      <view class="textoficon">对公</view>
+    </view>
+    <view class="service" bindtap="getnumber" data-type="00">
+      <view class="textoficon">VIP</view>
+    </view>
   </view>
-  <view class="service" bindtap="getnumber" data-type="02">
-    <view class="textoficon">对公</view>
-  </view>
-  <view class="service" bindtap="getnumber" data-type="00">
-    <view class="textoficon">VIP</view>
-  </view>
-</view>
 
   <view class="ticketinfo" hidden="{{!toggle}}" style="margin-top: 50rpx">
     <view class="weui-cells weui-cells_after-title">
@@ -138,4 +138,49 @@
       </view>
     </view>
   </view>
+
+
+
+  <!-- ------------------预约信息列表------------------------ -->
+  <view class="weui-demo-dialog {{isRsv ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeRsvDialog"></view>
+    <view class="weui-dialog__wrp" bindtap="closeRsvDialog">
+      <view class="weui-dialog" catchtap="stopEvent">
+        <view class="weui-dialog__hd">
+          <view class="weui-dialog__title" style="font-size: 30px;color: #55AAAD;font-weight:normal;">预约信息列表</view>
+        </view>
+        <view class="weui-dialog__bd">
+
+          <view wx:for="{{rsvInfo}}" class="weui-form-preview">
+
+            <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">业务类型</view>
+                <view class="weui-form-preview__value">{{item.tradeName}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">预约网点</view>
+                <view class="weui-form-preview__value">{{item.bankInfo.DotName}}</view>
+              </view>
+              <view class="weui-form-preview__item">
+                <view class="weui-form-preview__label">预约日期</view>
+                <view class="weui-form-preview__value">{{item.reserveDate}}</view>
+              </view>
+              <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptodisplay" data-index="{{index}}">查看详情</view>
+              </view>
+            </view>
+          </view>
+
+
+
+
+        </view>
+        <view class="weui-dialog__ft">
+          <view class="weui-dialog__btn" bindtap="closeRsvDialog" style="color: #55AAAD;">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- ------------------预约信息列表------------------------ -->
 </view>

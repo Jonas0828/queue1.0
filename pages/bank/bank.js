@@ -22,6 +22,14 @@ Page({
     toggle: false,
     reserveInfoFlag: true,
     currentRes: false,
+    isRsv: false,
+    isMakeNumber: false,
+    queueType: '',
+    mapping: {
+      '0100': '../displayfillform/displayfillform',
+      '0101': '../displaydeposit/displaydeposit',
+      '0201': '../displayoutmoney/displayoutmoney',
+    },
     bankInfo: {
       DotName: "",
       RegionName: "",
@@ -73,6 +81,17 @@ Page({
     }],
     rsvInfo: {}
   },
+  jumptodisplay: function (e) {
+    let trxType = this.data.rsvInfo[e.currentTarget.dataset.index].TrxType;
+    wx.navigateTo({
+      url: this.data.mapping[trxType],
+      success: res => {
+        res.eventChannel.emit('recordsInfo', {
+          data: this.data.rsvInfo[e.currentTarget.dataset.index]
+        });
+      }
+    })
+  },
   getnumber: function(e) {
     // 手机号验证
     this.phoneVerify(e, true)
@@ -80,8 +99,9 @@ Page({
   getResvInfo: function(e) {
     let temp = this;
     console.log('查询预约信息');
-    console.log(e.currentTarget.dataset.type);
-    console.log(day)
+    this.setData({
+      queueType: e.currentTarget.dataset.type
+    });
     util.doServerAction({
       trade: '3002',
       data: {
@@ -124,34 +144,22 @@ Page({
           console.log('转换结果', arr);
           this.setData({
             rsvInfo: arr,
-            reserveInfoFlag: false
+            reserveInfoFlag: false,
+            isRsv: true,
+            isMakeNumber: true,
           });
           wx.setStorageSync('rsvInfo', {
             rsvInfo: arr,
             reserveInfoFlag: false
           });
-          // 有预约信息
-          temp.viewRecords(true, e);
         }
       }
     });
   },
-  viewRecords: (type, e) => {
-    wx.navigateTo({
-      url: '../reserverecords/reserverecords',
-      events: {
-        makeNumber: () => {
-          if ('true' == new String(type)) {
-            currentPage.makeNumberFinal(e);
-          }
-        }
-      },
-      success: res => {
-        res.eventChannel.emit('reserveInfo', {
-          data: currentPage.data.rsvInfo
-        })
-      }
-    })
+  viewRecords: (e) => {
+    currentPage.setData({
+      isRsv: true,
+    });
   },
   closeDialog: function() {
     this.setData({
@@ -159,7 +167,15 @@ Page({
       toggle: true
     })
   },
-  makeNumberFinal: function(e) {
+  closeRsvDialog: function () {
+    this.setData({
+      isRsv: false
+    })
+    if (this.data.isMakeNumber) {
+      currentPage.makeNumberFinal();
+    }
+  },
+  makeNumberFinal: function() {
     util.doServerAction({
       trade: '4001',
       data: {
@@ -167,12 +183,12 @@ Page({
         WorkDate: '' + year + month + day,
         IDType: '01',
         IDCode: wx.getStorageSync('userInfo').IdNo,
-        BrType: e.currentTarget.dataset.type,
+        BrType: this.data.queueType,
         CustLvl: '01',
         TrxStatus: wx.getStorageSync('userid'),
       },
       success: res => {
-        console.log('--------------对私排队结果');
+        console.log('--------------排队结果');
         console.log(res.data);
         console.log(res.data.Service.response);
         this.setData({
