@@ -105,14 +105,14 @@ Page({
             IDType: '01',
             IDCode: userinfo.IdNo,
             BrType: '02', // 对私 01 对公02
-            TrxType: '0201', // 对公对私+两位顺序
+            TrxType: '0200', // 对公对私+两位顺序
             TrxStatus: '0',
             TrxData: JSON.stringify({
               revInfo: revInfo,
               bankInfo: this.data.bankInfo,
               reserveDate: tempDate,
               tradeName: this.data.tradeName,
-              TrxType: '0201',
+              TrxType: '0200',
             }),
           },
           success: res => {

@@ -27,10 +27,13 @@ Page({
       for (var j = 0; j < arrRsv.length; j++) {
         resultRes = resultRes + (j == 4 || j == 6 ? '-' : '') + arrRsv[j];
       };
-      data.data.revInfo.reserveDate = resultRes;
+      let revInfo = {
+        reserveDate : resultRes,
+        Money: data.data.revInfo.Money
+      };
       // 获取传递过来的数据
       temp.setData({
-       revInfo: data.data.revInfo
+        revInfo: revInfo
       });
     });
   }, 

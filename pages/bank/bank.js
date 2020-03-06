@@ -67,9 +67,6 @@ Page({
       }
     }],
     gridsCompany: [{
-      // url: '../service0/service0',
-      name: '对公开户'
-    }, {
       url: '../outmoney/outmoney',
       name: '转账业务',
       oper: (res, temp) => {
