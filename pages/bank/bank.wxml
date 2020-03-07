@@ -26,9 +26,9 @@
     <view class="service" bindtap="getnumber" data-type="02">
       <view class="textoficon">对公</view>
     </view>
-    <view class="service" bindtap="getnumber" data-type="00">
+    <!-- <view class="service" bindtap="getnumber" data-type="00">
       <view class="textoficon">VIP</view>
-    </view>
+    </view> -->
   </view>
 
   <view class="ticketinfo" hidden="{{!toggle}}" style="margin-top: 50rpx">

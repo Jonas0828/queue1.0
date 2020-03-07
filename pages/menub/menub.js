@@ -25,9 +25,9 @@ Page({
   jumptooper: function (e) {
     let temp = this;
     wx.navigateTo({
-      url: this.data.gridsPerson[e.currentTarget.dataset.index].url,
+      url: this.data.gridsCompany[e.currentTarget.dataset.index].url,
       success: res => {
-        this.data.gridsPerson[e.currentTarget.dataset.index].oper(res, temp);
+        this.data.gridsCompany[e.currentTarget.dataset.index].oper(res, temp);
       }
     })
   },
