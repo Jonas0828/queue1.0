@@ -156,6 +156,7 @@ Page({
   viewRecords: (e) => {
     currentPage.setData({
       isRsv: true,
+      isMakeNumber: false
     });
   },
   closeDialog: function() {
