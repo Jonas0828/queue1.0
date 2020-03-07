@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/reservenumber/reservenumber",
+    
+    "pages/menua/menua",
     "pages/bigdeposit/bigdeposit",
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
@@ -9,14 +12,15 @@
     "pages/phone/phone",
     "pages/map/map",
     "pages/reserverecords/reserverecords",
-    "pages/reservenumber/reservenumber",
+    
     "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/user/user",
     "pages/displayfillform/displayfillform",
     "pages/displaydeposit/displaydeposit",
     "pages/outmoney/outmoney",
-    "pages/displayoutmoney/displayoutmoney"
+    "pages/displayoutmoney/displayoutmoney",
+    "pages/menub/menub"
   ],
   "window": {
     "backgroundTextStyle": "light",

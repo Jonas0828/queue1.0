@@ -1,0 +1,10 @@
+
+  <view class="four">
+    <view class="weui-flex">
+      <view class="weui-flex__item" >
+        <view class="service" bindtap="jumptooper" style="margin-top: 50rpx;" wx:for="{{menulist}}" wx:key="*this" data-index="{{index}}">
+          <view class="textoficon">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>

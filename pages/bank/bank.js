@@ -30,6 +30,7 @@ Page({
       '0101': '../displaydeposit/displaydeposit',
       '0201': '../displayoutmoney/displayoutmoney',
     },
+    back: false,
     bankInfo: {
       DotName: "",
       RegionName: "",
@@ -53,7 +54,7 @@ Page({
         res.eventChannel.emit('bankInfo', {
           data: temp.data.bankInfo,
           name: '个人开户',
-          currentRes: temp.data.currentRes
+          back: temp.data.back
         })
       }
     }, {
@@ -62,7 +63,8 @@ Page({
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
           data: temp.data.bankInfo,
-          name: '大额取款'
+          name: '大额取款',
+          back: temp.data.back
         })
       }
     }],
@@ -72,7 +74,8 @@ Page({
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
           data: temp.data.bankInfo,
-          name: '转账业务'
+          name: '转账业务',
+          back: temp.data.back
         })
       }
     }],
@@ -112,23 +115,31 @@ Page({
         console.log(res);
         console.log(res.data.Service.response);
         if (res.data.Service.response.RsvNum == '0') {
-          // if(true){
           // 无预约信息
           wx.showModal({
             title: '提示',
-            content: '如需进行填单操作，在当前页面选择交易填单后再进行排队，否继续排队',
-            cancelText: '否',
-            confirmText: '是',
+            content: '是否进行填单',
+            cancelText: '排队',
+            confirmText: '填单',
             confirmColor: '#55AAAD',
             success: res => {
               if (res.confirm) {
-                console.log('用户点击确定')
-                temp.setData({
-                  currentRes: true
-                });
+                console.log('填单')
+                // temp.setData({
+                //   currentRes: true
+                // });
+                wx.navigateTo({
+                  url: e.currentTarget.dataset.type == '01' ? '../menua/menua' : '../menub/menub',
+                 
+                  success:(res) => {
+                    res.eventChannel.emit('bankInfo', {
+                      data: temp.data.bankInfo,
+                    })
+                  }
+                })
               } else if (res.cancel) {
-                console.log('用户点击取消进行排队')
-                currentPage.makeNumberFinal(e);
+                console.log('排队')
+                currentPage.makeNumberFinal();
               }
             },
           })
@@ -172,6 +183,11 @@ Page({
     if (this.data.isMakeNumber) {
       currentPage.makeNumberFinal();
     }
+  },
+  cancleDialog: function (){
+    this.setData({
+      isRsv: false
+    })
   },
   makeNumberFinal: function() {
     util.doServerAction({
@@ -327,7 +343,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    if (wx.getStorageSync('back')) {
+      currentPage.makeNumberFinal();
+    } 
+    wx.removeStorageSync('back')
   },
 
   /**

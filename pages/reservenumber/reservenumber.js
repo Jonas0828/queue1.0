@@ -1,5 +1,6 @@
 // pages/reservenumber/reservenumber.js
 const util = require('../../utils/util.js');
+let eventChannel = undefined;
 
 Page({
 
@@ -7,39 +8,44 @@ Page({
    * 页面的初始数据
    */
   data: {
+    display: false,
     reserve: {
       number: '',
       name: '',
       bankname: '',
       time: '',
     },
-  flag:false
+    back: false
   },
-  clickbtn: function () {
+  finish: function () {
     wx.navigateBack({
-      delta: this.data.flag ?1:2,
+      delta: 2,
+    })
+  },
+  queue: function() {
+    wx.setStorageSync('back', this.data.back);
+    wx.navigateBack({
+      delta: 3,
+      success:(res) => {
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const eventChannel = this.getOpenerEventChannel()
+    eventChannel = this.getOpenerEventChannel()
     const currentPage = this;
-    eventChannel.on('reserveinfo', function (data) {
-      currentPage.setData({
-        reserve:data,
-        flag: true,
-      });
-    })
     eventChannel.on('bankInfo', function (data) {
       console.log(data);
       currentPage.setData({
         reserve: {
           time: data.userInfo.reserveDate,
           name: data.userInfo.cardType.name,
-          bankname: data.bankInfo.DotName
-        }
+          bankname: data.bankInfo.DotName,
+        },
+        back: data.back,
+        display: !data.back
       });
     })
     eventChannel.on('depositInfo', function (data) {
@@ -48,8 +54,10 @@ Page({
         reserve: {
           time: data.revInfo.reserveDate,
           name: data.revInfo.tradeName,
-          bankname: data.bankInfo.DotName
-        }
+          bankname: data.bankInfo.DotName,
+        },
+        back: data.back,
+        display: !data.back
       });
     })
     wx.setNavigationBarTitle({

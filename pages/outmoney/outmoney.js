@@ -10,6 +10,7 @@ Page({
   data: {
     reserveDate: '',
     formData: {},
+    back: false,
     rules: [{
       name: 'reserveDate',
       rules: {
@@ -55,7 +56,8 @@ Page({
       // 获取传递过来的数据
       temp.setData({
         bankInfo: data.data,
-        tradeName: data.name
+        tradeName: data.name,
+        back: data.back
       });
     });
   },
@@ -127,6 +129,7 @@ Page({
                   resinner.eventChannel.emit('depositInfo', {
                     bankInfo: this.data.bankInfo,
                     revInfo: revInfo,
+                    back: this.data.back
                   })
                 }
               })

@@ -1,0 +1,30 @@
+.four{
+height: 100wh;
+ width: 100%;
+}
+.weui-flex{
+  margin-top:29px;
+  margin-bottom: 10px; 
+  align-items: center;
+}
+
+.service{
+  border-radius: 90rpx;
+  background-color: #55AAAD;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width:80%;
+  height: 45px;
+  margin-left: 10%;
+}
+.icons{
+  width: 60rpx;
+  height:60rpx;
+}
+.textoficon{
+  font-size: 20px;  
+  color: #FFFFFF;
+  left: 0;
+  opacity: 0.8;
+}

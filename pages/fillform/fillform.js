@@ -30,6 +30,7 @@ Page({
     userinfo: {},
     cardflag: true,
     formData: {},
+    back: false,
     rules: [{
       name: 'Name',
       rules: {
@@ -94,7 +95,8 @@ Page({
         bankInfo: data.data,
         currentRes: data.currentRes,
         reserveDate: data.currentRes ? nowDate : '',
-        tradeName: data.name
+        tradeName: data.name,
+        back: data.back
       });
     });
     util.doServerAction({
@@ -276,6 +278,7 @@ Page({
                   resinner.eventChannel.emit('bankInfo', {
                     bankInfo: this.data.bankInfo,
                     userInfo: userinfo,
+                    back: this.data.back
                   })
                 }
               })

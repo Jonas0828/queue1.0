@@ -52,10 +52,6 @@
         <view class="weui-form-preview__label">预约信息</view>
         <view class="weui-form-preview__value" bindtap="viewRecords" style="color: #55AAAD">点击查看</view>
       </view>
-      <!-- <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label">提示</view>
-        <view class="weui-form-preview__value">前面还有{{ticketInfo.wait}}人，请耐心等待</view>
-      </view> -->
       <view class="weui-form-preview__item">
         <view class="weui-form-preview__label">提示</view>
         <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>
@@ -116,10 +112,6 @@
                   <view class="weui-form-preview__label">日期</view>
                   <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
                 </view>
-                <!-- <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__label">提示</view>
-                  <view class="weui-form-preview__value">前面还有4人，请耐心等待</view>
-                </view> -->
                 <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">提示</view>
                   <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>
@@ -143,8 +135,8 @@
 
   <!-- ------------------预约信息列表------------------------ -->
   <view class="weui-demo-dialog {{isRsv ? 'weui-demo-dialog_show' : ''}}">
-    <view class="weui-mask" bindtap="closeRsvDialog"></view>
-    <view class="weui-dialog__wrp" bindtap="closeRsvDialog">
+    <view class="weui-mask" ></view>
+    <view class="weui-dialog__wrp" >
       <view class="weui-dialog" catchtap="stopEvent">
         <view class="weui-dialog__hd">
           <view class="weui-dialog__title" style="font-size: 30px;color: #55AAAD;font-weight:normal;">预约信息列表</view>
@@ -177,6 +169,7 @@
 
         </view>
         <view class="weui-dialog__ft">
+        <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="cancleDialog">取消</view>
           <view class="weui-dialog__btn" bindtap="closeRsvDialog" style="color: #55AAAD;">确定</view>
         </view>
       </view>

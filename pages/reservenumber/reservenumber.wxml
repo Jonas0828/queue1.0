@@ -12,8 +12,13 @@
         </view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">
-                <button class="weui-btn" type="primary" bindtap="clickbtn">确定</button>
+                <button class="weui-btn" type="primary" bindtap="finish">{{display ?'完成' : '继续填单'}}</button>
             </view>
-        </view>   
+        </view>
+        <view class="weui-msg__opr-area" hidden="{{display}}">
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="queue">排队</button>
+            </view>
+        </view>    
     </view>
 </view>
