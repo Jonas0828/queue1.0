@@ -28,7 +28,7 @@ Page({
     mapping: {
       '0100': '../displayfillform/displayfillform',
       '0101': '../displaydeposit/displaydeposit',
-      '0201': '../displayoutmoney/displayoutmoney',
+      '0200': '../displayoutmoney/displayoutmoney',
     },
     back: false,
     bankInfo: {

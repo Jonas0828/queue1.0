@@ -169,8 +169,8 @@
 
         </view>
         <view class="weui-dialog__ft">
-        <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="cancleDialog">取消</view>
-          <view class="weui-dialog__btn" bindtap="closeRsvDialog" style="color: #55AAAD;">确定</view>
+        <view class="weui-dialog__btn weui-dialog__btn_default"style="color: #55AAAD;" bindtap="closeRsvDialog">确定</view>
+          <view class="weui-dialog__btn" bindtap="cancleDialog" >取消</view>
         </view>
       </view>
     </view>
