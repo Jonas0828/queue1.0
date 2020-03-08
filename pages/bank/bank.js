@@ -29,6 +29,7 @@ Page({
       '0100': '../displayfillform/displayfillform',
       '0101': '../displaydeposit/displaydeposit',
       '0200': '../displayoutmoney/displayoutmoney',
+      '0102': '../displaypersonout/displaypersonout'
     },
     back: false,
     bankInfo: {
@@ -39,8 +40,6 @@ Page({
       name: '对私',
     }, {
       name: '对公',
-    }, {
-      name: 'VIP',
     }],
     ticketInfo: {
       number: '',
@@ -67,7 +66,17 @@ Page({
           back: temp.data.back
         })
       }
-    }],
+      }, {
+        url: '../personout/personout',
+        name: '个人转账',
+        oper: (res, temp) => {
+          res.eventChannel.emit('bankInfo', {
+            data: temp.data.bankInfo,
+            name: '个人转账',
+            back: temp.data.back
+          })
+        }
+      }],
     gridsCompany: [{
       url: '../outmoney/outmoney',
       name: '转账业务',
@@ -99,15 +108,18 @@ Page({
   getResvInfo: function(e) {
     let temp = this;
     console.log('查询预约信息');
-    this.setData({
-      queueType: e.currentTarget.dataset.type
-    });
+    if(undefined != e){
+      console.log('初始化交易类型');
+      this.setData({
+        queueType: e.currentTarget.dataset.type
+      });
+    }
     util.doServerAction({
       trade: '3002',
       data: {
         Dotid: this.data.bankInfo.DotID,
         WorkDate: '' + year + month + day,
-        BrType: e.currentTarget.dataset.type,
+        BrType: this.data.queueType,
         UserID: wx.getStorageSync('userid'),
       },
       success: res => {
@@ -129,7 +141,7 @@ Page({
                 //   currentRes: true
                 // });
                 wx.navigateTo({
-                  url: e.currentTarget.dataset.type == '01' ? '../menua/menua' : '../menub/menub',
+                  url: this.data.queueType == '01' ? '../menua/menua' : '../menub/menub',
                  
                   success:(res) => {
                     res.eventChannel.emit('bankInfo', {
@@ -344,7 +356,7 @@ Page({
    */
   onShow: function() {
     if (wx.getStorageSync('back')) {
-      currentPage.makeNumberFinal();
+      currentPage.getResvInfo(undefined);
     } 
     wx.removeStorageSync('back')
   },

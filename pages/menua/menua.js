@@ -10,6 +10,8 @@ Page({
         name: '个人开户'
       },{
         name: '大额取款'
+      }, {
+        name: '个人转账'
       }
     ],
     gridsPerson: [{
@@ -33,7 +35,19 @@ Page({
           back: true
         })
       }
-    }]
+      }, {
+        url: '../personout/personout',
+        name: '个人转账',
+        oper: (res, temp) => {
+          res.eventChannel.emit('bankInfo', {
+            data: temp.data.bankInfo,
+            name: '个人转账',
+            back: temp.data.back,
+            currentRes: true,
+            back: true
+          })
+        }
+      }]
   },
   jumptooper: function(e){
     let temp = this;

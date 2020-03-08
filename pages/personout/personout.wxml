@@ -1,0 +1,30 @@
+
+<!-- 校验表单提示 -->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+  <view class="page__bd">
+    <form bindsubmit="submitForm">
+      <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cells title="" footer="">
+          <mp-cell prop="required" title="预约日期" ext-class="rsvdate">
+            <picker  disabled="{{currentRes}}" mode="date" value="{{formData.reserveDate}}" start="{{nowDate}}" end="2999-10-01" name='reserveDate' data-field="reserveDate" bindchange="bindResDateChange">
+              <view class="weui-input">{{formData.reserveDate}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell prop="required" title="收款人户名" ext-class="">
+            <input bindinput="formInputChange" data-field="Name" class="weui-input" name='Name' placeholder="请输入收款人户名" value='{{formData.Name}}' />
+          </mp-cell>
+          <mp-cell prop="required" title="收款人账号" ext-class="">
+            <input bindinput="formInputChange" data-field="Account" class="weui-input" name='Account' placeholder="请输入收款人账号" value='{{formData.Account}}' />
+          </mp-cell>
+          <mp-cell prop="required" title="转账金额" ext-class="">
+            <input bindinput="formInputChange" data-field="Money" class="weui-input" name='Money' placeholder="请输入转账金额" value='{{formData.Money}}' />
+          </mp-cell>
+        </mp-cells>
+      </mp-form>
+      <view class="weui-btn-area" style="margin-top: 30%;">
+        <button class="weui-btn" type="primary" form-type='submit'>确定</button>
+      </view>
+    </form>
+  </view>
+</view>
