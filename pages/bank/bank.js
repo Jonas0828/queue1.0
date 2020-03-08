@@ -168,10 +168,6 @@ Page({
             isRsv: true,
             isMakeNumber: true,
           });
-          wx.setStorageSync('rsvInfo', {
-            rsvInfo: arr,
-            reserveInfoFlag: false
-          });
         }
       }
     });
@@ -221,21 +217,19 @@ Page({
           istrue: true,
           ticketInfo: {
             number: res.data.Service.response.QueSeq,
-            wait: '4',
             date: year + '-' + month + '-' + day,
             bankInfo: this.data.bankInfo
           }
         })
-        wx.setStorageSync('queue', true);
-        wx.setStorageSync('queueinfo', {
-          toggle: true,
-          ticketInfo: {
-            number: res.data.Service.response.QueSeq,
-            wait: '4',
-            date: year + '-' + month + '-' + day,
-            bankInfo: this.data.bankInfo
-          }
-        });
+        // wx.setStorageSync('queue', true);
+        // wx.setStorageSync('queueinfo', {
+        //   toggle: true,
+        //   ticketInfo: {
+        //     number: res.data.Service.response.QueSeq,
+        //     date: year + '-' + month + '-' + day,
+        //     bankInfo: this.data.bankInfo
+        //   }
+        // });
       }
     });
   },
@@ -328,20 +322,45 @@ Page({
     wx.setNavigationBarTitle({
       title: '网点信息'
     });
-    if (wx.getStorageSync('queue')) {
-      // 检测网点和日期和今天是否一致
-      let queueinfo = wx.getStorageSync('queueinfo');
-      let nowDate = year + '-' + month + '-' + day;
-      let dotID = queueinfo.ticketInfo.bankInfo.DotID;
-      console.log('网点load', nowDate + dotID);
-      console.log(queueinfo.ticketInfo.date + temp.data.bankInfo.DotID);
-      if (queueinfo.ticketInfo.date == nowDate && dotID == this.data.bankInfo.DotID) {
-        this.setData(queueinfo);
-
-        this.setData(wx.getStorageSync('rsvInfo'));
-
+    util.doServerAction({
+      trade: '4002',
+      data: {
+        Dotid: this.data.bankInfo.DotID,
+        WorkDate: '' + year + month + day,
+        IDType: '01',
+        IDCode: wx.getStorageSync('userInfo').IdNo,
+        UserID: wx.getStorageSync('userid'),
+      },
+      success: res => {
+        console.log('查询有无排队信息', res);
+        if (res.data.Service.response.QueFlag == 'Y'){
+          console.log('排队号', res.data.Service.response.QueSeq);
+          this.setData({
+            toggle: true,
+            ticketInfo: {
+              number: res.data.Service.response.QueSeq,
+              date: year + '-' + month + '-' + day,
+              bankInfo: this.data.bankInfo
+            }
+          });
+          if (res.data.Service.response.RsvFlag == 'Y'){
+            let arr = [];
+            const result = res.data.Service.response.RSPINOFS;
+    
+            for (var i = 0; i < result.length; i++) {
+              arr[i] = JSON.parse(result[i].rsvinfo);
+            }
+            console.log('转换结果', arr);
+            this.setData({
+              rsvInfo: arr,
+              reserveInfoFlag: false,
+              isRsv: false,
+              isMakeNumber: false,
+            });
+          }
+        }
       }
-    }
+    })
   },
 
   /**
