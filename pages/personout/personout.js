@@ -24,7 +24,7 @@ Page({
           message: '收款人户名必填'
         },
       }, {
-        name: 'Name',
+        name: 'Account',
         rules: {
           required: true,
           message: '收款人账户必填'
