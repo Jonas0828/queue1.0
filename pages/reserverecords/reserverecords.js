@@ -1,5 +1,6 @@
 // pages/reserverecords/reserverecords.js
 let eventChannel = undefined;
+const util = require('../../utils/util.js');
 
 Page({
 
@@ -11,7 +12,8 @@ Page({
     mapping:{
       '0100': '../displayfillform/displayfillform',
       '0101': '../displaydeposit/displaydeposit',
-      '0201': '../displayoutmoney/displayoutmoney',
+      '0200': '../displayoutmoney/displayoutmoney',
+      '0102': '../displaypersonout/displaypersonout'
     }
   },
   jumptodisplay: function(e){
@@ -32,21 +34,33 @@ Page({
     wx.setNavigationBarTitle({
       title: '预约记录'
     });
-    let temp = this;
-    eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('reserveInfo', function (data) {
-      console.log('获取到的预约记录', data);
-      temp.setData({
-        list: data.data
-      });
-    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    util.doServerAction({
+      trade: '3003',
+      data: {
+        UserID: wx.getStorageSync('userid'),
+        IDType: '01',
+        IDCode: wx.getStorageSync('userInfo').IdNo
+      },
+      success: res => {
+        console.log('预约信息查询结果', res);
+        let arr = [];
+        const result = res.data.Service.response.RSPINOFS;
+        for (var i = 0; i < result.length; i++) {
+          arr[i] = JSON.parse(result[i].rsvinfo);
+        }
+        console.log('转换结果', arr);
+        this.setData({
+          list: arr
+        })
+      }
+    })
+    
   },
 
   /**
@@ -67,7 +81,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    eventChannel.emit('makeNumber', {});
+    
   },
 
   /**

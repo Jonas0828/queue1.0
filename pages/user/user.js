@@ -10,20 +10,14 @@ Page({
       start:'',
       end:''
     },
-    cardinfo:{
-      cardno:"6212260504****2588",
-      openbank:"太原低科技总行营业室"
-    }
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // let nearbank = wx.getStorageSync("nearbank");
-    // this.setData({
-    //   nearbank: nearbank
-    // });
+    
   },
 
   /**
@@ -34,20 +28,29 @@ Page({
       frontColor: "#ffffff",
       backgroundColor: "#55AAAD"
     });
-    auth.getUserInfoAuth(function(){
+    let success = function () {
       wx.getUserInfo({
         withCredentials: false,
         lang: "zh_CN",
-        success(res){
+        success(res) {
           console.log(res.userInfo);
         }
       })
-    });
+    };
+    let fail = function(){
+
+    }
+    auth.getUserInfoAuth(success, fail);
     
   },
   jumptoinfotype: function () {
     wx.navigateTo({
       url: '../infotype/infotype',
+    })
+  },
+  jumptoresords: function() {
+    wx.navigateTo({
+      url: '../reserverecords/reserverecords',
     })
   },
   /**

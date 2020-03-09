@@ -221,15 +221,6 @@ Page({
             bankInfo: this.data.bankInfo
           }
         })
-        // wx.setStorageSync('queue', true);
-        // wx.setStorageSync('queueinfo', {
-        //   toggle: true,
-        //   ticketInfo: {
-        //     number: res.data.Service.response.QueSeq,
-        //     date: year + '-' + month + '-' + day,
-        //     bankInfo: this.data.bankInfo
-        //   }
-        // });
       }
     });
   },

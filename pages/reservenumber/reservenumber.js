@@ -15,11 +15,12 @@ Page({
       bankname: '',
       time: '',
     },
-    back: false
+    back: false,
+    flag: false
   },
   finish: function () {
     wx.navigateBack({
-      delta: 2,
+      delta: flag?1:2,
     })
   },
   queue: function() {
@@ -36,6 +37,13 @@ Page({
   onLoad: function (options) {
     eventChannel = this.getOpenerEventChannel()
     const currentPage = this;
+    eventChannel.on('reserveinfo', function (data) {
+      currentPage.setData({
+        reserve: data,
+        display: true,
+        flag:true
+      });
+    }) 
     eventChannel.on('bankInfo', function (data) {
       console.log(data);
       currentPage.setData({
