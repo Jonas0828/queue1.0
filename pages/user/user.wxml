@@ -22,7 +22,7 @@
         <view class="typeview">
           <view>预约记录</view>
         </view> 
-        <!-- <view class="msgview">未关联银行卡，暂无资产</view> -->
+        <view class="msgview">全部预约记录</view>
       </view>
       <image class="right" src="../resource/picture/map/go.png"></image>
     </view>

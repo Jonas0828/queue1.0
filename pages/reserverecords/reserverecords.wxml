@@ -15,6 +15,10 @@
           <view class="weui-form-preview__label">预约日期</view>
           <view class="weui-form-preview__value">{{item.reserveDate}}</view>
         </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">业务状态</view>
+          <view class="weui-form-preview__value">{{item.status}}</view>
+        </view>
         <view class="weui-form-preview__ft">
                 <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptodisplay" data-index="{{index}}">查看详情</view>
             </view>

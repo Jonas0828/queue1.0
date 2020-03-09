@@ -51,8 +51,18 @@ Page({
         console.log('预约信息查询结果', res);
         let arr = [];
         const result = res.data.Service.response.RSPINOFS;
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
           arr[i] = JSON.parse(result[i].rsvinfo);
+          if ('0' == result[i].trxStatus){
+            arr[i].status = '已处理'
+          } else if ('1' == result[i].trxStatus){
+            arr[i].status = '未处理'
+          } else if ('2' == result[i].trxStatus) {
+            arr[i].status = '已过期'
+          }else{
+            arr[i].status = '未知'
+          }
+          
         }
         console.log('转换结果', arr);
         this.setData({

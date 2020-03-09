@@ -20,7 +20,7 @@ Page({
   },
   finish: function () {
     wx.navigateBack({
-      delta: flag?1:2,
+      delta: this.data.flag?1:2,
     })
   },
   queue: function() {
