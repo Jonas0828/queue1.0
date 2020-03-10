@@ -14,7 +14,13 @@ Page({
       '0101': '../displaydeposit/displaydeposit',
       '0200': '../displayoutmoney/displayoutmoney',
       '0102': '../displaypersonout/displaypersonout'
-    }
+    },
+    selectA:false,
+    selectB:false,
+    selectC: false,
+    selectD: false,
+    select: '',
+    listAll:[]
   },
   jumptodisplay: function(e){
     let trxType = this.data.list[e.currentTarget.dataset.index].TrxType;
@@ -27,6 +33,55 @@ Page({
       }
     })
   }, 
+  changeSelect:function (e) {
+    let index = e.currentTarget.dataset.index;
+    console.log(index);
+    let temp = [];
+    if ('0' == index){
+      this.setData({
+        selectA: true,
+        [this.data.select]: false,
+        list: this.data.listAll,
+        select: 'selectA'
+      });
+    } else if ('1' == index){
+      for (let i of this.data.listAll) {
+        if ('0' == i.trxStatus){
+          temp.push(i);
+        }
+      }
+      this.setData({
+        selectB: true,
+        [this.data.select]: false,
+        list: temp,
+        select: 'selectB'
+      });
+    } else if ('2' == index) {
+      for (let i of this.data.listAll) {
+        if ('1' == i.trxStatus) {
+          temp.push(i);
+        }
+      }
+      this.setData({
+        selectC: true,
+        [this.data.select]: false,
+        list: temp,
+        select: 'selectC'
+      });
+    } else if ('3' == index) {
+      for (let i of this.data.listAll) {
+        if ('2' == i.trxStatus) {
+          temp.push(i);
+        }
+      }
+      this.setData({
+        selectD: true,
+        [this.data.select]: false,
+        list: temp,
+        select: 'selectD'
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -52,21 +107,25 @@ Page({
         let arr = [];
         const result = res.data.Service.response.RSPINOFS;
         for (let i = 0; i < result.length; i++) {
-          arr[i] = JSON.parse(result[i].rsvinfo);
-          if ('0' == result[i].trxStatus){
-            arr[i].status = '已处理'
-          } else if ('1' == result[i].trxStatus){
-            arr[i].status = '未处理'
+          arr[i] = JSON.parse(result[i].rsvinfo); 
+          arr[i].trxStatus = result[i].trxStatus
+          if ('0' == result[i].trxStatus) {
+            arr[i].status = '已办理'
+          } else if ('1' == result[i].trxStatus) {
+            arr[i].status = '未办理'
           } else if ('2' == result[i].trxStatus) {
             arr[i].status = '已过期'
-          }else{
+          } else {
             arr[i].status = '未知'
-          }
-          
+          } 
         }
         console.log('转换结果', arr);
+        
         this.setData({
-          list: arr
+          list: arr,
+          listAll: arr,
+          selectA:true,
+          select:'selectA'
         })
       }
     })
