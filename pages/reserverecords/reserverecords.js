@@ -46,38 +46,40 @@ Page({
       });
     } else if ('1' == index){
       for (let i of this.data.listAll) {
-        if ('0' == i.trxStatus){
-          temp.push(i);
+        if ('1' == i.trxStatus){
+          temp.push({
+           status: ''                                                                                                                                    
+
+          });
         }
+        if ('0' == result[i].trxStatus) {
+          arr[i].status = '已处理'
+        } else if ('1' == result[i].trxStatus) {
+          arr[i].status = '未处理'
+        } else if ('2' == result[i].trxStatus) {
+          arr[i].status = '已过期'
+        } else {
+          arr[i].status = '未知'
+        }  
       }
       this.setData({
         selectB: true,
         [this.data.select]: false,
-        list: temp,
+        list: this.data.listAll,
         select: 'selectB'
       });
     } else if ('2' == index) {
-      for (let i of this.data.listAll) {
-        if ('1' == i.trxStatus) {
-          temp.push(i);
-        }
-      }
       this.setData({
         selectC: true,
         [this.data.select]: false,
-        list: temp,
+        list: this.data.listAll,
         select: 'selectC'
       });
     } else if ('3' == index) {
-      for (let i of this.data.listAll) {
-        if ('2' == i.trxStatus) {
-          temp.push(i);
-        }
-      }
       this.setData({
         selectD: true,
         [this.data.select]: false,
-        list: temp,
+        list: this.data.listAll,
         select: 'selectD'
       });
     }
@@ -108,16 +110,6 @@ Page({
         const result = res.data.Service.response.RSPINOFS;
         for (let i = 0; i < result.length; i++) {
           arr[i] = JSON.parse(result[i].rsvinfo); 
-          arr[i].trxStatus = result[i].trxStatus
-          if ('0' == result[i].trxStatus) {
-            arr[i].status = '已办理'
-          } else if ('1' == result[i].trxStatus) {
-            arr[i].status = '未办理'
-          } else if ('2' == result[i].trxStatus) {
-            arr[i].status = '已过期'
-          } else {
-            arr[i].status = '未知'
-          } 
         }
         console.log('转换结果', arr);
         

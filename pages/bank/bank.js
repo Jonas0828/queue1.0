@@ -309,49 +309,50 @@ Page({
       temp.setData({
         bankInfo: data.data
       });
+      util.doServerAction({
+        trade: '4002',
+        data: {
+          Dotid: data.data.DotID,
+          WorkDate: '' + year + month + day,
+          IDType: '01',
+          IDCode: wx.getStorageSync('userInfo').IdNo,
+          UserID: wx.getStorageSync('userid'),
+        },
+        success: res => {
+          console.log('查询有无排队信息', res);
+          if (res.data.Service.response.QueFlag == 'Y') {
+            console.log('排队号', res.data.Service.response.QueSeq);
+            currentPage.setData({
+              toggle: true,
+              ticketInfo: {
+                number: res.data.Service.response.QueSeq,
+                date: year + '-' + month + '-' + day,
+                bankInfo: data.data.bankInfo
+              }
+            });
+            if (res.data.Service.response.RsvFlag == 'Y') {
+              let arr = [];
+              const result = res.data.Service.response.RSPINOFS;
+
+              for (var i = 0; i < result.length; i++) {
+                arr[i] = JSON.parse(result[i].rsvinfo);
+              }
+              console.log('转换结果', arr);
+              currentPage.setData({
+                rsvInfo: arr,
+                reserveInfoFlag: false,
+                isRsv: false,
+                isMakeNumber: false,
+              });
+            }
+          }
+        }
+      })
     })
     wx.setNavigationBarTitle({
       title: '网点信息'
     });
-    util.doServerAction({
-      trade: '4002',
-      data: {
-        Dotid: this.data.bankInfo.DotID,
-        WorkDate: '' + year + month + day,
-        IDType: '01',
-        IDCode: wx.getStorageSync('userInfo').IdNo,
-        UserID: wx.getStorageSync('userid'),
-      },
-      success: res => {
-        console.log('查询有无排队信息', res);
-        if (res.data.Service.response.QueFlag == 'Y'){
-          console.log('排队号', res.data.Service.response.QueSeq);
-          this.setData({
-            toggle: true,
-            ticketInfo: {
-              number: res.data.Service.response.QueSeq,
-              date: year + '-' + month + '-' + day,
-              bankInfo: this.data.bankInfo
-            }
-          });
-          if (res.data.Service.response.RsvFlag == 'Y'){
-            let arr = [];
-            const result = res.data.Service.response.RSPINOFS;
     
-            for (var i = 0; i < result.length; i++) {
-              arr[i] = JSON.parse(result[i].rsvinfo);
-            }
-            console.log('转换结果', arr);
-            this.setData({
-              rsvInfo: arr,
-              reserveInfoFlag: false,
-              isRsv: false,
-              isMakeNumber: false,
-            });
-          }
-        }
-      }
-    })
   },
 
   /**
