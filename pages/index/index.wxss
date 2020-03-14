@@ -1,251 +1,126 @@
 /* pages/index/index.wxss */
-.page{
-    background-color: white;
-}
-/* 头部 */
-.head{
-  display: flex;
-  width: 100%;
-  position: relative;/*父元素位置要设置为相对*/
-  background-color: rgb(238, 232, 232);
-  color: #55AAAD;
-}
-.head1{
-  display: flex;
-  height: 50rpx;
-  width: 100%;
-  position: relative;/*父元素位置要设置为相对*/
-  background-color: rgb(238, 232, 232);
-  margin-top: 5rpx;
- 
-}
-.head1 .hello{
-  margin-left: 30rpx;
-  font-size: 30rpx;
-  width: 65%
-}
-.head1 .register{
-  /* margin-left: 60rpx; */
-  /*  */
-  font-size: 30rpx; 
-}
-.head1 .login{
-  /* width: 20%; */
-   font-size: 30rpx; 
-}
-.head1 .null{
-   width: 50% 
-}
-.head1 .hellouser{
-  font-size: 30rpx; 
-}
-.head1 .logout{
-  margin-left: 30rpx;
-  width: 15%;
-  font-size: 30rpx; 
-}
 
-.head image{
-  position: absolute;/*要约束所在位置的子元素的位置要设置成绝对*/
-  right: 35rpx;/* 调节靠左 */
-  display: flex;
-  margin-top: -1px;
-  justify-content: right;
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 5rpx;
-}
-
-/* 第二部分 */
-
-.fullview{
+page{
   height: 100%;
   width: 100%;
+  
 }
-.top{
-  width: 100%;
-  background-color:pink;
-}
-.swiper{
-  width: 100vw;
-  height: px;
+.sub-page{
+    background-color: white;
 }
 
-.img{
+/* 隐藏滚动条 */
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.top{
+  height: 300rpx;
+}
+
+.fullview{
   width: 100%;
-  height: 50px;
+  height: 192rpx;
+  background-color: #1C6CEF;
+  border-bottom-right-radius: 355rpx 40rpx;
+  border-bottom-left-radius: 355rpx 40rpx;
+  padding-top: 20rpx;
 }
-/* 第三部分 */
-.three{
-  width: 100%;
-  height: 100rpx;
-  /* background-color: rgb(78, 44, 44); */
-}
-.three .welcome{
-  font-size: 35rpx;
-}
-.three .welcome text{
-  font-size: 35rpx;
+
+swiper{
   margin-left: 20rpx;
 }
-.three .welcome .name{
-  margin-left: 20rpx;
-}
-.addr{
-  /* border-radius: 25rpx; */
-  /* background-color: blue; */
-  flex-wrap:wrap;
-  float: left;
-  position: relative; 
-  display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  justify-content: center;  
-  width: 100%;
-  height: 50rpx;
-}
-.icon1{
-  width: 50rpx;
-  height:50rpx;
-  text-align: center;
-}
-.network{
-  margin-top: 0rpx;
-  font-size: 30rpx;
-}
-/* 第四部分 */
-.four{
-  /* background-color: red; */
-  /* border-radius: 35rpx; */
-  height: 60px;
-  margin-top: -16px;
-}
-.weui-flex{
-  margin-top:29px;
-  margin-bottom: 10px; 
-  align-items: center;
-}
-.weui-flex__item1{
-  /* margin-left: 70rpx; */
-  display: line;
-  flex-direction:column;
-  flex-wrap:wrap;
-  justify-content:center; 
-  float: left;
-  position: relative; 
+
+.center{
+  height: 94rpx;
+  padding-top: 40rpx;
+  padding-left: 20rpx;
+  padding-bottom: 20rpx;
 }
 
 .service{
-  border-radius: 90rpx;
-  background-color: #55AAAD;
-  /* flex-wrap:wrap;
-  float: left;
-  position: relative;  */
+  border-radius: 10rpx;
+  background-color: #1C6CEF;
   display: flex;
   align-items: center;
   justify-content: center; 
-  width:80%;
-  height: 45px;
-  margin-left: 10%;
+  width:710rpx;
+  height: 94rpx;
 }
-.icons{
-  width: 60rpx;
-  height:60rpx;
-  /* margin-left: -100px; */
-}
-.textoficon{
-  font-size: 20px;  
-  /* margin-top: -10rpx;
-  margin-bottom: 5rpx;
-  margin-left: 3rpx; */
+
+.mainbtn{
   color: #FFFFFF;
-  left: 0;
-  opacity: 0.8;
-  /* font-weight: bolder; */
+  font-size: 36rpx;
 }
 
-/* 第五部分 */
-.view1{
-  margin-top:-28px;
-  background-color: white;
-  border-radius: 50rpx;
-  height: 100px;
-}
-
-.weui-flex__item{
-  margin-top: 15px;
-  margin-left: 70rpx;
+.titleA{
+  height: 53rpx;
+  width: inherit;
   display: flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  justify-content:center;
-  float: left;
-  position: relative; 
+  justify-content: flex-start;
+  margin-top: 20rpx;
 }
-/* .textoficon{
-  font-size: 17px;  
-  margin-top: 10rpx;
-  margin-bottom: 5rpx;
-  margin-left: -60rpx;
-  display: block;
-  color: #000;
-  left: 0;
-  text-align: center;
-  opacity: 0.8;
-  font-weight: bolder;
+
+.titleBig{
+  margin-left: 20rpx;
+  width: 152rpx;
+  color: #353535;
+  font-size: 38rpx;
+}
+
+.titleSmall{
+  margin-left: 20rpx;
+  width: 120rpx;
+  height: 33rpx;
+  font-size: 24rpx;
+  color: #888888;
+  margin-top: 20rpx;
+}
+
+.contentA{
+  height: 200rpx;
+  width: inherit;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 12rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.contentItem:nth-child(2){
+  margin-left: 20rpx;
+}
+
+.footA{
+  padding-left: 20rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footItem{
+  height: 42rpx;
+  width: 346rpx;
+  color: #353535;
+  font-size: 30rpx;
+}
+
+.footItem:nth-child(2){
+  margin-left: 20rpx;
+}
+
+/* .titleB{
+  height: 53rpx;
+  width: inherit;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20rpx;
 } */
 
 
-.text1{
-  font-size: 20px;
-  font-weight: bolder;
-  margin-left: 10px;
-}
-.text2{
-   font-size: 15px;
-   margin-left: 20px;
-   color: grey;
-}
 
-.schoollist{
-  margin-top: 40rpx;
-}
-
-.school-list-info{
-  float: left;
-  margin-left: 20rpx;
-  margin-top: 20rpx;
-  position: relative;
-}
- 
-
-.school-list-photo{
-  width: 350rpx;
-  height: 250rpx;
-}
-
-.school-list-desc{
-  margin-top: -5px;
-  display: block;
-  color: #000;
-  left: 0;
-  width: 94%;
-  text-align: center;
-  font-size: 15px;
-  opacity: 0.7;
-  font-weight: bold;
-}
-.school-list-desc1{
-  margin-top: -5px;
-  display: block;
-  color: grey;
-  left: 0;
-  width: 94%;
-  text-align: center;
-  font-size: 25rpx;
-  opacity: 0.7;
-
-}
 /* 授权登录 */
 .weui-demo-dialog{
   visibility:hidden;

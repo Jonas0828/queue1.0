@@ -24,9 +24,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#1C6CEF",
     "navigationBarTitleText": "排队预约微服务",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -40,7 +40,7 @@
     }
   },
   "tabBar": {
-    "selectedColor": "#55AAAD",
+    "selectedColor": "#1C6CEF",
     "list": [
       {
         "pagePath": "pages/index/index",
