@@ -12,7 +12,8 @@ Page({
         complete: {
           flag: false,
           msg: '不完整'
-        }
+        },
+        event:'updateInfo'
       },
       {
         id: 'widget',
@@ -20,7 +21,8 @@ Page({
         complete: {
           flag: false,
           msg: '不完整'
-        }
+        },
+        event: ''
       },
       {
         id: 'feedback',
@@ -28,7 +30,8 @@ Page({
         complete: {
           flag: false,
           msg: '不完整'
-        }
+        },
+        event: ''
       },
     ]
   },

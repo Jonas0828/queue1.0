@@ -1,5 +1,5 @@
 <block wx:for="{{list}}" wx:key="id">
-  <view class="item" bindtap="updateInfo">
+  <view class="item" bindtap="{{item.event}}">
     <view class="title">{{item.name}}</view>
     <view class="flag">{{item.complete.msg}}</view>
     <image class="arrow" src="../resource/picture/user/9.png"></image>
