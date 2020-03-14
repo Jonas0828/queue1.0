@@ -1,12 +1,6 @@
 page {
   height: 100%;
-  width: 100%;
-  
-
-}
-
-::-webkit-scrollbar{
-    display: none;
+  width: 100%; 
 }
 
 .displayinline{
@@ -15,7 +9,6 @@ page {
   flex-direction: column;
   justify-content: center;
 }
-/* 动画 */
 /* .displayinlinebottom{ */
   /* display: flex; */
   /* 交叉轴上的对齐方式 */
@@ -34,75 +27,63 @@ page {
 
 .userinfo{
   width: 100%;
-  height: 25%;
-  background-color: #55AAAD;
-  border-bottom-left-radius: 50rpx 30rpx;
-  border-bottom-right-radius: 50rpx 30rpx;
+  height: 252rpx;
+  background-color: #1C6CEF;
+  display: flex;
 }
 
 .headview{
-  width: 150rpx;
-  height: 150rpx;
+  width: 140rpx;
+  height: 140rpx;
   border-radius: 50%;
   overflow:hidden;
+  margin-left: 30rpx;
+  margin-top: 62rpx;
 }
 
 .dearname{
   color: #FFFFFF;
-  font-size: 12pt; 
-  margin-top: 5rpx;
-
+  font-size: 34rpx; 
+  margin-top: 104rpx;
+  margin-left: 20rpx;
+  width: 102rpx;
+  height: 48rpx;
 }
 
-.centerview{
+.menuview{
   width: 100%;
   height: 75%;
-  background-color: #FAFAFA;
-}
-
-
-.listview{
-  top: 25%;
-  width: 100%;
-  height: 75%;
-  background-color: #FAFAFA;
-  position: absolute;
-  border-radius: 5rpx;
-  padding-left: 5%;
 }
 
 .item{
-  margin-top: 5%;
-  width:90%;
-  height: 20%;
-  background-color: #FFFFFF;
-  border-radius: 5rpx;
-  box-shadow: 0rpx 10rpx 50rpx 10rpx rgba(85, 85, 85, 0.10);
-  display: flex;
-  align-items: center;
+  width: inherit;
+  height: 140rpx;
+   display: flex;
 }
 
-.leftcontent{
-  width: 85%;
-  margin-left: 5%;
+
+.left{
+  width: 48rpx;
+  height: 48rpx;
+  margin-top: 44rpx;
+  margin-left: 30rpx;
+}
+
+.title{
+  width: 136rpx;
+  height: 48rpx;
+  font-size: 34rpx;
+  color: #353535;
+  margin-left: 30rpx;
+  margin-top: 44rpx;
 }
 
 .right{
-  width: 10%;
-  height: 20pt;
-  margin-top: 3%;
-  align-self: baseline;
+ width: 16rpx;
+ height: 26rpx;
+ margin-top: 55rpx;
+ margin-left: 460rpx;
 }
 
-.msgview{
-  margin-top: 3%;
-  color: #888888;
-  font-size: 11pt;
-}
 
-.typeview{
-  color: #55AAAD;
-  font-size: 17pt;
-  display: flex;
-}
 

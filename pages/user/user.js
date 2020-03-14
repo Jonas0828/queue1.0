@@ -10,7 +10,21 @@ Page({
       start:'',
       end:''
     },
-  
+    menu:[{
+      url: '../resource/picture/user/0.png',
+      title:'用户信息',
+      event:'jumptoinfotype'
+    },
+    {
+      url: '../resource/picture/user/1.png',
+      title: '预约记录',
+      event: 'jumptoresords'
+    },
+    {
+      url: '../resource/picture/user/2.png',
+      title: '收支明细',
+      event: ''
+    }],
   },
 
   /**
@@ -24,10 +38,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.setNavigationBarColor({
-      frontColor: "#ffffff",
-      backgroundColor: "#55AAAD"
-    });
     let success = function () {
       wx.getUserInfo({
         withCredentials: false,

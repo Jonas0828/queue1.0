@@ -1,39 +1,19 @@
 <view class="fullview">
-  <view class="userinfo displayinline">
+  <view class="userinfo">
     <view class="headview">
-      <open-data class="headimg" type="userAvatarUrl"></open-data>
+      <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="dearname">
       <open-data type="userNickName"></open-data>
     </view>
   </view>
-  <view class="listview">
-    <view class="item" style="margin-top:3%;" bindtap="jumptoinfotype">
-      <view class="leftcontent">
-        <view class="typeview">
-          <view>用户信息</view>
-        </view> 
-        <view class="msgview">完成度：30%</view>
-      </view>
-      <image class="right" src="../resource/picture/map/go.png"></image>
-    </view>
-    <view class="item" bindtap="jumptoresords">
-      <view class="leftcontent">
-        <view class="typeview">
-          <view>预约记录</view>
-        </view> 
-        <view class="msgview">全部预约记录</view>
-      </view>
-      <image class="right" src="../resource/picture/map/go.png"></image>
-    </view>
-    <view class="item">
-      <view class="leftcontent">
-        <view class="typeview">
-          <view>本月收支</view>
-        </view> 
-        <view class="msgview">本月暂无收支记录</view>
-      </view>
-      <image class="right" src="../resource/picture/map/go.png"></image>
+
+
+  <view class="menuview">
+    <view class="item" wx:for="{{menu}}" bindtap="{{item.event}}">
+      <image class="left" src="{{item.url}}"></image>
+      <view class="title">{{item.title}}</view>
+      <image class="right" src="../resource/picture/user/9.png"></image>
     </view>
   </view>
 </view>
