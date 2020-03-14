@@ -1,6 +1,5 @@
 {
   "pages": [ 
-    "pages/infotype/infotype",
     "pages/index/index",
     "pages/reservenumber/reservenumber",
     "pages/menua/menua",
@@ -13,7 +12,7 @@
     "pages/map/map",
     "pages/reserverecords/reserverecords",
     "pages/banklist/banklist",
-    
+    "pages/infotype/infotype",
     "pages/user/user",
     "pages/displayfillform/displayfillform",
     "pages/displaydeposit/displaydeposit",
