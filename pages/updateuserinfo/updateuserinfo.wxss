@@ -1,1 +1,21 @@
-/* pages/updateuserinfo/updateuserinfo.wxss */
+page{
+  background-color:#F5F6F7; 
+}
+
+.content{
+  width: 710rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 0rpx;
+}
+
+.bottom{
+  width: 710rpx;
+  height: 94rpx;  
+}
+
+.submitbtn{
+  background-color: #1C6CEF;
+  color: #FFFFFF;
+  margin-top: 60rpx;
+}
