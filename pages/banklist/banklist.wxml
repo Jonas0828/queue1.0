@@ -1,5 +1,5 @@
 <view class="title">
-  <image style="width:36rpx;height:36rpx;margin-left: 20rpx;" src="../resource/picture/banklist/location.png"></image>
+  <image style="width:36rpx;height:36rpx;margin-left: 20rpx;" src="../resource/picture/banklist/location.png" bindtap="chooselocation"></image>
   <input value="{{inputVal}}"></input>
   <picker mode="multiSelector" range="{{selectList}}" range-key="RegionDsc" value="{{codeIndex}}" bindchange="savecode" bindcolumnchange="columnchange">
     <view class="selectaddress" bindtap="refreshdata">重新选择</view>

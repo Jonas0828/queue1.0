@@ -38,11 +38,7 @@ Page({
         console.log(res);
         if (0 == res.data.Service.response.body.TotalNum) {
           this.setData({
-            list: [{
-              DotName: '该区域无网点',
-              RegionCode: '',
-              RegionName: ''
-            }],
+            list: [],
           });
         } else {
           // console.log(this.data.location)
@@ -105,11 +101,7 @@ Page({
                     })
                     if (0 == res.data.Service.response.body.TotalNum) {
                       temp.setData({
-                        list: [{
-                          DotName: '该区域无网点',
-                          RegionCode: '',
-                          RegionName: ''
-                        }],
+                        list: [],
                       });
                     }else{
                       temp.setData({
@@ -135,9 +127,9 @@ Page({
         fail: function(res) {
           wx.showModal({
             title: '提示',
-            content: '获取地理位置信息失败，请打开手机GPS定位功能，重新点击输入域即可',
+            content: '获取地理位置信息失败，请打开手机GPS定位功能，1~2秒后点击左上角定位即可',
             showCancel: false,
-            confirmColor: '#55AAAD',
+            confirmColor: '#1C6CEF',
           })
         }
       })
@@ -201,19 +193,6 @@ Page({
     }
     return this.bankinfosort(arrLeft).concat([pivot], this.bankinfosort(arrRight));
   }, 
-  showInput: function() {
-    this.chooselocation();
-  },
-  clearInput: function() {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
   // 给查询输入域赋值
   setInputValue: function(e) {
     this.setData({
