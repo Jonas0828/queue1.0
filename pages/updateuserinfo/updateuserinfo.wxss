@@ -6,7 +6,6 @@ page{
   width: 710rpx;
   margin-left: 20rpx;
   margin-top: 20rpx;
-  border-radius: 0rpx;
 }
 
 .bottom{

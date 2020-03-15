@@ -38,48 +38,79 @@ Page({
     console.log(index);
     let temp = [];
     if ('0' == index){
+      for (let i of this.data.listAll) {
+          let item = {
+            tradeName: i.tradeName,
+            bankInfo: i.bankInfo,
+            reserveDate: i.reserveDate,
+          };
+          if ('0' == i.trxStatus) {
+            item.status = '已办理'
+          } else if ('1' == i.trxStatus) {
+            item.status = '未办理'
+          } else if ('2' == i.trxStatus) {
+            item.status = '已过期'
+          }
+          temp.push(item);
+      }
       this.setData({
         selectA: true,
         [this.data.select]: false,
-        list: this.data.listAll,
+        list: temp,
         select: 'selectA'
       });
     } else if ('1' == index){
       for (let i of this.data.listAll) {
-        if ('1' == i.trxStatus){
-          temp.push({
-           status: ''                                                                                                                                    
-
-          });
-        }
-        if ('0' == result[i].trxStatus) {
-          arr[i].status = '已处理'
-        } else if ('1' == result[i].trxStatus) {
-          arr[i].status = '未处理'
-        } else if ('2' == result[i].trxStatus) {
-          arr[i].status = '已过期'
-        } else {
-          arr[i].status = '未知'
-        }  
+        if ('0' == i.trxStatus) {
+          let item = {
+            tradeName: i.tradeName,
+            bankInfo: i.bankInfo,
+            reserveDate: i.reserveDate,
+            status: '已办理'
+          }
+          temp.push(item);
+        }   
       }
       this.setData({
         selectB: true,
         [this.data.select]: false,
-        list: this.data.listAll,
+        list: temp,
         select: 'selectB'
       });
     } else if ('2' == index) {
+      for (let i of this.data.listAll) {
+        if ('1' == i.trxStatus) {
+          let item = {
+            tradeName: i.tradeName,
+            bankInfo: i.bankInfo,
+            reserveDate: i.reserveDate,
+            status: '未办理'
+          }
+          temp.push(item);
+        }
+      }
       this.setData({
         selectC: true,
         [this.data.select]: false,
-        list: this.data.listAll,
+        list: temp,
         select: 'selectC'
       });
     } else if ('3' == index) {
+      for (let i of this.data.listAll) {
+        if ('2' == i.trxStatus) {
+          let item = {
+            tradeName: i.tradeName,
+            bankInfo: i.bankInfo,
+            reserveDate: i.reserveDate,
+            status: '已过期'
+          }
+          temp.push(item);
+        }
+      }
       this.setData({
         selectD: true,
         [this.data.select]: false,
-        list: this.data.listAll,
+        list: temp,
         select: 'selectD'
       });
     }
@@ -107,14 +138,23 @@ Page({
       success: res => {
         console.log('预约信息查询结果', res);
         let arr = [];
+        let arrView = [];
         const result = res.data.Service.response.RSPINOFS;
         for (let i = 0; i < result.length; i++) {
           arr[i] = JSON.parse(result[i].rsvinfo); 
+          arr[i].trxStatus = result[i].trxStatus;
+          arrView[i] = JSON.parse(result[i].rsvinfo);
+          if ('0' == result[i].trxStatus){
+            arrView[i].status = '已办理'
+          } else if ('1' == result[i].trxStatus){
+            arrView[i].status = '未办理'
+          } else if ('2' == result[i].trxStatus) {
+            arrView[i].status = '已过期'
+          }
         }
-        console.log('转换结果', arr);
-        
+        console.log('展示数据',arrView);
         this.setData({
-          list: arr,
+          list: arrView,
           listAll: arr,
           selectA:true,
           select:'selectA'

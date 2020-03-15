@@ -1,6 +1,6 @@
 {
   "pages": [ 
-    "pages/updateuserinfo/updateuserinfo",
+    "pages/reserverecords/reserverecords",
     "pages/index/index",
     "pages/reservenumber/reservenumber",
     "pages/menua/menua",
@@ -8,10 +8,10 @@
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
     "pages/bank/bank",
-    
+    "pages/updateuserinfo/updateuserinfo",
     "pages/phone/phone",
     "pages/map/map",
-    "pages/reserverecords/reserverecords",
+    
     "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/user/user",
