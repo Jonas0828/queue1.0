@@ -11,9 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputShowed: false,
     inputVal: "",
-    btnaddress: '选择',
     location: {
       longitude: '',
       latitude: '',
@@ -28,8 +26,7 @@ Page({
     const address = this.data.selectList[0][e.detail.value[0]].RegionDsc + this.data.selectList[1][e.detail.value[1]].RegionDsc + this.data.selectList[2][e.detail.value[2]].RegionDsc;
     this.setData({
       codeIndex: this.data.selectList[2][e.detail.value[2]].CountyCode, 
-      inputVal: address,
-      inputShowed: true
+      inputVal: address
     });
     util.doServerAction({
       trade: '2001',

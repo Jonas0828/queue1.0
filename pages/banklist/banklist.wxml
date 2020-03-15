@@ -1,52 +1,31 @@
-<view class="page">
-  <view class="page__bd">
-    <view class="weui-search-bar">
-      <view class="weui-search-bar__cancel-btn">
-         <picker mode="multiSelector" range="{{selectList}}" range-key="RegionDsc" value="{{codeIndex}}" bindchange="savecode" bindcolumnchange="columnchange"> 
-          <button class="weui-btn mini-btn" type="" size="mini" style="margin-top: 12px;margin-right: 2px;color:#55AAAD" bindtap="refreshdata">{{btnaddress}}</button> 
-        </picker> 
-      </view>
-      <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-            <icon type="clear" size="14"></icon>
-          </view>
-        </view>
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-          <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">搜索</view>
-        </label>
-      </view>
-    </view>
+<view class="title">
+  <image style="width:36rpx;height:36rpx;margin-left: 20rpx;" src="../resource/picture/banklist/location.png"></image>
+  <input value="{{inputVal}}"></input>
+  <picker mode="multiSelector" range="{{selectList}}" range-key="RegionDsc" value="{{codeIndex}}" bindchange="savecode" bindcolumnchange="columnchange">
+    <view class="selectaddress" bindtap="refreshdata">重新选择</view>
+  </picker>
+</view>
 
-
-    <!-- ---------------------------------------------------- -->
-
-    <view wx:for="{{list}}" class="weui-form-preview" bindtap="jumptobank" data-index="{{index}}"> 
-      <view class="weui-form-preview__hd">
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">{{item.DotName}}</view>
-          <view class="weui-form-preview__value">
-            <image src="../resource/picture/map/go.png" style="width: 17pt;height:17pt;"></image>
-          </view>
-        </view>
+<view class="content">
+  <block wx:if="{{list.length == 0}}">
+    <image style="width:300rpx; height:300rpx;margin-top: 240rpx;margin-left: 225rpx;" src="../resource/picture/banklist/bank.png"></image>
+  </block>
+  <block wx:else>
+    <view class="small_title">附近网点</view>
+    <view wx:for="{{list}}" class="preview_form" data-index="{{index}}" bindtap="jumptobank">
+      <view class="preview_item">
+        <view class="preview_label_head">{{item.DotName }}</view>
+        <view class="preview_value_head" style="color: #1C6CEF;"><image style="width:32rpx;height:32rpx;" src="../resource/picture/banklist/arrow.png"></image></view>
       </view>
-      <view class="weui-form-preview__bd">
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">区域代码</view>
-          <view class="weui-form-preview__value">{{item.RegionCode}}</view>
-        </view>
-        <view class="weui-form-preview__item">
-          <view class="weui-form-preview__label">区域名称</view>
-          <view class="weui-form-preview__value">{{item.RegionName}}</view>
-        </view>
+      <view class="preview_border"></view>
+      <view class="preview_item">
+        <view class="preview_label">区域代码</view>
+        <view class="preview_value">{{item.RegionCode}}</view>
       </view>
-      <view class="weui-form-preview__ft">
-
+      <view class="preview_item">
+        <view class="preview_label">区域名称</view>
+        <view class="preview_value">{{item.RegionName}}</view>
       </view>
     </view>
-
-  </view>
+  </block>
 </view>

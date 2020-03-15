@@ -97,6 +97,10 @@ page{
 }
 
 .preview_item:nth-child(2){
+  margin-top: 26rpx;
+}
+
+.preview_item:nth-child(3){
   margin-top: 22rpx;
 }
 
@@ -113,9 +117,6 @@ page{
   color: #353535;
 }
 
-.bank{
-  background-color: 
-}
 
 
 
