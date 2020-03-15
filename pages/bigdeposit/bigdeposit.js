@@ -33,7 +33,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '个人大额取现预约'
+      title: '个人大额取款预约'
     });
     let date = new Date();
     date.setDate(date.getDate() + 1);
