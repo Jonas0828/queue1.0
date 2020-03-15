@@ -25,34 +25,39 @@
       </view>
     </view>
     <view class="content">
-      <view wx:for="{{list}}" class="preview_form" data-index="{{index}}" bindtap="jumptodisplay">
-        <view class="preview_item">
-          <view class="preview_label_head">{{item.bankInfo.DotName}}</view>
-          <block wx:if="{{item.status == '已办理'}}">
-            <view class="preview_value_head" style="color: #1C6CEF;">{{item.status}}</view>
-          </block>
-          <block wx:elif="{{item.status == '未办理'}}">
-            <view class="preview_value_head" style="color: #F99210;">{{item.status}}</view>
-          </block>
-          <block wx:elif="{{item.status == '已过期'}}">
-            <view class="preview_value_head" style="color: #888888;">{{item.status}}</view>
-          </block>
-          
+      <block wx:if="{{list.length == 0}}">
+        <image style="width:300rpx; height:300rpx;margin-top: 240rpx;" src="../resource/picture/reserverecords/bank.png"></image>
+      </block>
+      <block wx:else>
+        <view wx:for="{{list}}" class="preview_form" data-index="{{index}}" bindtap="jumptodisplay">
+          <view class="preview_item">
+            <view class="preview_label_head">{{item.bankInfo.DotName}}</view>
+            <block wx:if="{{item.status == '已办理'}}">
+              <view class="preview_value_head" style="color: #1C6CEF;">{{item.status}}</view>
+            </block>
+            <block wx:elif="{{item.status == '未办理'}}">
+              <view class="preview_value_head" style="color: #F99210;">{{item.status}}</view>
+            </block>
+            <block wx:elif="{{item.status == '已过期'}}">
+              <view class="preview_value_head" style="color: #888888;">{{item.status}}</view>
+            </block>
+
+          </view>
+          <view class="preview_border"></view>
+          <view class="preview_item">
+            <view class="preview_label">业务类型</view>
+            <view class="preview_value">{{item.tradeName}}</view>
+          </view>
+          <view class="preview_item">
+            <view class="preview_label">预约日期</view>
+            <view class="preview_value">{{item.reserveDate}}</view>
+          </view>
+          <view class="preview_item">
+            <view class="preview_label">详细地点</view>
+            <view class="preview_value">{{item.bankInfo.RegionName}}</view>
+          </view>
         </view>
-        <view class="preview_border"></view>
-        <view class="preview_item">
-          <view class="preview_label">业务类型</view>
-          <view class="preview_value" >{{item.tradeName}}</view>
-        </view>
-        <view class="preview_item">
-          <view class="preview_label">预约日期</view>
-          <view class="preview_value">{{item.reserveDate}}</view>
-        </view>
-        <view class="preview_item">
-          <view class="preview_label">详细地点</view>
-          <view class="preview_value">{{item.bankInfo.RegionName}}</view>
-        </view>
-      </view>
+      </block>
     </view>
   </view>
 </view>
