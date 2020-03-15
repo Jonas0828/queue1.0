@@ -1,19 +1,16 @@
-/* pages/index/index.wxss */
-
 page{
-  height: 100%;
   width: 100%;
-  
 }
 .sub-page{
-    background-color: white;
+  background-color: white;
+  height: calc(100vh - 48px);
+  overflow: auto;
 }
 
-/* 隐藏滚动条 */
-::-webkit-scrollbar{
-    width: 0;
-    height: 0;
-    color: transparent;
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
 .top{

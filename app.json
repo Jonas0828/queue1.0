@@ -40,14 +40,22 @@
     }
   },
   "tabBar": {
+    "custom": true,
+    "color": "#B3B3B3",
     "selectedColor": "#1C6CEF",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
+        "iconPath": "pages/resource/picture/tarbar/main.png",
+        "selectedIconPath": "pages/resource/picture/tarbar/mainselect.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/user/user",
+        "iconPath": "pages/resource/picture/tarbar/user.png",
+        "selectedIconPath": "pages/resource/picture/tarbar/userselect.png",
         "text": "我的"
       }
     ]
