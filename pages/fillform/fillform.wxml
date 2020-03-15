@@ -1,9 +1,9 @@
 <!-- 校验表单提示 -->
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="page">
-  <view class="page__bd">
+  <view class="content">
     <form bindsubmit="submitForm">
-
+  
 
       <mp-form id="form" rules="{{rules}}" models="{{formData}}">
         <mp-cells title="" footer="">
@@ -15,8 +15,8 @@
           </mp-cell>
           <mp-cell prop="required" title="性别" ext-class="">
             <radio-group bindchange="radioChange">
-              <radio value="0" checked="{{sexFlag}}">男</radio>
-              <radio style="margin-left:5px;" checked="{{!sexFlag}}" value="1">女</radio>
+              <radio value="0" checked="{{sexFlag}}" color="#1C6CEF">男</radio>
+              <radio style="margin-left:5px;" checked="{{!sexFlag}}" value="1" color="#1C6CEF">女</radio>
             </radio-group>
           </mp-cell>
 
@@ -35,9 +35,9 @@
 
           <mp-cell prop="" title="开户类型" ext-class="">
             <radio-group bindchange="selectCardType">
-              <radio value="0">卡</radio>
-              <radio style="margin-left:5px;" value="1">存折</radio>
-              <radio style="margin-left:5px;" value="2">存单</radio>
+              <radio value="0" color="#1C6CEF">卡</radio>
+              <radio style="margin-left:5px;" value="1" color="#1C6CEF">存折</radio>
+              <radio style="margin-left:5px;" value="2" color="#1C6CEF">存单</radio>
             </radio-group>
           </mp-cell>
 
@@ -49,8 +49,8 @@
           </mp-cell>
         </mp-cells>
       </mp-form>
-      <view class="weui-btn-area" style="margin-top: 50rpx;">
-        <button class="weui-btn" type="primary" form-type='submit'>确定</button>
+      <view class="bottom">
+        <button class="submitbtn" form-type='submit' style="width:710rpx; height:94rpx;font-size: 36rpx;font-weight:normal;line-height: 64rpx">确定</button>
       </view>
     </form>
   </view>
