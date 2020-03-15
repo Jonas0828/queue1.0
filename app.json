@@ -1,6 +1,5 @@
 {
-  "pages": [ 
-    "pages/reserverecords/reserverecords",
+  "pages": [   
     "pages/index/index",
     "pages/reservenumber/reservenumber",
     "pages/menua/menua",
@@ -11,7 +10,7 @@
     "pages/updateuserinfo/updateuserinfo",
     "pages/phone/phone",
     "pages/map/map",
-    
+    "pages/reserverecords/reserverecords",
     "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/user/user",
@@ -20,8 +19,8 @@
     "pages/outmoney/outmoney",
     "pages/displayoutmoney/displayoutmoney",
     "pages/menub/menub",
-    "pages/displaypersonout/displaypersonout",
-    "pages/personout/personout"
+    "pages/personout/personout",
+    "pages/displaypersonout/displaypersonout"
   ],
   "window": {
     "backgroundTextStyle": "light",

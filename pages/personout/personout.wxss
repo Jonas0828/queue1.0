@@ -1,10 +1,20 @@
-/* pages/fillform/fillform.wxss */
 page{
-  width: 100%;
-  height: vh;
-  background-color: #FFFFFF;
+  background-color:#F5F6F7; 
 }
 
-.rsvdate{
-  margin-top: 30%;
+.content{
+  width: 710rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.bottom{
+  width: 710rpx;
+  height: 94rpx;  
+}
+
+.submitbtn{
+  background-color: #1C6CEF;
+  color: #FFFFFF;
+  margin-top: 60rpx;
 }
