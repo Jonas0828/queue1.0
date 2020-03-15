@@ -1,1 +1,87 @@
-/* pages/phone/phone.wxss */
+.content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 60rpx;
+}
+
+.msg{
+  width: 630rpx;
+  height: 80rpx;
+  background-color: #F5F5F5;
+  border-radius: 10rpx;
+  margin-top: 80rpx;
+  display: flex;
+  align-items: center
+}
+
+.msg_content{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #888888;
+  line-height: 14rpx;
+}
+
+.region{
+  color: #353535;
+  font-size: 32rpx;
+  line-height: 16rpx;
+  margin-top: 8rpx;
+}
+
+.msg_number{
+  display: flex;
+  margin-top: 80rpx;
+}
+
+.msg_border{
+  width: 2rpx;
+  height: 32rpx;
+  background-color: #DBDBDB;
+  margin-left: 20rpx;
+}
+
+.msg_phone{
+  color: #353535;
+  font-size: 32rpx;
+  line-height: 16rpx;
+  margin-left: 20rpx;
+  margin-top: -8rpx;
+}
+
+.foot_border{
+  width: 630rpx;
+  height: 1rpx;
+  background-color: #EBEBEB;
+  margin-top: 20rpx;
+}
+
+.foot_code{
+  display: flex;
+  margin-top: 60rpx;
+}
+
+.code{
+  width: 192rpx;
+  font-size: 32rpx;
+  line-height: 16rpx;
+  color: #353535;
+}
+
+.view_btn{
+  color: #1C6CEF;
+  font-size: 32rpx;
+  line-height: 16rpx;
+  margin-left: 276rpx;
+  margin-top: 18rpx;
+}
+
+.bottom{
+  width: 630rpx;
+  height: 94rpx;  
+}
+
+.submitbtn{
+  background-color: #1C6CEF;
+  color: #FFFFFF;
+  margin-top: 60rpx;
+}
