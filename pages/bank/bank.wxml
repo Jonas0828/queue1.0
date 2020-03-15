@@ -1,179 +1,112 @@
-<view class="weui-form-preview">
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd" style="color: #55AAAD;">{{bankInfo.DotName}}</view>
-    </view>
+<image style="width:710rpx;height:240rpx;border-radios:10rpx;margin-left: 20rpx;margin-top:20rpx;" src="../resource/picture/bank/bank.png"></image>
+<view class="bank_name">{{bankInfo.DotName}}</view>
+<view class="bank_info">
+  <image style="width:32rpx;height:32rpx" src="../resource/picture/banklist/location.png"></image>
+  <view class="bank_address">朝阳门外大街308号XX大厦商底01A</view>
+</view>
+<view class="bank_info">
+  <image style="width:32rpx;height:32rpx" src="../resource/picture/bank/phone.png"></image>
+  <view class="bank_address">010-12123232</view>
+</view>
+<view class="bank_info">
+  <image style="width:32rpx;height:32rpx" src="../resource/picture/bank/time.png"></image>
+  <view class="bank_address">09:00-17:30</view>
+</view>
+<view class="bank_queue" hidden="{{toggle}}">
+  <button style="width:268rpx; height:68rpx;font-size: 32rpx;font-weight:normal;background-color: #1C6CEF;color:#FFFFFF;" bindtap="getnumber" data-type="01">个人业务</button>
+  <button style="width:268rpx; height:68rpx;font-size: 32rpx;font-weight:normal;background-color: #1C6CEF;color:#FFFFFF;margin-left: 80rpx" bindtap="getnumber" data-type="02">对公业务</button>
+</view>
+<view class="queue_info" hidden="{{!toggle}}">
+  <view class="title">排队信息</view>
+  <view class="preview_item">
+    <view class="preview_label">号码：</view>
+    <view class="preview_value">{{ticketInfo.number}}</view>
   </view>
-
-
-  <view class="bankimage">
-    <image src="../resource/picture/main/9.jpg" style="width:80%; height:90px;" />
+  <view class="preview_item">
+    <view class="preview_label">日期：</view>
+    <view class="preview_value value_date">{{ticketInfo.date}}</view>
   </view>
-  <view class="weui-form-preview__bd">
-    <view class="weui-form-preview__item">
-      <view class="weui-form-preview__label">详细地址</view>
-      <view class="weui-form-preview__value">{{bankInfo.RegionName}}</view>
-    </view>
-    <view class="weui-form-preview__item">
-      <view class="weui-form-preview__label">电话</view>
-      <view class="weui-form-preview__value">0356-88888888</view>
-    </view>
+  <view class="preview_item" hidden="{{reserveInfoFlag}}">
+    <view class="preview_label label_records">预约记录：</view>
+    <view class="preview_value value_records" bindtap="viewRecords">点击查看</view>
   </view>
-  <view class="btn" hidden="{{toggle}}">
-    <view class="service" style="margin-left: 0%;" bindtap="getnumber" data-type="01">
-      <view class="textoficon">对私</view>
-    </view>
-    <view class="service" bindtap="getnumber" data-type="02">
-      <view class="textoficon">对公</view>
-    </view>
-    <!-- <view class="service" bindtap="getnumber" data-type="00">
-      <view class="textoficon">VIP</view>
-    </view> -->
+  <view class="msg">提示：请准备好身份证、银行卡或存折等所需证件</view>
+</view>
+<view class="menu_title">个人业务</view>
+<view class="menu_a">
+  <view class="menu_item" wx:for="{{gridsPerson}}" wx:key="*this" hover-class="weui-grid_active" bindtap="opentrade" data-flag="true" data-index="{{index}}">
+    <image style="width:80rpx;height:80rpx" src="{{item.image}}"></image>
+    <view class="item_label">{{item.name}}</view>
   </view>
-
-  <view class="ticketinfo" hidden="{{!toggle}}" style="margin-top: 50rpx">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd" style="color: #55AAAD;">排队信息</view>
+</view>
+<view class="menu_title">对公业务</view>
+<view class="menu_a">
+  <view class="menu_item" wx:for="{{gridsCompany}}" wx:key="*this" hover-class="weui-grid_active" bindtap="opentrade" data-flag="false" data-index="{{index}}">
+    <image style="width:80rpx;height:80rpx" src="{{item.image}}"></image>
+    <view class="item_label">{{item.name}}</view>
+  </view>
+</view>
+<view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask" bindtap="closeDialog"></view>
+  <view class="weui-dialog__wrp" bindtap="closeDialog">
+    <view class="weui-dialog" catchtap="stopEvent" style="width: 560rpx;">
+      <view class="number_dialog">
+        <image style="width:140rpx;height:140rpx;margin-top: 60rpx;" src="../resource/picture/bank/success.png"></image>
+        <view class="number_sunccess">取号成功</view>
       </view>
-    </view>
-    <view class="weui-form-preview__bd" style="text-align: left">
-      <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label">号码</view>
-      </view>
-      <view class="weui-form-preview__item">
-        <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">{{ticketInfo.number}}</view>
-      </view>
-      <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label">日期</view>
-        <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
-      </view>
-      <view class="weui-form-preview__item" hidden="{{reserveInfoFlag}}">
-        <view class="weui-form-preview__label">预约信息</view>
-        <view class="weui-form-preview__value" bindtap="viewRecords" style="color: #55AAAD">点击查看</view>
-      </view>
-      <view class="weui-form-preview__item">
-        <view class="weui-form-preview__label">提示</view>
-        <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>
-      </view>
-    </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title" style="{{toggle ? '' :  'margin-top: 50rpx'}}">
-    <view class="weui-cell">
-      <view class="weui-cell__bd" style="color: #55AAAD;">个人业务</view>
-    </view>
-  </view>
-
-  <view class="weui-grids">
-    <view wx:for="{{gridsPerson}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-flag="true" data-index="{{index}}">
-      <image class="weui-grid__icon" src="../resource/picture/bank/2.png" />
-      <view class="weui-grid__label" style="color: rgba(0,0,0,0.5);">{{item.name}}</view>
-    </view>
-
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd" style="color: #55AAAD;">对公业务</view>
-    </view>
-  </view>
-
-  <view class="weui-grids">
-    <view wx:for="{{gridsCompany}}" wx:key="*this" class="weui-grid" hover-class="weui-grid_active" bindtap="opentrade" data-flag="false" data-index="{{index}}">
-      <image class="weui-grid__icon" src="../resource/picture/bank/2.png" />
-      <view class="weui-grid__label" style="color: rgba(0,0,0,0.5);">{{item.name}}</view>
-    </view>
-
-  </view>
-  <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
-    <view class="weui-mask" bindtap="closeDialog"></view>
-    <view class="weui-dialog__wrp" bindtap="closeDialog">
-      <view class="weui-dialog" catchtap="stopEvent">
-        <view class="weui-dialog__hd">
-          <view class="weui-dialog__title" style="font-size: 30px;color: #55AAAD;font-weight:normal;">取号成功</view>
+      <view class="number_dialog_content">
+        <view class="preview_item_dialog_number">
+          <view class="preview_label_dialog">号码：</view>
+          <view class="preview_value_dialog">{{ticketInfo.number}}</view>
         </view>
-        <view class="weui-dialog__bd">
-
-          <!-- ---------------------------------------------- -->
-          <view class="weui-form-preview__bd">
-            <view class="weui-form-preview">
-              <!-- <view class="weui-form-preview__hd">
-                <view class="weui-form-preview__item">
-                  <view class="weui-cell__bd" style="text-align: center;font-size: 30px"></view>
-                </view>
-              </view> -->
-              <view class="weui-form-preview__bd" style="text-align: left">
-                <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__label">号码</view>
-                </view>
-                <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__value" style="text-align: center;font-size: 30px;">{{ticketInfo.number}}</view>
-                </view>
-                <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__label">日期</view>
-                  <view class="weui-form-preview__value">{{ticketInfo.date}}</view>
-                </view>
-                <view class="weui-form-preview__item">
-                  <view class="weui-form-preview__label">提示</view>
-                  <view class="weui-form-preview__value">请准备好身份证、银行卡或存折等所需证件</view>
-                </view>
-              </view>
-            </view>
+        <view class="preview_item_dialog_date">
+          <view class="preview_label_dialog">日期：</view>
+          <view class="preview_value_dialog value_date_dialog">{{ticketInfo.date}}</view>
+        </view>
+        <view class="dialog_msg">提示：请准备好身份证、银行卡或存折等所需证件</view>
+      </view>
+      <view class="weui-dialog__ft">
+        <view class="weui-dialog__btn" bindtap="closeDialog" style="color: #1C6CEF;font-size:36rpx;">确定</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-demo-dialog {{isRsv ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask"></view>
+  <view class="weui-dialog__wrp">
+    <view class="weui-dialog" catchtap="stopEvent" style="width: 560rpx;">
+      <view class="number_dialog">
+        <view class="number_title">预约信息列表</view>
+      </view>
+      <view class="weui-dialog__bd" style="padding:0rpx;">
+      
+      <view class="dialog_list" wx:for="{{rsvInfo}}">
+        <view class="dialog_item">
+          <view class="item_a">
+            <view class="list_label">业务类型：</view>
+            <view class="list_value">{{item.tradeName}}</view>
           </view>
-
-
-          <!-- ---------------------------------------------- -->
-
-        </view>
-        <view class="weui-dialog__ft">
-          <view class="weui-dialog__btn" bindtap="closeDialog" style="color: #55AAAD;">确定</view>
-        </view>
-      </view>
-    </view>
-  </view>
-
-
-
-  <!-- ------------------预约信息列表------------------------ -->
-  <view class="weui-demo-dialog {{isRsv ? 'weui-demo-dialog_show' : ''}}">
-    <view class="weui-mask" ></view>
-    <view class="weui-dialog__wrp" >
-      <view class="weui-dialog" catchtap="stopEvent">
-        <view class="weui-dialog__hd">
-          <view class="weui-dialog__title" style="font-size: 30px;color: #55AAAD;font-weight:normal;">预约信息列表</view>
-        </view>
-        <view class="weui-dialog__bd">
-
-          <view wx:for="{{rsvInfo}}" class="weui-form-preview">
-
-            <view class="weui-form-preview__bd">
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">业务类型</view>
-                <view class="weui-form-preview__value">{{item.tradeName}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">预约网点</view>
-                <view class="weui-form-preview__value">{{item.bankInfo.DotName}}</view>
-              </view>
-              <view class="weui-form-preview__item">
-                <view class="weui-form-preview__label">预约日期</view>
-                <view class="weui-form-preview__value">{{item.reserveDate}}</view>
-              </view>
-              <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap="jumptodisplay" data-index="{{index}}">查看详情</view>
-              </view>
-            </view>
+          <view class="item_a">
+            <view class="list_label">预约网点：</view>
+            <view class="list_value">{{item.bankInfo.DotName}}</view>
           </view>
-
-
-
-
+          <view class="item_a">
+            <view class="list_label">预约日期：</view>
+            <view class="list_value">{{item.reserveDate}}</view>
+          </view>
+          <view class="item_b" bindtap="jumptodisplay" data-index="{{index}}">
+            <view class="detail">查看详情</view>
+            <image style="width:32rpx;height:32rpx;margin-left:10rpx;margin-top:10rpx;" src="../resource/picture/bank/arrow.png"></image>
+          </view>
         </view>
-        <view class="weui-dialog__ft">
-        <view class="weui-dialog__btn weui-dialog__btn_default"style="color: #55AAAD;" bindtap="closeRsvDialog">确定</view>
-          <view class="weui-dialog__btn" bindtap="cancleDialog" >取消</view>
-        </view>
+      </view>
+      
+      </view>
+      
+      <view class="weui-dialog__ft">
+        <view class="weui-dialog__btn weui-dialog__btn_default" style="color: #1C6CEF;" bindtap="closeRsvDialog">确定</view>
+        <view class="weui-dialog__btn" bindtap="cancleDialog" style="color: #353535;">取消</view>
       </view>
     </view>
   </view>
-  <!-- ------------------预约信息列表------------------------ -->
 </view>

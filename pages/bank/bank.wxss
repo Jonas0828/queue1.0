@@ -1,32 +1,3 @@
-.bankimage{
-  margin-top: 16px;
-  text-align: center;
-}
-
-.btn{
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-.service{
-  border-radius: 90rpx;
-  background-color: #55AAAD;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  width:30%;
-  margin-left: 10%;
-  height: 45px;
-  opacity: 0.8;
-}
-
-.textoficon{
-  font-size: 20px;  
-  color: #FFFFFF;
-  left: 0;
-}
-
 .weui-demo-dialog{
   visibility:hidden;
   opacity:0;
@@ -36,3 +7,244 @@
   visibility:visible;
   opacity:1;
 }
+
+.bank_name{
+  margin-top: 40rpx;
+  height: 36rpx;
+  font-weight: bold;
+  color: #353535;
+  font-size: 36rpx;
+  padding-bottom: 14rpx;
+  margin-left: 30rpx;
+}
+
+.bank_info{
+  margin-top: 28rpx;
+  margin-left: 30rpx;
+  display: flex;
+}
+
+.bank_address{
+  height: 28rpx;
+  font-size: 28rpx;
+  color: #353535;
+  margin-top: -4rpx;
+  margin-left: 20rpx;
+}
+
+.bank_queue{
+  height: 68rpx;
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.queue_info{
+  display: flex;
+  flex-direction: column;
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+}
+
+.title{
+  color: #353535;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.preview_item{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50rpx;
+}
+
+.preview_item:nth-child(2){
+  margin-top: 42rpx;
+}
+
+.preview_item:nth-child(3){
+  margin-top: 42rpx;
+}
+
+.preview_label{
+  width: 96rpx;
+  height: 42rpx;
+  font-size: 32rpx;
+  color: #888888;
+}
+
+.preview_value{
+  margin-left: 60rpx;
+  width: 541rpx;
+  color: #1C6CEF;
+  font-size: 44rpx;
+  margin-top: -10rpx;
+}
+
+.value_date{
+  font-size: 32rpx;
+  color: #353535;
+  margin-top: 2rpx;
+  margin-left: 5rpx;
+}
+
+.label_records{
+  width: 180rpx;
+}
+
+.value_records{
+  font-size: 32rpx;
+  color: #1C6CEF;
+  margin-top: 2rpx;
+  margin-left: 0rpx;
+}
+
+.msg{
+  color: #888888;
+  font-size: 26rpx;
+  margin-top: 40rpx;
+}
+
+.menu_title{
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  color: #353535;
+  line-height: 22.5rpx;
+  font-weight: bold;
+}
+
+.menu_a{
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.menu_item{
+  margin-top: 20rpx;
+  width: 25%;
+  height: 128rpx;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.item_label{
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 20rpx;
+  margin-top: 8rpx;
+}
+
+.number_dialog{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number_sunccess{
+  font-size: 38rpx;
+  color: #1C6CEF;
+  line-height: 40rpx;
+  margin-top: 40rpx;
+}
+
+.number_dialog_content{
+  width: 560rpx;
+  padding-bottom: 50rpx;
+}
+
+.preview_item_dialog_number{
+  margin-top: 64rpx;
+  display: flex;
+  margin-left: 61rpx;
+}
+
+.preview_item_dialog_date{
+  display: flex;
+  margin-left: 61rpx;
+  margin-top: 35rpx;
+}
+
+.preview_label_dialog{
+  font-size: 32rpx;
+  line-height: 22.5rpx;
+  color: #888888;
+}
+
+.preview_value_dialog{
+  font-size: 44rpx;
+  line-height: 22rpx;
+  color: #353535;
+  margin-left: 87rpx;
+}
+
+.value_date_dialog{
+  font-size: 32rpx;
+  line-height: 16rpx;
+  margin-left: 12rpx;
+  color: #353535;
+  margin-top: 6rpx;
+}
+
+.dialog_msg{
+  margin-left: 60rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  color: #888888;
+  margin-top: 80rpx;
+  width: 440rpx;
+  text-align: left;
+}
+
+.number_title{
+  color: #1C6CEF;
+  font-size: 41rpx;
+  margin-top: 60rpx;
+}
+
+.dialog_list{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  padding-bottom: 40rpx;
+}
+
+.dialog_item{
+  width: 475rpx;
+  
+  display: flex;
+  flex-direction: column;
+  margin-left: 40rpx;
+}
+
+.item_a{
+  display: flex;
+  justify-content: start;
+  margin-top: 40rpx;
+}
+
+.item_b{
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.list_label{
+  color: #888888;
+  font-size: 32rpx;
+}
+
+.list_value{
+  color: #353535;
+  font-size: 32rpx;
+  width: 300rpx;
+  text-align: end;
+  line-height: 55.5rpx;
+}
+
+.detail{
+  font-size: 32rpx;
+  color: #1C6CEF;
+  width: 128rpx;
+}
+

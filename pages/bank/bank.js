@@ -48,6 +48,7 @@ Page({
     },
     gridsPerson: [{
       url: '../fillform/fillform',
+      image: '../resource/picture/bank/0.png',
       name: '个人开户',
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
@@ -58,6 +59,7 @@ Page({
       }
     }, {
       url: '../bigdeposit/bigdeposit',
+        image: '../resource/picture/bank/1.png',
       name: '大额取款',
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
@@ -68,6 +70,7 @@ Page({
       }
       }, {
         url: '../personout/personout',
+        image: '../resource/picture/bank/2.png',
         name: '个人转账',
         oper: (res, temp) => {
           res.eventChannel.emit('bankInfo', {
@@ -79,6 +82,7 @@ Page({
       }],
     gridsCompany: [{
       url: '../outmoney/outmoney',
+      image: '../resource/picture/bank/4.png',
       name: '转账业务',
       oper: (res, temp) => {
         res.eventChannel.emit('bankInfo', {
@@ -133,7 +137,8 @@ Page({
             content: '是否进行填单',
             cancelText: '排队',
             confirmText: '填单',
-            confirmColor: '#55AAAD',
+            confirmColor: '#1C6CEF',
+            cancelColor: '#1C6CEF',
             success: res => {
               if (res.confirm) {
                 console.log('填单')
@@ -232,7 +237,7 @@ Page({
         title: '提示',
         content: '您的个人信息不完整，请前往补录信息',
         showCancel: false,
-        confirmColor: '#55AAAD',
+        confirmColor: '#1C6CEF',
         confirmText: '前往',
         success: () => {
           wx.navigateTo({
