@@ -8,7 +8,8 @@
 
 <view class="content">
   <block wx:if="{{list.length == 0}}">
-    <image style="width:300rpx; height:300rpx;margin-top: 240rpx;margin-left: 225rpx;" src="../resource/picture/banklist/bank.png"></image>
+    <image style="width:300rpx; height:300rpx;margin-top: 240rpx;margin-left: 225rpx;" src="../resource/picture/banklist/bank2.png"></image>
+    <view class="blank_msg">当前区域附近无网点</view>
   </block>
   <block wx:else>
     <view class="small_title">附近网点</view>

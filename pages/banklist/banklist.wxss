@@ -107,3 +107,10 @@ input{
   margin-left: 20rpx;
   margin-top: 20rpx;
 }
+
+.blank_msg{
+  margin-top: 30rpx;
+  margin-left: 249rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
