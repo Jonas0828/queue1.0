@@ -239,7 +239,7 @@
   font-size: 32rpx;
   width: 300rpx;
   text-align: end;
-  line-height: 55.5rpx;
+  /* line-height: 50rpx; */
 }
 
 .detail{

@@ -24,8 +24,6 @@
 .region{
   color: #353535;
   font-size: 32rpx;
-  line-height: 16rpx;
-  margin-top: 8rpx;
 }
 
 .msg_number{
@@ -38,14 +36,13 @@
   height: 32rpx;
   background-color: #DBDBDB;
   margin-left: 20rpx;
+  margin-top: 8rpx;
 }
 
 .msg_phone{
   color: #353535;
   font-size: 32rpx;
-  line-height: 16rpx;
   margin-left: 20rpx;
-  margin-top: -8rpx;
 }
 
 .foot_border{

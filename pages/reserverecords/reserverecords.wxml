@@ -27,6 +27,7 @@
     <view class="content">
       <block wx:if="{{list.length == 0}}">
         <image style="width:300rpx; height:300rpx;margin-top: 240rpx;" src="../resource/picture/reserverecords/bank.png"></image>
+        <view class="bank_msg">暂无预约记录</view>
       </block>
       <block wx:else>
         <view wx:for="{{list}}" class="preview_form" data-index="{{index}}" bindtap="jumptodisplay">

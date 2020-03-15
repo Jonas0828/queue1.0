@@ -10,9 +10,7 @@
         <view class="region">{{countryCodes[countryCodeIndex]}}</view>
       </picker>
       <view class="msg_border"></view>
-      <view class="msg_phone">
-        <input value="{{PhoneNo}}" disabled="true"></input>
-      </view> 
+        <input class="msg_phone" value="{{PhoneNo}}" disabled="true"></input>
     </view>
     <view class="foot_border"> </view>
     <view class="foot_code">

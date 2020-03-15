@@ -1,25 +1,24 @@
 {
-  "pages": [   
-    
+  "pages": [
     "pages/index/index",
-    "pages/reservenumber/reservenumber",
+    "pages/bank/bank",
+    "pages/phone/phone",
+    "pages/banklist/banklist",
+    "pages/reserverecords/reserverecords",  
+    "pages/menub/menub", 
     "pages/menua/menua",
+    "pages/reservenumber/reservenumber",
     "pages/bigdeposit/bigdeposit",
     "pages/fillform/fillform",
     "pages/bookmoney/bookmoney",
-    "pages/bank/bank",
     "pages/updateuserinfo/updateuserinfo",
-    "pages/phone/phone",
     "pages/map/map",
-    "pages/reserverecords/reserverecords",
-    "pages/banklist/banklist",
     "pages/infotype/infotype",
     "pages/user/user",
     "pages/displayfillform/displayfillform",
     "pages/displaydeposit/displaydeposit",
     "pages/outmoney/outmoney",
     "pages/displayoutmoney/displayoutmoney",
-    "pages/menub/menub",
     "pages/personout/personout",
     "pages/displaypersonout/displaypersonout"
   ],

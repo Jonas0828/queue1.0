@@ -117,6 +117,12 @@ page{
   color: #353535;
 }
 
+.bank_msg{
+  margin-top: 30rpx;
+  color: #888888;
+  font-size: 28rpx;
+}
+
 
 
 
