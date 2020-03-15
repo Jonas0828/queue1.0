@@ -4,6 +4,58 @@
   height: 100vh;
 }
 
-.weui-form-preview{
-  margin-top: 10px;
+.msg{
+  width: 176rpx;
+  height: 40rpx;
+  margin-top: 40rpx;
+  margin-left: 285rpx;
+  color: #000000;
+  font-size: 44rpx;
+}
+
+.conent{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40rpx;
+}
+
+.item{
+  display: flex;
+  margin-top: 40rpx;
+}
+
+.item:nth-child(4){
+  height: 74rpx;
+  margin-top: 80rpx;
+  margin-left: 30rpx;
+  color: #888888;
+  font-size: 26rpx;
+}
+
+.label{
+  margin-left: 30rpx;
+  color: #888888;
+  font-size: 30rpx;
+  width: 160rpx;
+  height: 32rpx;
+}
+
+.value{
+  width: 518rpx;
+  height: 32rpx;
+  margin-left: 12rpx;
+  text-align: left;
+  color: #000000;
+  font-size: 32rpx;
+}
+
+.bottom{
+  width: 710rpx;
+  height: 94rpx;
+  margin-top: 40rpx;  
+}
+
+.submitbtn{
+  background-color: #1C6CEF;
+  color: #FFFFFF;
 }

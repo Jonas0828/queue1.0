@@ -59,6 +59,7 @@ page{
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
+  padding-bottom: 44rpx;
 }
 
 .preview_item{
