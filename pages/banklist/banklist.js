@@ -96,9 +96,7 @@ Page({
                     RegionCode: areacode,
                   },
                   success: res => {
-                    wx.showToast({
-                      title: areacode,
-                    })
+                    
                     if (0 == res.data.Service.response.body.TotalNum) {
                       temp.setData({
                         list: [],
