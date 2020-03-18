@@ -1,4 +1,3 @@
-// pages/reserverecords/reserverecords.js
 let eventChannel = undefined;
 const util = require('../../utils/util.js');
 
@@ -129,11 +128,19 @@ Page({
    */
   onReady: function () {
     util.doServerAction({
-      trade: '3003',
-      data: {
-        UserID: wx.getStorageSync('userid'),
-        IDType: '01',
-        IDCode: wx.getStorageSync('userInfo').IdNo
+      appHdr: {
+        tradeCode: 'EFS_YY_0005'
+      },
+      appBody: {
+        busiDate:'',
+        custNo: wx.getStorageSync('userid'),
+        idType: '01',
+        idNo: wx.getStorageSync('userInfo').IdNo,
+        acctNo: '',
+        busiSerialNo: '',
+        busiStatus: '',
+        pageNo: '100',
+        pageNum: '1000',
       },
       success: res => {
         console.log('预约信息查询结果', res);

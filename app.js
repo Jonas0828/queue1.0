@@ -9,7 +9,6 @@ App({
         if (res.code) {
           // 获取登录临时凭证
           wx.setStorageSync('js_code', res.code);
-          new Date();
           util.doServerAction({
               appHdr:{
                 tradeCode: 'EFS_US_0004'

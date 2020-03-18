@@ -28,6 +28,12 @@ const formatDate = date => {
   return year + '' + month + day
 }
 
+const formatDateOver = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return [year, month, day].map(formatNumber).join('-')
+}
 
 function connectionFail(res) {
   console.log('通信失败公用处理');
@@ -40,6 +46,7 @@ function connectionComplete(res) {
 const doServerAction = dataObject => {
   console.log(dataObject);
   let date = new Date()
+  dataObject.appHdr.tmStamp = formatDateOver(date) + '.' + formatTime(date);
   dataObject.appHdr.tradeTime = formatTime(date);
   dataObject.appHdr.tradeDate = formatDate(date);
   dataObject.appHdr.reqtChannel = '10001';
