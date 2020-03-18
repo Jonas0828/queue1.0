@@ -133,12 +133,12 @@ Page({
   hooktrue: function() {
     const temp = this;
     console.log('查询用户信息');
-    // 查询用户信息
     util.doServerAction({
-      trade: '1003',
-      data: {
+      appHdr: {
+        tradeCode: 'EFS_US_0003'
+      },
+      appBody: {
         UserID: wx.getStorageSync('userid'),
-        // UserID: 'aaaaaaa',
       },
       success: res => {
         console.log(res.data.Service.response.body);

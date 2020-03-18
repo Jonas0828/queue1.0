@@ -62,8 +62,10 @@ Page({
       // 查询有无该用户信息
       console.log(wx.getStorageSync('userid'));
     util.doServerAction({
-      trade: '1003',
-      data: {
+      appHdr: {
+        tradeCode: 'EFS_US_0003'
+      },
+      appBody: {
         UserID: wx.getStorageSync('userid'),
       },
       success: res => {
@@ -215,8 +217,10 @@ Page({
             console.log('d个人信息');
             console.log(userinfo);
           util.doServerAction({
-            trade: this.data.register ? '1001' : '1002',
-            data: userinfo,
+            appHdr: {
+              tradeCode: this.data.register ? 'EFS_US_0001' : 'EFS_US_0002'
+            },
+            appBody: userinfo,
             success: res => {
               wx.navigateBack({
                 success: (res) => {

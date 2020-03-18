@@ -6,7 +6,7 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [hour, minute, second].map(formatNumber).join(':')
 }
 // 获取小时
 const formatHour = date => {
@@ -25,9 +25,9 @@ const formatDate = date => {
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('-')
+  return year + '' + month + day
 }
+
 
 function connectionFail(res) {
   console.log('通信失败公用处理');
@@ -37,30 +37,26 @@ function connectionComplete(res) {
   console.log('通信执行完成公共处理');
 }
 
-// dataObject示例
-// const dataObject = {
-//   trade: '1001',
-//   data: {
-//     userid: '1234',
-//     name: 'tony',
-//   }
-// }
-
 const doServerAction = dataObject => {
+  console.log(dataObject);
+  let date = new Date()
+  dataObject.appHdr.tradeTime = formatTime(date);
+  dataObject.appHdr.tradeDate = formatDate(date);
+  dataObject.appHdr.reqtChannel = '10001';
+  dataObject.appHdr.serialNo ='';
+  dataObject.appHdr.branchNo = '888888';
+  dataObject.appHdr.tellerNo = '666666';
   wx.request({
     // url: 'https://git.siro-info.com:9777',
-    url: 'https://www.liulinbo.com/a',
+    url: 'https://www.liulinbo.com/b',
     data: {
-      "Service": {
-        "request": {
-          "ServiceCode": "queue." + dataObject.trade,
-          "body": dataObject.data,
-        }
+      "reqt": {
+        "appHdr": dataObject.appHdr,
+        "appBody": dataObject.appBody
       }
     },
     header: {
       'content-type': 'application/json;charset=UTF-8',
-      // 'charset': 'utf-8'
     },
     method: 'POST',
     dataType: 'json',
