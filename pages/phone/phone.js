@@ -49,8 +49,10 @@ Page({
       title: '身份验证',
     })
     util.doServerAction({
-      trade: '1003',
-      data: {
+      appHdr: {
+        tradeCode: 'EFS_US_0003'
+      },
+      appBody: {
         UserID: wx.getStorageSync('userid'),
       },
       success: res => {
