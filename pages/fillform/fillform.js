@@ -250,17 +250,21 @@ Page({
         console.log('提交预约信息');
         console.log(userinfo);
         util.doServerAction({
-          trade: '3001',
-          data: {
-            UserID: wx.getStorageSync('userid'),
-            Dotid: this.data.bankInfo.DotID,
-            RsvDate: userinfo.reserveDate,
-            IDType: '01',
-            IDCode: userinfo.IdNo,
-            BrType: '01',
-            TrxType: '0100',
-            TrxStatus: '0',
-            TrxData: JSON.stringify({
+          appHdr: {
+            tradeCode: 'EFS_YY_0004'
+          },
+          appBody: {
+            custNo: wx.getStorageSync('userid'),
+            branchNo: this.data.bankInfo.DotID,
+            busiDate: userinfo.reserveDate,
+            busiTime: '150000',
+            idType: '01',
+            idNo: userinfo.IdNo,
+            busiNo: '01',
+            acctNo: '0000000000000000000',
+            busiType: '2222',
+            formNo: Math.random().toString().substr(2, 12),
+            formInfo: JSON.stringify({
               userInfo: userinfo,
               bankInfo: this.data.bankInfo,
               cardType: this.data.cardType,
@@ -270,9 +274,8 @@ Page({
             }),
           },
           success: res => {
-            console.log('--------------预约序号');
-            console.log(res.data.Service.response);
-            if ('00000000' == res.data.Service.response.ErrCode){
+            console.log('预约0004信息', res);
+            if ('25910000000000' == res.data.resp.appHdr.respCde){
               userinfo.reserveDate = tempDate;
               wx.navigateTo({
                 url: '../reservenumber/reservenumber',
@@ -284,7 +287,7 @@ Page({
                   })
                 }
               })
-            } else if ('999999' == res.data.Service.response.ErrCode) {
+            } else{
               wx.showModal({
                 title: '提示',
                 content: res.data.Service.response.ErrMsg,

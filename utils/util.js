@@ -8,6 +8,15 @@ const formatTime = date => {
 
   return [hour, minute, second].map(formatNumber).join(':')
 }
+
+const formatTimeOver = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [hour, minute, second].map(formatNumber)
+}
+
 // 获取小时
 const formatHour = date => {
   const hour = date.getHours()
@@ -20,11 +29,17 @@ const formatNumber = n => {
 
 const formatDate = date => {
   const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
+  let month = date.getMonth() + 1
+  let day = date.getDate()
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  };
   return year + '' + month + day
 }
 
@@ -50,9 +65,10 @@ const doServerAction = dataObject => {
   dataObject.appHdr.tradeTime = formatTime(date);
   dataObject.appHdr.tradeDate = formatDate(date);
   dataObject.appHdr.reqtChannel = '10001';
-  dataObject.appHdr.serialNo ='';
+  dataObject.appHdr.serialNo = formatDate(date) + Math.random().toString().substr(2, 8);
   dataObject.appHdr.branchNo = '888888';
   dataObject.appHdr.tellerNo = '666666';
+  console.log('流水号', formatDate(date) + Math.random().toString().substr(2, 8));
   wx.request({
     // url: 'https://git.siro-info.com:9777',
     url: 'https://www.liulinbo.com/b',
@@ -130,5 +146,6 @@ module.exports = {
   formatHour: formatHour,
   formatDate: formatDate,
   doServerAction: doServerAction,
-  validateIdCard: validateIdCard
+  validateIdCard: validateIdCard,
+  formatTimeOver: formatTimeOver
 }
