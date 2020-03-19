@@ -29,9 +29,11 @@ Page({
       inputVal: address
     });
     util.doServerAction({
-      trade: '2001',
-      data: {
+      appBody: {
         RegionCode: this.data.selectList[2][e.detail.value[2]].CountyCode,
+      },
+      appHdr: {
+        tradeCode: 'EFS_WD_0001'
       },
       success: res => {
         console.log('选择地区查询网点');
@@ -91,9 +93,11 @@ Page({
                 });
                 console.log('获取到的地区代码：' + areacode);
                 util.doServerAction({
-                  trade: '2001',
-                  data: {
+                  appBody: {
                     RegionCode: areacode,
+                  },
+                  appHdr: {
+                    tradeCode: 'EFS_WD_0001'
                   },
                   success: res => {
                     
@@ -226,12 +230,14 @@ Page({
   },
   queryProvince: function () {
     util.doServerAction({
-      trade: '2002',
-      data: {
+      appBody: {
         ProvinceCode: '',
         CityCode: '',
         QueryType: '1'
         //   QueryType 查询类型：1-省  2-市  3-县/区 
+      },
+      appHdr: {
+        tradeCode: 'EFS_WD_0002'
       },
       success: res => {
         console.log('查询省份');
@@ -242,12 +248,14 @@ Page({
       }
     });
     util.doServerAction({
-      trade: '2002',
-      data: {
+      appBody: {
         ProvinceCode: '110000',
         CityCode: '',
         QueryType: '2'
         //   QueryType 查询类型：1-省  2-市  3-县/区 
+      },
+      appHdr: {
+        tradeCode: 'EFS_WD_0002'
       },
       success: res => {
         console.log('查询市');
@@ -258,12 +266,14 @@ Page({
       }
     });
     util.doServerAction({
-      trade: '2002',
-      data: {
+      appBody: {
         ProvinceCode: '',
         CityCode: '110000',
         QueryType: '3'
-        //   QueryType 查询类型：1-省  2-市  3-县/区 
+        //   QueryType 查询类型：1-省  2-市  3-县/区
+      },
+      appHdr: {
+        tradeCode: 'EFS_WD_0002'
       },
       success: res => {
         console.log('查询区');
@@ -281,23 +291,27 @@ Page({
     if (0 == columnindex) {
       // 根据代码值去加载市 
       util.doServerAction({
-        trade: '2002',
-        data: {
+        appBody: {
           ProvinceCode: this.data.selectList[columnindex][index].ProvinceCode,
           CityCode: '',
           QueryType: '2'
-          //   QueryType 查询类型：1-省  2-市  3-县/区 
+          //   QueryType 查询类型：1-省  2-市  3-县/区
+        },
+        appHdr: {
+          tradeCode: 'EFS_WD_0002'
         },
         success: res => {
           console.log('多列查询市');
           console.log(res.data.Service.response.body.Details); //市列表 
           util.doServerAction({
-            trade: '2002',
-            data: {
+            appBody: {
               ProvinceCode: '',
               CityCode: res.data.Service.response.body.Details[0].CityCode,
               QueryType: '3'
-              //   QueryType 查询类型：1-省  2-市  3-县/区 
+              //   QueryType 查询类型：1-省  2-市  3-县/区
+            },
+            appHdr: {
+              tradeCode: 'EFS_WD_0002'
             },
             success: result => {
               console.log('多列查询区-1-');
@@ -326,12 +340,14 @@ Page({
       // 根据代码值去加载区 
       console.log(this.data.selectList[columnindex][index].CityCode);
       util.doServerAction({
-        trade: '2002',
-        data: {
+        appBody: {
           ProvinceCode: '',
           CityCode: this.data.selectList[columnindex][index].CityCode,
           QueryType: '3'
           //   QueryType 查询类型：1-省  2-市  3-县/区 
+        },
+        appHdr: {
+          tradeCode: 'EFS_WD_0002'
         },
         success: res => {
           console.log('多列查询区-2-');

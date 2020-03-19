@@ -44,8 +44,8 @@ function connectionComplete(res) {
 }
 
 const doServerAction = dataObject => {
-  console.log(dataObject);
-  let date = new Date()
+  console.log(dataObject.appHdr.tradeCode,dataObject);
+  let date = new Date();
   dataObject.appHdr.tmStamp = formatDateOver(date) + '.' + formatTime(date);
   dataObject.appHdr.tradeTime = formatTime(date);
   dataObject.appHdr.tradeDate = formatDate(date);
