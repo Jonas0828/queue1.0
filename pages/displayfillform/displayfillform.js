@@ -45,36 +45,48 @@ Page({
     eventChannel.on('recordsInfo', function (data) {
       console.log('预约记录信息', data);
       let formInfo = JSON.parse(data.data.formField[0].formInfo);
-      const userinfo = formInfo.userInfo;
-      let arr = userinfo.BirthDay.split('');
+
+      // cusName: userinfo.Name,
+      //   idType: '1011',
+      //     idNo: userinfo.IdNo,
+      //       department: userinfo.cardOra,
+      //         stopDate: userinfo.carddate,
+      //           birth: userinfo.BirthDay,
+
+
+      const userinfo = {
+        Name: formInfo.cusName,
+        IdNo: formInfo.idNo,
+        department: formInfo.department,
+        stopDate: formInfo.stopDate
+      };
+      let arr = formInfo.birth.split('');
       let result = '';
       let resultRes ='';
       for (var i = 0; i < arr.length; i++) {
         result = result + (i == 4 || i == 6 ? '-' : '') + arr[i];
       };
-      let arrRsv = userinfo.reserveDate.split('');
+      let arrRsv = userinfo.stopDate.split('');
       for (var j = 0; j < arrRsv.length; j++) {
         resultRes = resultRes + (j == 4 || j == 6 ? '-' : '') + arrRsv[j];
       };
-      if (formInfo.cardType.id == '0'){
-        temp.setData({
-          card: true
-        });
-      } else if (formInfo.cardType.id == '1'){
-        temp.setData({
-          zhe: true
-        });
-      } else if (formInfo.cardType.id == '2'){
-        temp.setData({
-          dan: true
-        });
-      }
+      // if (formInfo.cardType.id == '0'){
+      //   temp.setData({
+      //     card: true
+      //   });
+      // } else if (formInfo.cardType.id == '1'){
+      //   temp.setData({
+      //     zhe: true
+      //   });
+      // } else if (formInfo.cardType.id == '2'){
+      //   temp.setData({
+      //     dan: true
+      //   });
+      // }
       temp.setData({
         userinfo: userinfo,
-        cardflag: true,
         date: result,
-        sexFlag: userinfo.Sex == '0' ? true : false,
-        reserveDate: resultRes
+        stopDate: resultRes
       });
     });
   },

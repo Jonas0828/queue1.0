@@ -71,7 +71,7 @@ const doServerAction = dataObject => {
   console.log('流水号', formatDate(date) + Math.random().toString().substr(2, 8));
   wx.request({
     // url: 'https://git.siro-info.com:9777',
-    url: 'https://www.liulinbo.com/b',
+    url: 'https://www.liulinbo.com/a',
     data: {
       "reqt": {
         "appHdr": dataObject.appHdr,

@@ -134,7 +134,7 @@ Page({
       appBody: {
         busiDate: util.formatDate(new Date()),
         custNo: wx.getStorageSync('userid'),
-        idType: '01',
+        idType: '1011',
         idNo: wx.getStorageSync('userInfo').IdNo,
         acctNo: '0000000000000000000',
         busiStatus: '1',
@@ -243,6 +243,9 @@ Page({
     });
   },
   opentrade: function(e) {
+    if ('0' != e.currentTarget.dataset.index){
+      return;
+    }
     // 检查个人基本信息是否完善
     const flag = wx.getStorageSync("UserinfoComplete");
     if (!flag) {
@@ -344,7 +347,7 @@ Page({
               ticketInfo: {
                 number: res.data.resp.appBody.queue_seq,
                 date: year + '-' + month + '-' + day,
-                bankInfo: data.data.bankInfo
+                bankInfo: data.data.bankInfo,
               }
             });
             util.doServerAction({

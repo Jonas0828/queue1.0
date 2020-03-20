@@ -76,7 +76,7 @@
   <view class="weui-mask"></view>
   <view class="weui-dialog__wrp">
     <view class="weui-dialog" catchtap="stopEvent" style="width: 560rpx;">
-      <view class="number_dialog">
+      <view class="number_dialog_info">
         <view class="number_title">预约信息列表</view>
       </view>
       <view class="weui-dialog__bd" style="padding:0rpx;">

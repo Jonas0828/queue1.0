@@ -43,7 +43,19 @@ Page({
         required: true,
         message: '身份证号必填'
       },
-    }, {
+    },{
+        name: 'carddate',
+        rules: {
+          required: true,
+          message: '证件到期日必填'
+        }
+      }, {
+        name: 'cardOra',
+        rules: {
+          required: true,
+          message: '发证机关必填'
+        }
+      },  {
         name: 'PhoneNo',
       rules: [{
         required: true,
@@ -192,6 +204,12 @@ Page({
       [`formData.date`]: e.detail.value
     })
   },
+  bindCardDateChange: function (e) {
+    this.setData({
+      carddate: e.detail.value,
+      [`formData.carddate`]: e.detail.value
+    })
+  },
   bindResDateChange: function (e) {
     this.setData({
       reserveDate: e.detail.value,
@@ -226,12 +244,12 @@ Page({
 
         }
       } else {
-        if ('' == this.data.cardType){
-          this.setData({
-            error:'请选择开户类型'
-          });
-          return;
-        }
+        // if ('' == this.data.cardType){
+        //   this.setData({
+        //     error:'请选择开户类型'
+        //   });
+        //   return;
+        // }
         if ('' == this.data.Sex) {
           this.setData({
             error: '请选择性别'
@@ -245,6 +263,7 @@ Page({
         userinfo.Realauth = '0',
         userinfo.FcrcgtFlag = '0',
         userinfo.BirthDay = userinfo.BirthDay.replace('-', '').replace('-', '');
+        userinfo.carddate = userinfo.carddate.replace('-', '').replace('-', '');
         let tempDate = userinfo.reserveDate;
         userinfo.reserveDate = userinfo.reserveDate.replace('-', '').replace('-', ''),
         console.log('提交预约信息');
@@ -258,20 +277,29 @@ Page({
             branchNo: this.data.bankInfo.DotID,
             busiDate: userinfo.reserveDate,
             busiTime: '210000',
-            idType: '01',
+            idType: '1011',
             idNo: userinfo.IdNo,
             busiNo: '01',
             acctNo: '0000000000000000000',
             busiType: '',
-            formNo: this.data.bankInfo.DotID,
+            formNo: '9902',
             formInfo: JSON.stringify({
-              userInfo: userinfo,
-              bankInfo: this.data.bankInfo,
-              cardType: this.data.cardType,
-              tradeName: this.data.tradeName,
-              reserveDate: tempDate,
-              TrxType: '0100',
+              cusName: userinfo.Name,
+              idType: '1011',
+              idNo: userinfo.IdNo,
+              department: userinfo.cardOra,
+              stopDate: userinfo.carddate,
+              birth: userinfo.BirthDay,
             }),
+
+            // formInfo: JSON.stringify({
+            //   userInfo: userinfo,
+            //   bankInfo: this.data.bankInfo,
+            //   cardType: this.data.cardType,
+            //   tradeName: this.data.tradeName,
+            //   reserveDate: tempDate,
+            //   TrxType: '0100',
+            // }),
           },
           success: res => {
             console.log('预约0004信息', res);

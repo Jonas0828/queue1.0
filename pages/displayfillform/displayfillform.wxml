@@ -10,43 +10,51 @@
           <mp-cell prop="required" title="姓名" ext-class="">
             <input bindinput="formInputChange" data-field="Name" class="weui-input" name='Name' placeholder="请输入姓名" value='{{userinfo.Name}}'disabled="true" />
           </mp-cell>
+          <mp-cell prop="required" title="证件类型" ext-class="">
+            <input bindinput="formInputChange" disabled="true" data-field="Address" class="weui-input" name='Address' placeholder="" value="二代居民身份证" />
+          </mp-cell>
           <mp-cell prop="required" title="身份证号" ext-class="">
             <input bindinput="formInputChange" data-field="IdNo" class="weui-input" name='IdNo' placeholder="请输入身份证号" value='{{userinfo.IdNo}}' disabled="true" />
           </mp-cell>
-          <mp-cell prop="required" title="性别" ext-class="">
+          <mp-cell prop="required" title="证件到期日" ext-class="">
+            <picker data-field="carddate"disabled="true"  mode="date" value="{{stopDate}}" start="1949-10-01" end="2999-10-01" name='carddate' bindchange="bindCardDateChange">
+              <view class="weui-input">{{stopDate}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell prop="required" title="发证机关" ext-class="">
+            <input bindinput="formInputChange" disabled="true" data-field="cardOra" class="weui-input" name='cardOra' placeholder="请输入发证机关" value="department"/>
+          </mp-cell>
+          <!-- <mp-cell prop="required" title="性别" ext-class="">
             <radio-group >
               <radio value="0" checked="{{sexFlag}}"  color="#1C6CEF">男</radio>
               <radio style="margin-left:5px;" checked="{{!sexFlag}}"  value="1" color="#1C6CEF">女</radio>
             </radio-group>
-          </mp-cell>
+          </mp-cell> -->
 
           <mp-cell prop="required" title="出生日期" ext-class="">
             <picker disabled="true" data-field="date" mode="date" value="{{date}}" start="1949-10-01" end="2999-10-01" name='BirthDay' bindchange="bindDateChange">
               <view class="weui-input">{{date}}</view>
             </picker>
           </mp-cell>
-          <mp-cell prop="required" title="手机号" ext-class="">
+          <!-- <mp-cell prop="required" title="手机号" ext-class="">
             <input bindinput="formInputChange" disabled="true" data-field="PhoneNo" class="weui-input" name='PhoneNo' placeholder="请输入手机号" value='{{userinfo.PhoneNo}}' />
-          </mp-cell>
-          <mp-cell prop="required" title="居住地址" ext-class="">
-            <input bindinput="formInputChange" disabled="true" data-field="Address" class="weui-input" name='Address' placeholder="请输入居住地址" value='{{userinfo.Address}}' />
-          </mp-cell>
+          </mp-cell> -->
 
 
-          <mp-cell prop="" title="开户类型" ext-class="">
+          <!-- <mp-cell prop="" title="开户类型" ext-class="">
             <radio-group >
               <radio value="0" checked="{{card}}"  color="#1C6CEF">卡</radio>
               <radio style="margin-left:5px;" value="1" checked="{{zhe}}"  color="#1C6CEF">存折</radio>
               <radio style="margin-left:5px;" value="2"checked="{{dan}}"  color="#1C6CEF">存单</radio>
             </radio-group>
-          </mp-cell>
+          </mp-cell> -->
 
 
-          <mp-cell prop="required" title="预约日期" ext-class="">
+          <!-- <mp-cell prop="required" title="预约日期" ext-class="">
             <picker data-field="date" mode="date" disabled="true" value="{{reserveDate}}" start="{{nowDate}}" end="2999-10-01" name='reserveDate' data-field="reserveDate">
               <view class="weui-input">{{reserveDate}}</view>
             </picker>
-          </mp-cell>
+          </mp-cell> -->
         </mp-cells>
       </mp-form>
       <view class="bottom">
