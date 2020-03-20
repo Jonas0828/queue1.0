@@ -290,7 +290,7 @@ Page({
             } else{
               wx.showModal({
                 title: '提示',
-                content: res.data.Service.response.ErrMsg,
+                content: res.data.resp.appHdr.respMsg,
                 showCancel: false
               })
             } 

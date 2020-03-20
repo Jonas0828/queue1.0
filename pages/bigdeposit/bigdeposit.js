@@ -101,17 +101,21 @@ Page({
         console.log('提交预约信息');
         console.log(revInfo);
         util.doServerAction({
-          trade: '3001',
-          data: {
-            UserID: wx.getStorageSync('userid'),
-            Dotid: this.data.bankInfo.DotID,
-            RsvDate: revInfo.reserveDate,
-            IDType: '01',
-            IDCode: userinfo.IdNo,
-            BrType: '01', // 对私 01 对公02
-            TrxType: '0101', // 对公对私+两位顺序
-            TrxStatus: '0',
-            TrxData: JSON.stringify({
+          appHdr: {
+            tradeCode: 'EFS_YY_0004'
+          },
+          appBody: {
+            custNo: wx.getStorageSync('userid'),
+            branchNo: this.data.bankInfo.DotID,
+            busiDate: revInfo.reserveDate,
+            busiTime: '210000',
+            idType: '01',
+            idNo: userinfo.IdNo,
+            busiNo: '02',
+            acctNo: '0000000000000000000',
+            busiType: '',
+            formNo: this.data.bankInfo.DotID,
+            formInfo: JSON.stringify({
               revInfo: revInfo,
               bankInfo: this.data.bankInfo,
               reserveDate: tempDate,
@@ -120,9 +124,7 @@ Page({
             }),
           },
           success: res => {
-            console.log('--------------预约序号');
-            console.log(res.data.Service.response);
-            if ('00000000' == res.data.Service.response.ErrCode) {
+            if ('25910000000000' == res.data.resp.appHdr.respCde) {
               revInfo.reserveDate = tempDate;
               revInfo.tradeName = this.data.tradeName;
               wx.navigateTo({
@@ -135,10 +137,10 @@ Page({
                   })
                 }
               })
-            } else if ('999999' == res.data.Service.response.ErrCode) {
+            } else {
               wx.showModal({
                 title: '提示',
-                content: res.data.Service.response.ErrMsg,
+                content: res.data.resp.appHdr.respMsg,
                 showCancel: false
               })
             }

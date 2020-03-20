@@ -25,14 +25,19 @@ Page({
     isRsv: false,
     isMakeNumber: false,
     queueType: '',
+    // 页面跳转映射关系
     mapping: {
-      '01': '../displayfillform/displayfillform',
+      '0100': '../displayfillform/displayfillform',
       '0101': '../displaydeposit/displaydeposit',
-      '0200': '../displayoutmoney/displayoutmoney',
-      '0102': '../displaypersonout/displaypersonout'
+      '0102': '../displayoutmoney/displayoutmoney',
+      '0200': '../displaypersonout/displaypersonout'
     },
+    // 只是为了展示业务名称
     tradeNameMap: {
-      '01': '个人开卡'
+      '01': '个人开卡',
+      '02': '大额取款',
+      '03': '个人转账',
+      '04': '转账业务'
     },
     back: false,
     bankInfo: {
