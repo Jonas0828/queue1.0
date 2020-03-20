@@ -27,10 +27,10 @@ Page({
     queueType: '',
     // 页面跳转映射关系
     mapping: {
-      '0100': '../displayfillform/displayfillform',
-      '0101': '../displaydeposit/displaydeposit',
-      '0102': '../displayoutmoney/displayoutmoney',
-      '0200': '../displaypersonout/displaypersonout'
+      '01': '../displayfillform/displayfillform',
+      '02': '../displaydeposit/displaydeposit',
+      '03': '../displaypersonout/displaypersonout',
+      '04': '../displayoutmoney/displayoutmoney' 
     },
     // 只是为了展示业务名称
     tradeNameMap: {

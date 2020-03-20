@@ -22,14 +22,16 @@ Page({
     let temp = this;
     eventChannel = this.getOpenerEventChannel();
     eventChannel.on('recordsInfo', function (data) {
-      let arrRsv = data.data.revInfo.reserveDate.split('');
+      console.log('预约记录信息', data);
+      let formInfo = JSON.parse(data.data.formField[0].formInfo);
+      let arrRsv = formInfo.revInfo.reserveDate.split('');
       let resultRes = '';
       for (var j = 0; j < arrRsv.length; j++) {
         resultRes = resultRes + (j == 4 || j == 6 ? '-' : '') + arrRsv[j];
       };
       let revInfo = {
         reserveDate : resultRes,
-        Money: data.data.revInfo.Money
+        Money: formInfo.revInfo.Money
       };
       // 获取传递过来的数据
       temp.setData({
