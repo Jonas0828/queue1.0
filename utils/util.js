@@ -70,8 +70,8 @@ const doServerAction = dataObject => {
   dataObject.appHdr.tellerNo = '888888';
   console.log('流水号', formatDate(date) + Math.random().toString().substr(2, 8));
   wx.request({
-    // url: 'https://git.siro-info.com:9777',
-    url: 'https://www.liulinbo.com/a',
+    // url: 'https://www.liulinbo.com/a',
+    url: 'https://www.liulinbo.com/b',
     data: {
       "reqt": {
         "appHdr": dataObject.appHdr,
