@@ -322,6 +322,7 @@ Page({
     currentPage = this;
     eventChannel.on('bankinfo', function(data) {
       // 获取传递过来的数据
+      data.data.DotID = '6801';
       currentPage.setData({
         bankInfo: data.data
       });

@@ -66,8 +66,8 @@ const doServerAction = dataObject => {
   dataObject.appHdr.tradeDate = formatDate(date);
   dataObject.appHdr.reqtChannel = '10001';
   dataObject.appHdr.serialNo = formatDate(date) + Math.random().toString().substr(2, 8);
-  dataObject.appHdr.branchNo = '888888';
-  dataObject.appHdr.tellerNo = '666666';
+  dataObject.appHdr.branchNo = '6801';
+  dataObject.appHdr.tellerNo = '888888';
   console.log('流水号', formatDate(date) + Math.random().toString().substr(2, 8));
   wx.request({
     // url: 'https://git.siro-info.com:9777',

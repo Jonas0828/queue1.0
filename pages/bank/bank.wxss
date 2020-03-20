@@ -136,6 +136,7 @@
 }
 
 .number_dialog{
+  height: 150rpx;
   display: flex;
   flex-direction: column;
   align-items: center;

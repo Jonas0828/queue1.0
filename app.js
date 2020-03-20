@@ -20,7 +20,7 @@ App({
                 grant_type: 'authorization_code',
             },
             success: res => {
-              console.log('-------------------------------------');
+              console.log('-------------------------------------', res);
               wx.setStorageSync('userid', res.data.Service.response.body.UserID);
             }
           });
