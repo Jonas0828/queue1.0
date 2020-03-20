@@ -82,8 +82,8 @@
         </view>
       </view>
       <view class="halfbutton">
-        <button type="default" class="" bindtap="closeDialogDisagree">考虑一下</button>
-        <button type="primary" class="" open-type="getUserInfo" bindgetuserinfo="closeDialogAgree">同意</button>
+        <button  class="buttona" bindtap="closeDialogDisagree">考虑一下</button>
+        <button  class="buttonb" open-type="getUserInfo" bindgetuserinfo="closeDialogAgree">同意</button>
       </view>
     </view>
   </view>

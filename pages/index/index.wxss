@@ -137,17 +137,20 @@ swiper{
 }
 
 .halfbutton {
-  padding: 40px 24px 32px;
-  text-align: center;
-  display: inline-flex;
-
-  vertical-align: top;
- 
-  width: 250px;
+  width: 100%;
+  padding: 24px 0px 64px;
+  display: flex;
 }
 
-.agree{
-  margin-left: 20px
+.buttona{
+  width: 10px;
+  color: #1C6CEF;
+  background-color: #F5F6F7;
 }
+
+.buttonb{
+  background-color: #1C6CEF;
+}
+
 /* 授权登录 */
 
