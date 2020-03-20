@@ -43,9 +43,9 @@ Page({
     let temp = this;
     let eventChannel = this.getOpenerEventChannel();
     eventChannel.on('recordsInfo', function (data) {
-      console.log('预约记录信息');
-      console.log(data);
-      const userinfo = data.data.userInfo;
+      console.log('预约记录信息', data);
+      let formInfo = JSON.parse(data.data.formField[0].formInfo);
+      const userinfo = formInfo.userInfo;
       let arr = userinfo.BirthDay.split('');
       let result = '';
       let resultRes ='';
@@ -56,15 +56,15 @@ Page({
       for (var j = 0; j < arrRsv.length; j++) {
         resultRes = resultRes + (j == 4 || j == 6 ? '-' : '') + arrRsv[j];
       };
-      if (data.data.cardType.id == '0'){
+      if (formInfo.cardType.id == '0'){
         temp.setData({
           card: true
         });
-      } else if (data.data.cardType.id == '1'){
+      } else if (formInfo.cardType.id == '1'){
         temp.setData({
           zhe: true
         });
-      } else if (data.data.cardType.id == '2'){
+      } else if (formInfo.cardType.id == '2'){
         temp.setData({
           dan: true
         });

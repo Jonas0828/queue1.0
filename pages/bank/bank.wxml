@@ -88,7 +88,7 @@
           </view>
           <view class="item_a">
             <view class="list_label">预约网点：</view>
-            <view class="list_value">{{item.bankInfo.DotName}}</view>
+            <view class="list_value">{{item.bankName}}</view>
           </view>
           <view class="item_a">
             <view class="list_label">预约日期：</view>

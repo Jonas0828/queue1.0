@@ -26,10 +26,13 @@ Page({
     isMakeNumber: false,
     queueType: '',
     mapping: {
-      '0100': '../displayfillform/displayfillform',
+      '01': '../displayfillform/displayfillform',
       '0101': '../displaydeposit/displaydeposit',
       '0200': '../displayoutmoney/displayoutmoney',
       '0102': '../displaypersonout/displaypersonout'
+    },
+    tradeNameMap: {
+      '01': '个人开卡'
     },
     back: false,
     bankInfo: {
@@ -95,12 +98,13 @@ Page({
     rsvInfo: {}
   },
   jumptodisplay: function (e) {
-    let trxType = this.data.rsvInfo[e.currentTarget.dataset.index].TrxType;
+    let trxType = this.data.rsvQuerResult[e.currentTarget.dataset.index].busiNo;
     wx.navigateTo({
       url: this.data.mapping[trxType],
       success: res => {
         res.eventChannel.emit('recordsInfo', {
-          data: this.data.rsvInfo[e.currentTarget.dataset.index]
+          data: this.data.rsvQuerResult[e.currentTarget.dataset.index],
+          bankInfo: this.data.bankInfo
         });
       }
     })
@@ -119,18 +123,22 @@ Page({
       });
     }
     util.doServerAction({
-      trade: '3002',
-      data: {
-        Dotid: this.data.bankInfo.DotID,
-        WorkDate: '' + year + month + day,
-        BrType: this.data.queueType,
-        UserID: wx.getStorageSync('userid'),
+      appHdr: {
+        tradeCode: 'EFS_YY_0005'
+      },
+      appBody: {
+        busiDate: util.formatDate(new Date()),
+        custNo: wx.getStorageSync('userid'),
+        idType: '01',
+        idNo: wx.getStorageSync('userInfo').IdNo,
+        acctNo: '0000000000000000000',
+        busiStatus: '1',
+        pageNo: '100',
+        pageNum: '1000',
       },
       success: res => {
-        console.log('--------------查询预约信息结果');
-        console.log(res);
-        console.log(res.data.Service.response);
-        if (res.data.Service.response.RsvNum == '0') {
+        console.log('查询预约信息结果', res);
+        if (res.data.resp.appHdr.respCde != '25910000000000') {
           // 无预约信息
           wx.showModal({
             title: '提示',
@@ -142,9 +150,6 @@ Page({
             success: res => {
               if (res.confirm) {
                 console.log('填单')
-                // temp.setData({
-                //   currentRes: true
-                // });
                 wx.navigateTo({
                   url: this.data.queueType == '01' ? '../menua/menua' : '../menub/menub',
                  
@@ -161,14 +166,18 @@ Page({
             },
           })
         } else {
-          let arr = [];
-          const result = res.data.Service.response.RSPINOFS;
-          for (var i = 0; i < result.length; i++) {
-            arr[i] = JSON.parse(result[i].rsvinfo);
+          let arr = res.data.resp.appBody.busiField;
+          let result = [];
+          for (let i = 0; i < arr.length; i++) {
+            result[i] = {
+              tradeName: currentPage.data.tradeNameMap[arr[i].busiNo],
+              bankName: currentPage.data.bankInfo.DotName,
+              reserveDate: year + '-' + month + '-' + day
+            };
           }
-          console.log('转换结果', arr);
           this.setData({
-            rsvInfo: arr,
+            rsvInfo: result,
+            rsvQuerResult: arr,
             reserveInfoFlag: false,
             isRsv: true,
             isMakeNumber: true,
@@ -204,24 +213,23 @@ Page({
   },
   makeNumberFinal: function() {
     util.doServerAction({
-      trade: '4001',
-      data: {
-        Dotid: this.data.bankInfo.DotID,
-        WorkDate: '' + year + month + day,
-        IDType: '01',
-        IDCode: wx.getStorageSync('userInfo').IdNo,
-        BrType: this.data.queueType,
-        CustLvl: '01',
-        TrxStatus: wx.getStorageSync('userid'),
+      appHdr: {
+        tradeCode: 'EFS_PD_1000'
+      },
+      appBody: {
+        branchNo: this.data.bankInfo.DotID,
+        queueId: 'P',
+        idType: 'NOV',
+        idNo: wx.getStorageSync('userInfo').IdNo,
+        custNo: wx.getStorageSync('userid'),
+        custLevel: '01',
       },
       success: res => {
-        console.log('--------------排队结果');
-        console.log(res.data);
-        console.log(res.data.Service.response);
+        console.log('排队结果', res);
         this.setData({
           istrue: true,
           ticketInfo: {
-            number: res.data.Service.response.QueSeq,
+            number: res.data.resp.appBody.queueNo,
             date: year + '-' + month + '-' + day,
             bankInfo: this.data.bankInfo
           }
@@ -305,51 +313,70 @@ Page({
    */
   onLoad: function(options) {
     console.log('网点信息');
-    console.log(options);
-    let temp = this;
     let eventChannel = this.getOpenerEventChannel();
     currentPage = this;
     eventChannel.on('bankinfo', function(data) {
       // 获取传递过来的数据
-      temp.setData({
+      currentPage.setData({
         bankInfo: data.data
       });
       util.doServerAction({
-        trade: '4002',
-        data: {
-          Dotid: data.data.DotID,
-          WorkDate: '' + year + month + day,
-          IDType: '01',
-          IDCode: wx.getStorageSync('userInfo').IdNo,
-          UserID: wx.getStorageSync('userid'),
+        appHdr: {
+          tradeCode: 'EFS_PD_1060'
+        },
+        appBody: {
+          branchNo: currentPage.data.bankInfo.DotID,
+          idType: 'NOV',
+          idNo: wx.getStorageSync('userInfo').IdNo,
+          workDate: year + '' + month + day
         },
         success: res => {
           console.log('查询有无排队信息', res);
-          if (res.data.Service.response.QueFlag == 'Y') {
-            console.log('排队号', res.data.Service.response.QueSeq);
+          if (res.data.resp.appHdr.respCde == '25910000000000') {
             currentPage.setData({
               toggle: true,
               ticketInfo: {
-                number: res.data.Service.response.QueSeq,
+                number: res.data.resp.appBody.queue_seq,
                 date: year + '-' + month + '-' + day,
                 bankInfo: data.data.bankInfo
               }
             });
-            if (res.data.Service.response.RsvFlag == 'Y') {
-              let arr = [];
-              const result = res.data.Service.response.RSPINOFS;
-
-              for (var i = 0; i < result.length; i++) {
-                arr[i] = JSON.parse(result[i].rsvinfo);
+            util.doServerAction({
+              appHdr: {
+                tradeCode: 'EFS_YY_0005'
+              },
+              appBody: {
+                busiDate: util.formatDate(new Date()),
+                custNo: wx.getStorageSync('userid'),
+                idType: '01',
+                idNo: wx.getStorageSync('userInfo').IdNo,
+                acctNo: '0000000000000000000',
+                busiStatus: '1',
+                pageNo: '100',
+                pageNum: '1000',
+              },
+              success: res => {
+                console.log('查询预约信息结果', res);
+                if (res.data.resp.appHdr.respCde == '25910000000000') {
+                  let arr = res.data.resp.appBody.busiField;
+                  let result = [];
+                  for (let i = 0; i < arr.length; i++) {
+                    result[i] = {
+                      tradeName: currentPage.data.tradeNameMap[arr[i].busiNo],
+                      bankName: currentPage.data.bankInfo.DotName,
+                      reserveDate: year + '-' + month + '-' + day
+                    };
+                  }
+                  currentPage.setData({
+                    rsvInfo: result,
+                    rsvQuerResult: arr,
+                    reserveInfoFlag: false,
+                    isRsv: false,
+                    isMakeNumber: false,
+                  });
+                }
               }
-              console.log('转换结果', arr);
-              currentPage.setData({
-                rsvInfo: arr,
-                reserveInfoFlag: false,
-                isRsv: false,
-                isMakeNumber: false,
-              });
-            }
+            });
           }
         }
       })
