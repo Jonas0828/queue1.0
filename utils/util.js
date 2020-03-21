@@ -141,43 +141,6 @@ const validateIdCard = idcard => {
   }
 }
 
-function aa() {
-  let a = {
-    "resp": {
-      "appHdr": {
-        "tmStamp": "2020-03-19 21:52:05",
-        "respMsg": "客户填单信息查询操作成功",
-        "respCde": "25910000000000"
-      },
-      "appBody": {
-        "busiField": [{
-          "busiName": "",
-          "busiSerialNo": "2020031900000423",
-          "busiDate": "20200319",
-          "busiStatus": "1",
-          "busiType": "",
-          "busiNo": "01",
-          "busiNote": "",
-          "formRecNum": "0",
-          "busiTime": "210000",
-          "branchNo": "015",
-          "reqtChannel": "10001"
-        }],
-        "custNo": "o6BQa4-dJE8jou-V0ruauZV3dwQc",
-        "idType": "01",
-        "acctNo": "0000000000000000000",
-        "totalNum": "1",
-        "busiRecNum": "1",
-        "custName": "",
-        "custLevel": "",
-        "idNo": "14052219941214771X",
-        "telNo": ""
-      }
-    }
-  };
-
-}
-
 module.exports = {
   formatTime: formatTime,
   formatHour: formatHour,
