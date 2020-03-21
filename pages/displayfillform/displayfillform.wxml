@@ -22,7 +22,7 @@
             </picker>
           </mp-cell>
           <mp-cell prop="required" title="发证机关" ext-class="">
-            <input bindinput="formInputChange" disabled="true" data-field="cardOra" class="weui-input" name='cardOra' placeholder="请输入发证机关" value="department"/>
+            <input bindinput="formInputChange" disabled="true" data-field="cardOra" class="weui-input" name='cardOra' placeholder="请输入发证机关" value="{{}}"/>
           </mp-cell>
           <!-- <mp-cell prop="required" title="性别" ext-class="">
             <radio-group >

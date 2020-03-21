@@ -228,6 +228,7 @@ Page({
         idNo: wx.getStorageSync('userInfo').IdNo,
         custNo: wx.getStorageSync('userid'),
         custLevel: '01',
+        custName: wx.getStorageSync('userInfo').Name
       },
       success: res => {
         console.log('排队结果', res);
