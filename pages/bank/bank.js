@@ -115,8 +115,23 @@ Page({
     })
   },
   getnumber: function(e) {
-    // 手机号验证
-    this.phoneVerify(e, true)
+    // 演示去除对公
+    if (e.currentTarget.dataset.type == '02'){
+      return;
+    }
+
+    const flag = wx.getStorageSync("UserinfoComplete");
+    if (!flag) {
+      wx.showModal({
+        title: '提示',
+        content: '您的个人信息不完整，请进行个人开户',
+        showCancel: false,
+        confirmColor: '#1C6CEF',
+        confirmText: '确定',
+      })
+    } else {
+      this.phoneVerify(e, true);
+    }
   },
   getResvInfo: function(e) {
     let temp = this;
@@ -252,7 +267,7 @@ Page({
     if (!flag) {
       wx.showModal({
         title: '提示',
-        content: '您的个人信息不完整，请前往补录信息',
+        content: '您的个人信息不完整，前往补录信息',
         showCancel: false,
         confirmColor: '#1C6CEF',
         confirmText: '前往',

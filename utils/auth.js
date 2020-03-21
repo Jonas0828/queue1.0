@@ -18,7 +18,7 @@ function getUserLocationAuth(hook){
               title: '授权失败',
               content: '小程序需要地理位置授权',
               confirmText: '前往设置',
-              confirmColor: '#55AAAD',
+              confirmColor: '#1C6CEF',
               success(res){
                 if(res.confirm){
                   wx.openSetting({
@@ -34,7 +34,7 @@ function getUserLocationAuth(hook){
                     title: '警告',
                     content: '小程序无法正常使用',
                     showCancel: false,
-                    confirmColor: '#55AAAD',
+                    confirmColor: '#1C6CEF',
                   })
                 }
               }
